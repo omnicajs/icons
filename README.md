@@ -1,1 +1,5 @@
 # OmnicaJS icons
+
+## License
+
+MIT

@@ -1,0 +1,11 @@
+services:
+  node:
+    build:
+      context: ./docker/node
+      dockerfile: Dockerfile
+    working_dir: /app
+    volumes:
+      - ./:/app
+    stdin_open: true
+    tty: true
+    command: sleep infinity

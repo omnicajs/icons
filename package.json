@@ -1,0 +1,15 @@
+{
+  "name": "@omnicajs/icons",
+  "version": "0.1.0",
+  "description": "OmnicaJS icon set.",
+  "license": "MIT",
+  "packageManager": "yarn@4.12.0",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "check": "yarn --version"
+  }
+}

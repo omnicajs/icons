@@ -1,5 +1,5 @@
 services:
-  node:
+  node: &node
     build:
       context: ./docker/node
       dockerfile: Dockerfile
@@ -9,3 +9,15 @@ services:
     stdin_open: true
     tty: true
     command: sleep infinity
+
+  showcase:
+    <<: *node
+    command: corepack yarn showcase
+    labels:
+      traefik.port: 5173
+      traefik.enable: 'true'
+      traefik.http.routers.omnicajs-icons-showcase.rule: 'HostRegexp(`icons.omnicajs.{[^.]+}`)'
+      traefik.http.routers.omnicajs-icons-showcase.priority: 1
+      traefik.http.routers.omnicajs-icons-showcase.service: omnicajs-icons-showcase
+      traefik.http.services.omnicajs-icons-showcase.loadbalancer.server.port: '5173'
+      dev.orbstack.domains: 'icons.omnicajs.local'

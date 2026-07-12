@@ -3,9 +3,10 @@ node_modules/
 
 # Build output
 dist/
-build/
 lib/
 *.tsbuildinfo
+generated/
+showcase/.vitepress/cache/
 
 # Test and coverage output
 coverage/

@@ -32,6 +32,35 @@ else
 	$(DOCKER) yarn check
 endif
 
+.PHONY: showcase.build
+showcase.build: ## Builds the VitePress showcase
+	$(TARGET_HEADER)
+ifdef LOCAL_MODE
+	corepack yarn build
+	corepack yarn showcase:build
+else
+	$(DOCKER) yarn build
+	$(DOCKER) yarn showcase:build
+endif
+
+.PHONY: release
+release: ## Bumps the version, updates the changelog, and creates a release tag
+	$(TARGET_HEADER)
+ifdef LOCAL_MODE
+	corepack yarn release$(if $(as),:$(as),)
+else
+	$(DOCKER) yarn release$(if $(as),:$(as),)
+endif
+
+.PHONY: showcase
+showcase: ## Runs the VitePress showcase
+	$(TARGET_HEADER)
+ifdef LOCAL_MODE
+	corepack yarn showcase
+else
+	docker compose up showcase
+endif
+
 .PHONY: shell
 shell: ## Opens a shell
 	$(TARGET_HEADER)

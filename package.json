@@ -3,13 +3,59 @@
   "version": "0.1.0",
   "description": "OmnicaJS icon set.",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omnicajs/icons.git"
+  },
+  "homepage": "https://omnicajs.github.io/icons/",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./sprites/*": "./dist/sprites/*",
+    "./assets/*": "./assets/*"
+  },
   "packageManager": "yarn@4.12.0",
   "files": [
+    "assets",
     "dist",
+    "CHANGELOG.md",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "check": "yarn --version"
+    "build": "node scripts/build-icons.mjs",
+    "check": "yarn build && yarn typecheck && yarn showcase:build",
+    "prepack": "corepack yarn build",
+    "release": "conventional-release --tags",
+    "release:alpha": "conventional-release --prerelease alpha --tags",
+    "release:beta": "conventional-release --prerelease beta --tags",
+    "release:dry": "conventional-release --dry --verbose --tags",
+    "release:rc": "conventional-release --prerelease rc --tags",
+    "showcase": "yarn build && vitepress dev showcase --host 0.0.0.0",
+    "showcase:build": "vitepress build showcase",
+    "showcase:preview": "vitepress preview showcase --host 0.0.0.0",
+    "typecheck": "tsc --noEmit"
+  },
+  "release": {
+    "mode": "sync",
+    "tagPrefix": "v"
+  },
+  "devDependencies": {
+    "@modulify/conventional-release": "^0.1.3",
+    "@types/node": "^25.9.2",
+    "svgo": "^4.0.1",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16",
+    "vitepress": "^1.6.4"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

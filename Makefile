@@ -32,6 +32,15 @@ else
 	$(DOCKER) yarn check
 endif
 
+.PHONY: icons.normalize
+icons.normalize: ## Normalizes explicitly selected SVG files or groups (example: make local icons.normalize paths='assets/icons/ai')
+	$(TARGET_HEADER)
+ifdef LOCAL_MODE
+	corepack yarn icons:normalize $(paths)
+else
+	$(DOCKER) yarn icons:normalize $(paths)
+endif
+
 .PHONY: showcase.build
 showcase.build: ## Builds the VitePress showcase
 	$(TARGET_HEADER)

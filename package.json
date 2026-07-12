@@ -30,8 +30,9 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "node scripts/build-icons.mjs",
+    "build": "node scripts/icons/build.mjs",
     "check": "yarn build && yarn typecheck && yarn showcase:build",
+    "icons:normalize": "node scripts/icons/normalize.mjs",
     "prepack": "corepack yarn build",
     "release": "conventional-release --tags",
     "release:alpha": "conventional-release --prerelease alpha --tags",

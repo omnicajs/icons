@@ -7,7 +7,7 @@ This document describes the repository workflow for maintainers of `@omnicajs/ic
 - `assets/icons/<group>/` contains source SVG icons.
 - `src/` contains the public runtime entrypoint.
 - `build/` contains deterministic icon discovery, sprite, and declaration generators.
-- `scripts/build-icons.mjs` orchestrates the package build.
+- `scripts/icons/build.mjs` orchestrates the package build.
 - `showcase/` contains the complete VitePress site published to GitHub Pages.
 - `docs/` contains internal development documentation that is not published to GitHub Pages.
 - `generated/` contains temporary build input and is ignored by Git.
@@ -35,8 +35,9 @@ make local install
 1. Place each SVG in `assets/icons/<group>/`.
 2. Use the public icon name as the filename without the `.svg` extension.
 3. Preserve the intended `viewBox` and geometry.
-4. Run the package checks.
-5. Inspect the result in the browser showcase when paint output or geometry changed.
+4. Normalize newly added files with `make local icons.normalize paths='assets/icons/<group>'`.
+5. Run the package checks.
+6. Inspect the result in the browser showcase when paint output or geometry changed.
 
 Icon names, group names, source asset paths, symbol IDs, and `viewBox` values are consumer-visible package contracts. Renaming or moving an existing icon may require a breaking release.
 

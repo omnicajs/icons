@@ -1,8 +1,8 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { build as viteBuild } from 'vite'
-import { generateVirtualDeclarations, generatePackageDeclarations } from '../build/declarations.mjs'
-import { getIconGroups } from '../build/icon-groups.mjs'
+import { generateVirtualDeclarations, generatePackageDeclarations } from '../../build/declarations.mjs'
+import { getIconGroups } from '../../build/icon-groups.mjs'
 import {
     assetsDirectory,
     distDirectory,
@@ -11,8 +11,8 @@ import {
     generatedManifestFile,
     generatedSpritesDirectory,
     generatedVirtualTypesFile,
-} from '../build/paths.mjs'
-import { generateSprites } from '../build/sprites.mjs'
+} from '../../build/paths.mjs'
+import { generateSprites } from '../../build/sprites.mjs'
 
 const run = async () => {
     const groups = await getIconGroups(assetsDirectory)

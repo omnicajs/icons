@@ -1,0 +1,198 @@
+name: Release
+run-name: Release ${{ inputs.release_type }} from ${{ github.ref_name }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        type: choice
+        description: Release type
+        required: true
+        default: stable
+        options:
+          - stable
+          - alpha
+          - beta
+          - rc
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.version.outputs.tag }}
+      version: ${{ steps.version.outputs.version }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Validate release ref
+        env:
+          RELEASE_TYPE: ${{ inputs.release_type }}
+        run: |
+          if [ "$GITHUB_REF_TYPE" != "branch" ]; then
+            echo "Release must run from a branch. Current ref type: $GITHUB_REF_TYPE"
+            exit 1
+          fi
+
+          if [ "$RELEASE_TYPE" = "stable" ] && [ "$GITHUB_REF_NAME" != "main" ]; then
+            echo "Stable releases are allowed only from main. Current branch: $GITHUB_REF_NAME"
+            exit 1
+          fi
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
+      - name: Install dependencies
+        run: make ci.install
+
+      - name: Run package checks
+        run: make local check
+
+      - name: Configure Git
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "github-actions[bot]"
+
+      - name: Create release commit and tag
+        env:
+          RELEASE_TYPE: ${{ inputs.release_type }}
+          YARN_ENABLE_IMMUTABLE_INSTALLS: 'false'
+        run: |
+          if [ "$RELEASE_TYPE" = "stable" ]; then
+            corepack yarn release
+          else
+            corepack yarn "release:$RELEASE_TYPE"
+          fi
+
+      - name: Read released version
+        id: version
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          TAG="v$VERSION"
+
+          git rev-parse --verify "refs/tags/$TAG"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Push release commit and tag
+        run: git push --follow-tags origin "HEAD:$GITHUB_REF_NAME"
+
+  publish:
+    needs: release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout release tag
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.release.outputs.tag }}
+          fetch-depth: 0
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+          registry-url: https://registry.npmjs.org
+
+      - name: Install dependencies
+        run: make ci.install
+
+      - name: Run release checks
+        run: make local check
+
+      - name: Publish package
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          RELEASE_TYPE: ${{ inputs.release_type }}
+        run: |
+          if [ "$RELEASE_TYPE" = "stable" ]; then
+            npm publish --access public
+          else
+            npm publish --access public --tag "$RELEASE_TYPE"
+          fi
+
+  showcase:
+    needs: release
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      id-token: write
+      pages: write
+
+    steps:
+      - name: Checkout release tag
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ needs.release.outputs.tag }}
+
+      - name: Use Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24.x'
+
+      - name: Install dependencies
+        run: make ci.install
+
+      - name: Build VitePress showcase
+        run: make local showcase.build
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload VitePress site
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: showcase/.vitepress/dist
+
+  github-release:
+    needs:
+      - release
+      - publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ needs.release.outputs.tag }}
+        run: gh release create "$TAG" --repo "$GITHUB_REPOSITORY" --verify-tag --generate-notes --title "$TAG"
+
+  deploy:
+    needs:
+      - publish
+      - showcase
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy VitePress site
+        id: deployment
+        uses: actions/deploy-pages@v4

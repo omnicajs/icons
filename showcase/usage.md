@@ -34,4 +34,7 @@ Raw source SVG files remain available for consumer-specific pipelines:
 
 ```ts
 import addUrl from '@omnicajs/icons/assets/icons/actions/add.svg?url'
+import armeniaUrl from '@omnicajs/icons/assets/flags/armenia.svg?url'
 ```
+
+Interface icons inherit `currentColor`. Symbols from the `flags` group preserve their original multicolor palette.

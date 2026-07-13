@@ -46,7 +46,7 @@ The helper is not tied to Vue. The same URL can be assigned to the `href` of an 
 
 ## Color And Size
 
-Icons inherit `currentColor`, so their color and dimensions are controlled by the outer SVG:
+Interface icons inherit `currentColor`, so their color and dimensions are controlled by the outer SVG:
 
 ```html
 <svg width="20" height="20" style="color: #2563eb" aria-hidden="true">
@@ -55,6 +55,12 @@ Icons inherit `currentColor`, so their color and dimensions are controlled by th
 ```
 
 Source `viewBox` values are preserved in the generated symbols. Set the consumer SVG width and height to the size required by the interface.
+
+The `flags` group keeps its original multicolor palette. Its symbols use the same URL API and sizing behavior, but do not inherit the outer SVG color:
+
+```ts
+const armenia = iconUrl('flags', 'armenia')
+```
 
 ## API
 
@@ -116,6 +122,7 @@ Original source files are exported for consumers with their own SVG pipeline. Fo
 
 ```ts
 import addUrl from '@omnicajs/icons/assets/icons/actions/add.svg?url'
+import armeniaUrl from '@omnicajs/icons/assets/flags/armenia.svg?url'
 ```
 
 Ready-made group sprites are also exported through `@omnicajs/icons/sprites/*`.

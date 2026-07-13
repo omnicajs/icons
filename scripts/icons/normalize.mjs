@@ -24,15 +24,18 @@ const parseAttributes = (source, filename, element) => {
     return attributes
 }
 
-const normalizePaint = ({ name, value }) => ({
+const normalizePaint = ({ name, value }, preserveColors) => ({
     name,
-    value: ['fill', 'stroke'].includes(name) && !['none', 'currentColor'].includes(value)
+    value: !preserveColors
+        && ['fill', 'stroke'].includes(name)
+        && !['none', 'currentColor'].includes(value)
         ? 'currentColor'
         : value,
 })
 
-const normalizePath = (source, filename) => {
-    const attributes = parseAttributes(source, filename, 'path').map(normalizePaint)
+const normalizePath = (source, filename, preserveColors) => {
+    const attributes = parseAttributes(source, filename, 'path')
+        .map(attribute => normalizePaint(attribute, preserveColors))
     const byName = new Map(attributes.map(attribute => [attribute.name, attribute]))
 
     if (!byName.has('d')) {
@@ -116,7 +119,7 @@ const unwrapViewportClip = (body, viewBox, filename) => {
     return groupBody
 }
 
-const normalizeSvg = (source, filename) => {
+const normalizeSvg = (source, filename, preserveColors) => {
     const match = source.trim().match(/^<svg\b([^>]*)>([\s\S]*)<\/svg>$/)
 
     if (!match) {
@@ -143,7 +146,7 @@ const normalizeSvg = (source, filename) => {
 
     return [
         `<svg xmlns="http://www.w3.org/2000/svg" viewBox="${viewBox}">`,
-        ...paths.map(pathMatch => normalizePath(pathMatch[1], filename)),
+        ...paths.map(pathMatch => normalizePath(pathMatch[1], filename, preserveColors)),
         '</svg>',
         '',
     ].join('\n')
@@ -168,7 +171,17 @@ const collectSvgFiles = async input => {
     return files.flat()
 }
 
-const inputs = process.argv.slice(2)
+const argumentsList = process.argv.slice(2)
+const supportedOptions = new Set(['--preserve-colors'])
+const options = argumentsList.filter(argument => argument.startsWith('--'))
+const unknownOptions = options.filter(option => !supportedOptions.has(option))
+
+if (unknownOptions.length > 0) {
+    throw new Error(`Unknown options: ${unknownOptions.join(', ')}`)
+}
+
+const preserveColors = options.includes('--preserve-colors')
+const inputs = argumentsList.filter(argument => !argument.startsWith('--'))
 
 if (inputs.length === 0) {
     throw new Error('Pass one or more SVG files or directories to normalize')
@@ -184,7 +197,7 @@ let normalizedCount = 0
 
 for (const filename of files) {
     const source = await fs.readFile(filename, 'utf8')
-    const normalized = normalizeSvg(source, filename)
+    const normalized = normalizeSvg(source, filename, preserveColors)
 
     if (normalized !== source) {
         await fs.writeFile(filename, normalized)

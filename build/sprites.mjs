@@ -8,12 +8,13 @@ const escapeXml = value => value
     .replaceAll('<', '&lt;')
     .replaceAll('>', '&gt;')
 
-const optimizeSvg = (source, filename) => {
-    const result = optimize(source, {
-        path: filename,
-        plugins: [{
-            name: 'removeDimensions',
-        }, {
+const optimizeSvg = (source, filename, preserveColors) => {
+    const plugins = [{
+        name: 'removeDimensions',
+    }]
+
+    if (!preserveColors) {
+        plugins.push({
             name: 'useCurrentColor',
             fn: () => ({
                 element: {
@@ -30,7 +31,12 @@ const optimizeSvg = (source, filename) => {
                     },
                 },
             }),
-        }],
+        })
+    }
+
+    const result = optimize(source, {
+        path: filename,
+        plugins,
     })
 
     if ('error' in result) {
@@ -68,7 +74,11 @@ export const generateSprites = async (groups, spritesDirectory) => {
 
         for (const file of group.files) {
             const filename = path.join(group.directory, file)
-            const optimized = optimizeSvg(await fs.readFile(filename, 'utf8'), filename)
+            const optimized = optimizeSvg(
+                await fs.readFile(filename, 'utf8'),
+                filename,
+                group.preserveColors
+            )
             const svg = extractSvg(optimized, filename)
             const iconName = path.basename(file, '.svg')
 

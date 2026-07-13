@@ -36,9 +36,9 @@ endif
 icons.normalize: ## Normalizes explicitly selected SVG files or groups (example: make local icons.normalize paths='assets/icons/ai')
 	$(TARGET_HEADER)
 ifdef LOCAL_MODE
-	corepack yarn icons:normalize $(paths)
+	corepack yarn icons:normalize$(if $(preserve_colors), --preserve-colors) $(paths)
 else
-	$(DOCKER) yarn icons:normalize $(paths)
+	$(DOCKER) yarn icons:normalize$(if $(preserve_colors), --preserve-colors) $(paths)
 endif
 
 .PHONY: showcase.build

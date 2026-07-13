@@ -2,23 +2,28 @@ import fs from 'node:fs/promises'
 import path from 'node:path'
 import { build as viteBuild } from 'vite'
 import { generateVirtualDeclarations, generatePackageDeclarations } from '../../build/declarations.mjs'
-import { getIconGroups } from '../../build/icon-groups.mjs'
+import { collectIconGroups } from '../../build/icon-groups.mjs'
 import {
-    assetsDirectory,
     distDirectory,
+    flagsDirectory,
     generatedBuildDirectory,
     generatedDirectory,
     generatedManifestFile,
     generatedSpritesDirectory,
     generatedVirtualTypesFile,
+    iconsDirectory,
 } from '../../build/paths.mjs'
 import { generateSprites } from '../../build/sprites.mjs'
 
 const run = async () => {
-    const groups = await getIconGroups(assetsDirectory)
+    const groups = await collectIconGroups(iconsDirectory, [{
+        name: 'flags',
+        directory: flagsDirectory,
+        preserveColors: true,
+    }])
 
     if (groups.length === 0) {
-        throw new Error(`No icon groups found in ${assetsDirectory}`)
+        throw new Error(`No icon groups found in ${iconsDirectory} or ${flagsDirectory}`)
     }
 
     await fs.rm(distDirectory, { recursive: true, force: true })

@@ -3,6 +3,8 @@ import path from 'node:path'
 
 const attributePattern = /([\w:-]+)\s*=\s*"([^"]*)"/g
 const pathPattern = /<path\b([\s\S]*?)\/>/g
+const clippedGroupPattern = /^\s*<g\b([^>]*)>([\s\S]*?)<\/g>\s*<defs>\s*<clipPath\b([^>]*)>([\s\S]*?)<\/clipPath>\s*<\/defs>\s*$/
+const rectPattern = /^\s*<rect\b([\s\S]*?)\/>\s*$/
 const attributeOrder = ['d', 'fill', 'fill-rule', 'clip-rule']
 
 const parseAttributes = (source, filename, element) => {
@@ -45,6 +47,75 @@ const normalizePath = (source, filename) => {
     return `    <path ${ordered.map(({ name, value }) => `${name}="${value}"`).join(' ')} />`
 }
 
+const parseViewBox = (viewBox, filename) => {
+    const values = viewBox.trim().split(/[\s,]+/).map(Number)
+
+    if (values.length !== 4 || values.some(value => !Number.isFinite(value))) {
+        throw new Error(`Unable to parse viewBox in ${filename}`)
+    }
+
+    return values
+}
+
+const unwrapViewportClip = (body, viewBox, filename) => {
+    const match = body.match(clippedGroupPattern)
+
+    if (!match) {
+        return body
+    }
+
+    const [, groupSource, groupBody, clipPathSource, clipPathBody] = match
+    const groupAttributes = new Map(parseAttributes(groupSource, filename, 'g').map(attribute => [
+        attribute.name,
+        attribute.value,
+    ]))
+    const clipPathAttributes = new Map(parseAttributes(clipPathSource, filename, 'clipPath').map(attribute => [
+        attribute.name,
+        attribute.value,
+    ]))
+    const clipReference = groupAttributes.get('clip-path')?.match(/^url\(#([^)]+)\)$/)?.[1]
+    const clipId = clipPathAttributes.get('id')
+    const rectMatch = clipPathBody.match(rectPattern)
+
+    if (
+        groupAttributes.size !== 1
+        || clipPathAttributes.size !== 1
+        || !clipReference
+        || clipReference !== clipId
+        || !rectMatch
+    ) {
+        throw new Error(`Only a single viewport clip group is supported in ${filename}`)
+    }
+
+    const rectAttributes = new Map(parseAttributes(rectMatch[1], filename, 'rect').map(attribute => [
+        attribute.name,
+        attribute.value,
+    ]))
+    const supportedRectAttributes = new Set(['x', 'y', 'width', 'height', 'fill'])
+
+    if ([...rectAttributes.keys()].some(name => !supportedRectAttributes.has(name))) {
+        throw new Error(`Viewport clip has unsupported rect attributes in ${filename}`)
+    }
+
+    const [viewBoxX, viewBoxY, viewBoxWidth, viewBoxHeight] = parseViewBox(viewBox, filename)
+    const rectX = Number(rectAttributes.get('x') ?? 0)
+    const rectY = Number(rectAttributes.get('y') ?? 0)
+    const rectWidth = Number(rectAttributes.get('width'))
+    const rectHeight = Number(rectAttributes.get('height'))
+
+    if (
+        ![rectX, rectY, rectWidth, rectHeight].every(value => Number.isFinite(value))
+        || rectX !== viewBoxX
+        || rectY !== viewBoxY
+        || rectWidth !== viewBoxWidth
+        || rectHeight !== viewBoxHeight
+    ) {
+        throw new Error(`Clip rect does not match viewBox in ${filename}`)
+    }
+
+    return groupBody
+}
+
 const normalizeSvg = (source, filename) => {
     const match = source.trim().match(/^<svg\b([^>]*)>([\s\S]*)<\/svg>$/)
 
@@ -63,9 +134,10 @@ const normalizeSvg = (source, filename) => {
         throw new Error(`Root svg has no viewBox in ${filename}`)
     }
 
-    const paths = [...body.matchAll(pathPattern)]
+    const unwrappedBody = unwrapViewportClip(body, viewBox, filename)
+    const paths = [...unwrappedBody.matchAll(pathPattern)]
 
-    if (paths.length === 0 || body.replace(pathPattern, '').trim() !== '') {
+    if (paths.length === 0 || unwrappedBody.replace(pathPattern, '').trim() !== '') {
         throw new Error(`Only direct self-closing path elements are supported in ${filename}`)
     }
 

@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import { optimize } from 'svgo'
 
 const attributePattern = /([\w:-]+)\s*=\s*"([^"]*)"/g
 const pathPattern = /<path\b([\s\S]*?)\/>/g
@@ -50,6 +51,71 @@ const normalizePath = (source, filename, preserveColors) => {
     return `    <path ${ordered.map(({ name, value }) => `${name}="${value}"`).join(' ')} />`
 }
 
+const normalizeStructuredSvg = (source, filename, preserveColors) => {
+    const plugins = [
+        {
+            name: 'removeDimensions',
+        },
+        {
+            name: 'removeXlink',
+        },
+        {
+            name: 'normalizeRoot',
+            fn: () => ({
+                element: {
+                    enter: (node, parent) => {
+                        if (
+                            node.name === 'svg'
+                            && parent.type === 'root'
+                            && node.attributes.fill === 'none'
+                        ) {
+                            delete node.attributes.fill
+                        }
+                    },
+                },
+            }),
+        },
+    ]
+
+    if (!preserveColors) {
+        plugins.push({
+            name: 'useCurrentColor',
+            fn: () => ({
+                element: {
+                    enter: node => {
+                        for (const attribute of ['fill', 'stroke']) {
+                            const value = node.attributes[attribute]
+
+                            if (value && !['none', 'currentColor'].includes(value)) {
+                                node.attributes[attribute] = 'currentColor'
+                            }
+                        }
+                    },
+                },
+            }),
+        })
+    }
+
+    plugins.push({
+        name: 'sortAttrs',
+    })
+
+    const result = optimize(source, {
+        path: filename,
+        plugins,
+        js2svg: {
+            pretty: true,
+            indent: 4,
+        },
+    })
+
+    if ('error' in result) {
+        throw new Error(`Unable to normalize ${filename}: ${result.error}`)
+    }
+
+    return `${result.data.trimEnd()}\n`
+}
+
 const parseViewBox = (viewBox, filename) => {
     const values = viewBox.trim().split(/[\s,]+/).map(Number)
 
@@ -87,7 +153,7 @@ const unwrapViewportClip = (body, viewBox, filename) => {
         || clipReference !== clipId
         || !rectMatch
     ) {
-        throw new Error(`Only a single viewport clip group is supported in ${filename}`)
+        return body
     }
 
     const rectAttributes = new Map(parseAttributes(rectMatch[1], filename, 'rect').map(attribute => [
@@ -97,7 +163,7 @@ const unwrapViewportClip = (body, viewBox, filename) => {
     const supportedRectAttributes = new Set(['x', 'y', 'width', 'height', 'fill'])
 
     if ([...rectAttributes.keys()].some(name => !supportedRectAttributes.has(name))) {
-        throw new Error(`Viewport clip has unsupported rect attributes in ${filename}`)
+        return body
     }
 
     const [viewBoxX, viewBoxY, viewBoxWidth, viewBoxHeight] = parseViewBox(viewBox, filename)
@@ -113,7 +179,7 @@ const unwrapViewportClip = (body, viewBox, filename) => {
         || rectWidth !== viewBoxWidth
         || rectHeight !== viewBoxHeight
     ) {
-        throw new Error(`Clip rect does not match viewBox in ${filename}`)
+        return body
     }
 
     return groupBody
@@ -141,7 +207,7 @@ const normalizeSvg = (source, filename, preserveColors) => {
     const paths = [...unwrappedBody.matchAll(pathPattern)]
 
     if (paths.length === 0 || unwrappedBody.replace(pathPattern, '').trim() !== '') {
-        throw new Error(`Only direct self-closing path elements are supported in ${filename}`)
+        return normalizeStructuredSvg(source, filename, preserveColors)
     }
 
     return [

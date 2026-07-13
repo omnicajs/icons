@@ -6,6 +6,7 @@ This document describes the repository workflow for maintainers of `@omnicajs/ic
 
 - `assets/icons/<group>/` contains monochrome source SVG icons.
 - `assets/flags/` contains the standalone multicolor `flags` group.
+- `assets/logos/` contains the standalone multicolor `logos` group.
 - `src/` contains the public runtime entrypoint.
 - `build/` contains deterministic icon discovery, sprite, and declaration generators.
 - `scripts/icons/build.mjs` orchestrates the package build.
@@ -40,15 +41,16 @@ make local install
 5. Run the package checks.
 6. Inspect the result in the browser showcase when paint output or geometry changed.
 
-Flags follow the same filename, `viewBox`, geometry, and browser-validation rules, but live in `assets/flags/` and retain their source palette. Normalize them with:
+Flags and logos follow the same filename, `viewBox`, geometry, and browser-validation rules, but live in standalone asset directories and retain their source palettes. Normalize them with:
 
 ```bash
 make local icons.normalize paths='assets/flags' preserve_colors=1
+make local icons.normalize paths='assets/logos' preserve_colors=1
 ```
 
 Icon names, group names, source asset paths, symbol IDs, and `viewBox` values are consumer-visible package contracts. Renaming or moving an existing icon may require a breaking release.
 
-The sprite build removes fixed dimensions and converts non-`none` fill and stroke colors of interface icons to `currentColor`. The `flags` group preserves its fill and stroke colors in source files and in the generated sprite. Source and generated boundaries must remain explicit; bulk SVG changes should be implemented as deterministic scripts.
+The sprite build removes fixed dimensions and converts non-`none` fill and stroke colors of interface icons to `currentColor`. The `flags` and `logos` groups preserve their fill and stroke colors in source files and in generated sprites. Source and generated boundaries must remain explicit; bulk SVG changes should be implemented as deterministic scripts.
 
 ## Checks
 

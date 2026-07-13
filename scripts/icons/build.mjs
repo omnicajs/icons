@@ -12,6 +12,7 @@ import {
     generatedSpritesDirectory,
     generatedVirtualTypesFile,
     iconsDirectory,
+    logosDirectory,
 } from '../../build/paths.mjs'
 import { generateSprites } from '../../build/sprites.mjs'
 
@@ -20,10 +21,16 @@ const run = async () => {
         name: 'flags',
         directory: flagsDirectory,
         preserveColors: true,
+    }, {
+        name: 'logos',
+        directory: logosDirectory,
+        preserveColors: true,
     }])
 
     if (groups.length === 0) {
-        throw new Error(`No icon groups found in ${iconsDirectory} or ${flagsDirectory}`)
+        throw new Error(
+            `No icon groups found in ${iconsDirectory}, ${flagsDirectory}, or ${logosDirectory}`
+        )
     }
 
     await fs.rm(distDirectory, { recursive: true, force: true })

@@ -1,23 +1,23 @@
 import { defineConfig } from 'vitepress'
 
 const isPagesBuild = process.env.GITHUB_ACTIONS === 'true'
+const base = isPagesBuild ? '/icons/' : '/'
 
 export default defineConfig({
     title: 'OmnicaJS Icons',
     description: 'Typed SVG icon sprites for OmnicaJS projects.',
-    base: isPagesBuild ? '/icons/' : '/',
+    base,
     cleanUrls: true,
     head: [
-        ['meta', { name: 'theme-color', content: '#2563eb' }],
+        ['link', { rel: 'icon', type: 'image/svg+xml', href: `${base}omnica.svg` }],
+        ['meta', { name: 'theme-color', content: '#005eeb' }],
     ],
     themeConfig: {
+        logo: '/omnica.svg',
         nav: [
             { text: 'Icons', link: '/' },
             { text: 'Usage', link: '/usage' },
         ],
-        search: {
-            provider: 'local',
-        },
         socialLinks: [
             { icon: 'github', link: 'https://github.com/omnicajs/icons' },
         ],

@@ -6,9 +6,11 @@ dist/
 lib/
 *.tsbuildinfo
 generated/
+fixtures/*/src/omnica-icons.d.ts
 showcase/.vitepress/cache/
 
 # Test and coverage output
+artifacts/
 coverage/
 .nyc_output/
 

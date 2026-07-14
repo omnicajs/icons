@@ -1,16 +1,25 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "emitDeclarationOnly": true,
+    "lib": [
+      "ESNext",
+      "DOM",
+      "DOM.Iterable"
+    ],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true,
     "strict": true,
-    "target": "ES2022"
+    "target": "ES2022",
+    "types": [
+      "node"
+    ]
   },
   "include": [
-    "generated/**/*.d.ts",
-    "src/**/*.ts",
-    "vite.config.ts"
+    "generated/**/*.ts",
+    "playwright.config.ts",
+    "showcase/**/*.d.ts",
+    "tests/**/*.ts",
+    "tooling/**/*.ts",
+    "vite.config.tooling.ts"
   ]
 }

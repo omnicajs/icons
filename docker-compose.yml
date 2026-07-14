@@ -21,3 +21,14 @@ services:
       traefik.http.routers.omnicajs-icons-showcase.service: omnicajs-icons-showcase
       traefik.http.services.omnicajs-icons-showcase.loadbalancer.server.port: '5173'
       dev.orbstack.domains: 'icons.omnicajs.local'
+
+  playwright:
+    build:
+      context: ./docker/playwright
+      dockerfile: Dockerfile
+    working_dir: /app
+    user: "${UID:-1000}:${GID:-1000}"
+    volumes:
+      - ./:/app
+    ipc: host
+    init: true

@@ -10,7 +10,7 @@ import IconShowcase from './components/IconShowcase.vue'
 
 # OmnicaJS Icons
 
-Typed SVG sprites generated from the source icon groups in `@omnicajs/icons`.
+Typed filled and outlined SVG sprites generated from one `variant/group/name` catalog. Switch delivery to compare the full and group sprite URLs without changing symbol identity. Search also recognises designer-provided keywords.
 
 <ClientOnly>
     <IconShowcase />

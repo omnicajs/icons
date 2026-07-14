@@ -9,7 +9,9 @@ This document describes the repository workflow for maintainers of `@omnicajs/ic
 - `assets/logos/` contains the standalone multicolor `logos` group.
 - `src/` contains the public runtime entrypoint.
 - `build/` contains deterministic icon discovery, sprite, and declaration generators.
-- `scripts/icons/build.mjs` orchestrates the package build.
+- `tooling/` contains the typed build core and the CLI, Vite, and Webpack adapters.
+- `scripts/icons/build.mjs` generates deterministic icon assets and package modules.
+- `vite.config.tooling.ts` compiles tooling to its publishable ESM and CommonJS entrypoints.
 - `showcase/` contains the complete VitePress site published to GitHub Pages.
 - `docs/` contains internal development documentation that is not published to GitHub Pages.
 - `generated/` contains temporary build input and is ignored by Git.
@@ -66,7 +68,7 @@ Run them on the host:
 make local check
 ```
 
-The check builds ESM and CommonJS entrypoints, sprites and declarations, runs TypeScript validation, and builds the VitePress showcase.
+The check generates sprites and icon entrypoints, compiles the typed tooling through Vite, emits its declarations through TypeScript, runs TypeScript validation, and builds the VitePress showcase.
 
 CI installs dependencies with an immutable lockfile, runs the same checks, and inspects the package archive contents. The workflow is defined in `.github/workflows/check.yml`.
 

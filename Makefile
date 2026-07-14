@@ -1,7 +1,9 @@
 .DEFAULT_GOAL := help
 
 DOCKER=@docker compose run --rm node
+DOCKER_PLAYWRIGHT=@docker compose run --rm playwright
 DOCKER_CMD=docker compose run --rm node
+DOCKER_PLAYWRIGHT_CMD=docker compose run --rm playwright
 TARGET_HEADER=@printf '===== \033[34m%s\033[0m\n' $@
 LOCAL_MODE := $(filter local,$(MAKECMDGOALS))
 
@@ -31,6 +33,7 @@ ifdef LOCAL_MODE
 else
 	$(DOCKER) yarn check
 endif
+	$(DOCKER_PLAYWRIGHT) yarn test:browser
 
 .PHONY: icons.normalize
 icons.normalize: ## Normalizes explicitly selected SVG files or groups (example: make local icons.normalize paths='assets/icons/ai')
@@ -40,6 +43,33 @@ ifdef LOCAL_MODE
 else
 	$(DOCKER) yarn icons:normalize$(if $(preserve_colors), --preserve-colors) $(paths)
 endif
+
+.PHONY: icons.keywords
+icons.keywords: ## Regenerates icon search keywords from the migration maps
+	$(TARGET_HEADER)
+ifdef LOCAL_MODE
+	corepack yarn icons:keywords
+else
+	$(DOCKER) yarn icons:keywords
+endif
+
+.PHONY: test
+test: ## Runs package and consumer-fixture tests
+	$(TARGET_HEADER)
+ifdef LOCAL_MODE
+	corepack yarn test
+else
+	$(DOCKER) yarn test
+endif
+	$(DOCKER_PLAYWRIGHT) yarn test:browser
+
+.PHONY: test.browser
+test.browser: ## Runs SVG rendering tests in Chromium, Firefox, and WebKit
+	$(TARGET_HEADER)
+	$(DOCKER) yarn build
+	$(DOCKER) yarn test:fixtures
+	$(DOCKER) yarn showcase:build
+	$(DOCKER_PLAYWRIGHT) yarn test:browser
 
 .PHONY: showcase.build
 showcase.build: ## Builds the VitePress showcase

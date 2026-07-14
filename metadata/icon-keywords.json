@@ -1,0 +1,4480 @@
+{
+    "schemaVersion": 1,
+    "variants": {
+        "filled": {
+            "actions": {
+                "add": [],
+                "add-circle": [],
+                "add-square": [],
+                "all-done": [
+                    "ui/all_done",
+                    "ui/all-done"
+                ],
+                "archive": [],
+                "auto-chain": [
+                    "ui/auto_chain",
+                    "ui/auto-chain"
+                ],
+                "auto-chain-forward": [
+                    "ui/auto_chain_forward",
+                    "ui/auto-chain-forward"
+                ],
+                "autorenew": [],
+                "beta": [
+                    "ui/beta",
+                    "ui/beta_test"
+                ],
+                "block-ads": [],
+                "bookmark": [],
+                "bookmarks": [],
+                "cached": [],
+                "chain-horizontal": [
+                    "ui/chain_horizontall",
+                    "ui/chain-horizontal"
+                ],
+                "chain-vertical": [
+                    "ui/chain_vertical",
+                    "ui/chain-vertical"
+                ],
+                "checkmark-circle": [],
+                "checkmark-circle-empty": [],
+                "checkmark-square": [],
+                "clear": [],
+                "clear-all": [],
+                "clear-circle": [],
+                "clear-square": [],
+                "command": [],
+                "copy": [
+                    "media-n-editing/copy"
+                ],
+                "cut": [
+                    "media-n-editing/cut"
+                ],
+                "done": [],
+                "dot": [],
+                "dot-bullet": [],
+                "download": [
+                    "ui/download",
+                    "ui/download_to"
+                ],
+                "download-circle": [
+                    "ui/download",
+                    "ui/download-circle"
+                ],
+                "drag": [],
+                "edit": [
+                    "ui/edit"
+                ],
+                "find-replace": [],
+                "heart": [],
+                "help": [],
+                "hide-keyboard": [
+                    "devices/keyboard_hide"
+                ],
+                "hot": [
+                    "ui/hot"
+                ],
+                "import": [
+                    "ui/import"
+                ],
+                "incognito": [],
+                "key": [],
+                "loader": [],
+                "loading": [],
+                "merge": [],
+                "move": [
+                    "actions/multi-direction",
+                    "arrows/move"
+                ],
+                "notebook-bookmarked": [],
+                "notes": [
+                    "ui/notes"
+                ],
+                "paste": [
+                    "media-n-editing/paste"
+                ],
+                "print": [
+                    "media-n-editing/print"
+                ],
+                "print-off": [
+                    "media-n-editing/print_disabled",
+                    "media-n-editing/print-off"
+                ],
+                "publish": [],
+                "redo": [
+                    "media-n-editing/redo"
+                ],
+                "refresh": [],
+                "remove": [],
+                "remove-circle": [],
+                "remove-square": [],
+                "resize-diagonal": [
+                    "actions/multi-direction-diagonal",
+                    "arrows/resize-diagonal"
+                ],
+                "restore": [],
+                "save": [
+                    "media-n-editing/save"
+                ],
+                "scan-document": [
+                    "media-n-editing/scan_document",
+                    "media-n-editing/scan-document"
+                ],
+                "search": [],
+                "settings": [
+                    "ui/settings"
+                ],
+                "settings-back": [],
+                "settings-hexagon": [
+                    "ui/settings_vs",
+                    "ui/settings-hexagon"
+                ],
+                "share": [
+                    "ui/share"
+                ],
+                "share-arrow": [
+                    "ui/share_vs",
+                    "ui/share-arrow"
+                ],
+                "sign-in": [
+                    "ui/sign_in",
+                    "ui/sign-in"
+                ],
+                "sign-out": [
+                    "ui/sign_out",
+                    "ui/sign-out"
+                ],
+                "sliders-horizontal": [
+                    "audiovisual/tune-horizontal"
+                ],
+                "sliders-vertical": [
+                    "audiovisual/tune-vertical"
+                ],
+                "sort": [],
+                "sort-a-z": [
+                    "ui/sort_a-z",
+                    "ui/sort-a-z"
+                ],
+                "sort-down": [
+                    "ui/sort_down",
+                    "ui/sort-down"
+                ],
+                "sort-up": [
+                    "ui/sort_up",
+                    "ui/sort-up"
+                ],
+                "sort-z-a": [
+                    "ui/sort_z-a",
+                    "ui/sort-z-a"
+                ],
+                "star": [],
+                "star-half": [],
+                "support": [],
+                "swap-horizontal": [
+                    "arrows/arrow-left-n-right",
+                    "arrows/swap-horizontal"
+                ],
+                "swap-vertical": [
+                    "arrows/arrow-up-n-down",
+                    "arrows/swap-vertical"
+                ],
+                "sync": [],
+                "sync-off": [],
+                "trash": [
+                    "ui/delete",
+                    "ui/trash"
+                ],
+                "trash-add": [
+                    "ui/add_to_trash",
+                    "ui/trash-add"
+                ],
+                "trash-remove": [
+                    "ui/remove_from_trash",
+                    "ui/trash-remove"
+                ],
+                "turn-off": [],
+                "unarchive": [],
+                "undo": [
+                    "media-n-editing/undo"
+                ],
+                "update": [],
+                "update-once": [],
+                "upload": [
+                    "ui/upload",
+                    "ui/upload_from"
+                ],
+                "upload-circle": [
+                    "ui/upload",
+                    "ui/upload-circle"
+                ],
+                "upload-tray": [
+                    "ui/upload_file",
+                    "ui/upload-tray"
+                ],
+                "vibrations": [],
+                "vibrations-off": [],
+                "view-logs": [],
+                "youtube-search": []
+            },
+            "activity": {
+                "footprint": [
+                    "other/foot_print",
+                    "other/footprint"
+                ],
+                "hiking": [
+                    "people-n-activity/hiking"
+                ],
+                "running": [
+                    "people-n-activity/running"
+                ],
+                "soccer-ball": [
+                    "other/soccer-ball",
+                    "other/sport"
+                ],
+                "swimming": [
+                    "people-n-activity/swimming"
+                ],
+                "walking": [
+                    "people-n-activity/walking"
+                ],
+                "weight": [
+                    "other/weight"
+                ],
+                "weight-rounded": [
+                    "other/weight_2",
+                    "other/weight-rounded"
+                ]
+            },
+            "ai": {
+                "brain": [],
+                "brain-circuit": [
+                    "ai/brain-ai"
+                ],
+                "bulb": [],
+                "chat-sparkles": [
+                    "ai/chat"
+                ],
+                "chat-sparkles-stacked": [
+                    "ai/chat-outlined"
+                ],
+                "edit-sparkles": [
+                    "ai/magic-edit"
+                ],
+                "edit-sparkles-locked": [
+                    "ai/magic-edit-locked"
+                ],
+                "lightbulb": [
+                    "other/lightbulb"
+                ],
+                "lightbulb-on": [
+                    "other/light_on",
+                    "other/lightbulb-on"
+                ],
+                "magic-wand": [],
+                "robot": [
+                    "premium/robot"
+                ],
+                "robot-action": [
+                    "ai/robot-do"
+                ],
+                "robot-sparkles": [
+                    "ai/robot"
+                ],
+                "robot-upper": [
+                    "premium/robot_upper",
+                    "premium/robot-upper"
+                ],
+                "sparkles": [
+                    "ai/magic"
+                ]
+            },
+            "alerts": {
+                "battery-alert": [],
+                "error": [],
+                "error-circle": [],
+                "info": [
+                    "actions/info"
+                ],
+                "message-failed": [],
+                "new-release": [],
+                "notice": [
+                    "actions/notice"
+                ],
+                "notifications": [],
+                "notifications-add": [
+                    "alerts/notification-add"
+                ],
+                "notifications-alert": [],
+                "notifications-checked": [],
+                "notifications-new": [],
+                "notifications-off": [],
+                "notifications-on": [],
+                "report": [],
+                "security-warning": [],
+                "snooze-notifications": [
+                    "actions/snooze-notifications"
+                ],
+                "warning": []
+            },
+            "analytics": {
+                "chart-bar-ascending": [
+                    "technology-n-data/chart_bar_3",
+                    "technology-n-data/chart-bar-ascending"
+                ],
+                "chart-bar-ascending-baseline": [
+                    "technology-n-data/chart_bar_1",
+                    "technology-n-data/chart-bar-ascending-baseline"
+                ],
+                "chart-bar-descending-baseline": [
+                    "technology-n-data/chart_bar_5",
+                    "technology-n-data/chart-bar-descending-baseline"
+                ],
+                "chart-bar-peak": [
+                    "technology-n-data/chart_bar_4",
+                    "technology-n-data/chart-bar-peak"
+                ],
+                "chart-bar-peak-baseline": [
+                    "technology-n-data/chart_bar_2",
+                    "technology-n-data/chart-bar-peak-baseline"
+                ],
+                "chart-bubble": [
+                    "technology-n-data/chart_bubble",
+                    "technology-n-data/chart-bubble"
+                ],
+                "chart-donut": [
+                    "technology-n-data/chart_donut_2",
+                    "technology-n-data/chart-donut"
+                ],
+                "chart-line-down": [
+                    "technology-n-data/chart_line_down",
+                    "technology-n-data/chart-line-down"
+                ],
+                "chart-line-up": [
+                    "technology-n-data/chart_line_up",
+                    "technology-n-data/chart-line-up"
+                ],
+                "chart-pie": [
+                    "technology-n-data/chart_pie_2",
+                    "technology-n-data/chart-pie"
+                ],
+                "chart-pie-exploded": [
+                    "technology-n-data/chart_pie_1",
+                    "technology-n-data/chart-pie-exploded"
+                ],
+                "data-sharing": [
+                    "technology-n-data/data_sharing",
+                    "technology-n-data/data-sharing"
+                ],
+                "intersect": [
+                    "technology-n-data/intersect"
+                ],
+                "poll": [
+                    "technology-n-data/poll"
+                ],
+                "trending-down": [
+                    "technology-n-data/trending_down",
+                    "technology-n-data/trending-down"
+                ],
+                "trending-up": [
+                    "technology-n-data/trending_up",
+                    "technology-n-data/trending-up"
+                ],
+                "union": [
+                    "technology-n-data/union"
+                ]
+            },
+            "arrows": {
+                "arrow-bidirectional-horizontal": [
+                    "arrows/arrow-doublesided-horizontal"
+                ],
+                "arrow-bidirectional-vertical": [
+                    "arrows/arrow-doublesided-vertical"
+                ],
+                "arrow-circle-down": [
+                    "arrows/arrow-in-circle-down"
+                ],
+                "arrow-circle-right": [
+                    "arrows/arrow-in-circle-right"
+                ],
+                "arrow-circle-up": [
+                    "arrows/arrow-in-circle-up"
+                ],
+                "arrow-dotted-down": [
+                    "arrows/arrow-downward-dot"
+                ],
+                "arrow-down": [
+                    "arrows/arrow-downward"
+                ],
+                "arrow-large-down": [
+                    "arrows/arrow-large-dawnward"
+                ],
+                "arrow-large-left": [
+                    "arrows/arrow-large-backward"
+                ],
+                "arrow-large-right": [
+                    "arrows/arrow-large-forward"
+                ],
+                "arrow-large-up": [
+                    "arrows/arrow-large-upward"
+                ],
+                "arrow-left": [
+                    "arrows/arrow-backward"
+                ],
+                "arrow-long-down": [],
+                "arrow-long-left": [],
+                "arrow-long-right": [],
+                "arrow-long-up": [],
+                "arrow-right": [
+                    "arrows/arrow-forward"
+                ],
+                "arrow-to-top": [
+                    "arrows/to-top"
+                ],
+                "arrow-up": [
+                    "arrows/arrow-upward"
+                ],
+                "caret-circle-down": [
+                    "arrows/caret-down-circle"
+                ],
+                "caret-circle-left": [
+                    "arrows/caret-left-circle"
+                ],
+                "caret-circle-right": [
+                    "arrows/caret-right-circle"
+                ],
+                "caret-circle-up": [
+                    "arrows/caret-up-circle"
+                ],
+                "caret-double-horizontal": [
+                    "arrows/double-caret-horizontal"
+                ],
+                "caret-double-vertical": [
+                    "arrows/double-caret-vertical"
+                ],
+                "caret-double-vertical-spaced": [
+                    "arrows/double-caret-vertical-more"
+                ],
+                "caret-down": [],
+                "caret-left": [],
+                "caret-right": [],
+                "caret-up": [],
+                "chevron-down": [],
+                "chevron-large-down": [],
+                "chevron-large-left": [],
+                "chevron-large-right": [],
+                "chevron-large-up": [],
+                "chevron-left": [],
+                "chevron-right": [],
+                "chevron-up": [],
+                "chevrons-horizontal-inward": [
+                    "arrows/pull-left-right"
+                ],
+                "chevrons-horizontal-outward": [
+                    "arrows/pull-right-left"
+                ],
+                "subdirectory-left": [],
+                "subdirectory-right": []
+            },
+            "brands": {
+                "android": [
+                    "technology-n-data/android"
+                ],
+                "app-store": [
+                    "social-media-n-tools/app-store",
+                    "social-media-n-tools/appstore"
+                ],
+                "apple": [
+                    "technology-n-data/apple"
+                ],
+                "behance": [
+                    "social-media-n-tools/behance"
+                ],
+                "chatgpt": [
+                    "technology-n-data/chart_gpt",
+                    "technology-n-data/chatgpt"
+                ],
+                "dribbble": [
+                    "social-media-n-tools/dribbble"
+                ],
+                "dropbox": [
+                    "social-media-n-tools/dropbox"
+                ],
+                "facebook": [
+                    "social-media-n-tools/facebook"
+                ],
+                "facebook-square": [
+                    "social-media-n-tools/facebook_square",
+                    "social-media-n-tools/facebook-square"
+                ],
+                "github": [
+                    "social-media-n-tools/github"
+                ],
+                "gmail": [
+                    "social-media-n-tools/gmail"
+                ],
+                "google": [
+                    "social-media-n-tools/google"
+                ],
+                "google-drive": [
+                    "social-media-n-tools/google_drive",
+                    "social-media-n-tools/google-drive"
+                ],
+                "google-play": [
+                    "social-media-n-tools/google_play",
+                    "social-media-n-tools/google-play"
+                ],
+                "hangouts": [
+                    "social-media-n-tools/hangouts"
+                ],
+                "instagram": [
+                    "social-media-n-tools/instagram"
+                ],
+                "linkedin": [
+                    "social-media-n-tools/linkedin"
+                ],
+                "linkedin-square": [
+                    "social-media-n-tools/linkedin_square",
+                    "social-media-n-tools/linkedin-square"
+                ],
+                "max-logo": [
+                    "social-media-n-tools/MAX logo",
+                    "social-media-n-tools/max-logo"
+                ],
+                "max-wordmark": [
+                    "social-media-n-tools/MAX text",
+                    "social-media-n-tools/max-wordmark"
+                ],
+                "messenger": [
+                    "social-media-n-tools/messenger"
+                ],
+                "pinterest": [
+                    "social-media-n-tools/pinterest"
+                ],
+                "pinterest-circle": [
+                    "social-media-n-tools/pinterest_circle",
+                    "social-media-n-tools/pinterest-circle"
+                ],
+                "reddit": [
+                    "social-media-n-tools/reddit"
+                ],
+                "skype": [
+                    "social-media-n-tools/skype"
+                ],
+                "slack": [
+                    "social-media-n-tools/slack"
+                ],
+                "snapchat": [
+                    "social-media-n-tools/snapchat"
+                ],
+                "steam": [
+                    "social-media-n-tools/steam"
+                ],
+                "stripo": [
+                    "social-media-n-tools/stripo"
+                ],
+                "telegram": [
+                    "social-media-n-tools/telegram"
+                ],
+                "twitch": [
+                    "social-media-n-tools/twitch"
+                ],
+                "twitter": [
+                    "social-media-n-tools/twitter"
+                ],
+                "viber": [
+                    "social-media-n-tools/viber"
+                ],
+                "vimeo": [
+                    "social-media-n-tools/vimeo"
+                ],
+                "vimeo-square": [
+                    "social-media-n-tools/vimeo_square",
+                    "social-media-n-tools/vimeo-square"
+                ],
+                "vk": [
+                    "social-media-n-tools/vk",
+                    "social-media-n-tools/vkontakte"
+                ],
+                "whatsapp": [
+                    "social-media-n-tools/whatsapp"
+                ],
+                "youtube": [
+                    "social-media-n-tools/youtube"
+                ]
+            },
+            "calendar": {
+                "appointment": [
+                    "actions/appointment"
+                ],
+                "appointment-cancelled": [
+                    "actions/appointment-cancelled"
+                ],
+                "calendar": [
+                    "actions/calendar"
+                ],
+                "calendar-add": [
+                    "actions/calendar-add",
+                    "ui/add_event",
+                    "ui/calendar-add"
+                ],
+                "calendar-check": [
+                    "actions/calendar-check"
+                ],
+                "calendar-month": [
+                    "actions/calendar-month"
+                ],
+                "calendar-note": [
+                    "actions/calendar-note"
+                ],
+                "date-range": [
+                    "actions/date-range"
+                ],
+                "event": [
+                    "actions/event"
+                ]
+            },
+            "commerce": {
+                "briefcase": [
+                    "other/briefcase"
+                ],
+                "briefcase-off": [
+                    "other/briefcase_not_accessible",
+                    "other/briefcase-off"
+                ],
+                "discount": [
+                    "actions/discount"
+                ],
+                "discount-off": [
+                    "actions/discount-off"
+                ],
+                "label": [
+                    "actions/label"
+                ],
+                "label-bad": [
+                    "actions/label-bad"
+                ],
+                "label-important": [
+                    "actions/label-important"
+                ],
+                "label-off": [
+                    "actions/label-off"
+                ],
+                "label-vip": [
+                    "actions/label-vip"
+                ],
+                "labels": [
+                    "actions/labels"
+                ],
+                "order": [
+                    "other/order"
+                ],
+                "order-add": [
+                    "other/add order",
+                    "other/order-add"
+                ],
+                "order-discount": [
+                    "other/order_sale_2",
+                    "other/order-discount"
+                ],
+                "order-discount-badge": [
+                    "other/order_sale",
+                    "other/order-discount-badge"
+                ],
+                "order-duplicate": [
+                    "other/duplicate_order",
+                    "other/order-duplicate"
+                ],
+                "order-edit": [
+                    "other/order_edit",
+                    "other/order-edit"
+                ],
+                "order-info": [
+                    "other/order_info",
+                    "other/order-info"
+                ],
+                "order-remove": [
+                    "other/order-remove",
+                    "other/remove order"
+                ],
+                "order-split": [
+                    "other/order-split",
+                    "other/split_order"
+                ],
+                "price": [
+                    "payment/price"
+                ],
+                "shop": [
+                    "map-n-places/shop"
+                ],
+                "shopping-bag": [
+                    "map-n-places/shopping",
+                    "map-n-places/shopping-bag"
+                ],
+                "shopping-basket": [
+                    "actions/shopping-basket"
+                ],
+                "shopping-basket-add": [
+                    "actions/shopping-basket-add"
+                ],
+                "shopping-basket-clear": [
+                    "actions/shopping-basket-clear"
+                ],
+                "shopping-basket-remove": [
+                    "actions/shopping-basket-remove"
+                ],
+                "shopping-cart": [
+                    "actions/shopping-cart"
+                ],
+                "shopping-cart-add": [
+                    "actions/shopping-cart-add"
+                ],
+                "shopping-cart-draft": [
+                    "actions/shopping-cart-draft"
+                ],
+                "shopping-cart-has-order": [
+                    "actions/shopping-cart-has-order"
+                ],
+                "shopping-cart-off": [
+                    "actions/shopping-cart-off"
+                ],
+                "shopping-cart-remove": [
+                    "actions/shopping-cart-remove"
+                ],
+                "subscribe": [
+                    "actions/subscribe"
+                ],
+                "ticket": [
+                    "other/ticket"
+                ],
+                "wishlist": [
+                    "other/wishlist"
+                ]
+            },
+            "communication": {
+                "attachment": [
+                    "ui/attachment"
+                ],
+                "attachment-diagonal": [
+                    "ui/attachment_diagonal",
+                    "ui/attachment-diagonal"
+                ],
+                "call": [],
+                "call-cancelled": [],
+                "call-ended": [],
+                "call-forward": [],
+                "call-forward-n-income": [],
+                "call-incoming": [],
+                "call-info": [],
+                "call-talking": [],
+                "call-talking-quiet": [],
+                "call-unknown": [],
+                "chat": [],
+                "comment": [],
+                "comment-image": [],
+                "comment-play": [],
+                "comment-text": [],
+                "comment-video": [],
+                "comment-vs": [],
+                "contact-notebook": [],
+                "contacts": [],
+                "contacts-book": [],
+                "draft": [],
+                "email": [],
+                "email-add": [],
+                "email-income": [],
+                "email-n-sms": [],
+                "email-outcoming": [],
+                "email-success": [],
+                "email-unsubscribe": [],
+                "favorite-comment": [],
+                "forward": [],
+                "import-export": [],
+                "inbox": [],
+                "inboxes": [],
+                "made-call": [],
+                "message": [],
+                "message-add": [],
+                "message-cancel": [],
+                "message-play": [],
+                "message-question": [],
+                "message-video": [],
+                "messages": [],
+                "missed-call": [],
+                "missed-call-outgoing": [],
+                "mixed": [],
+                "mms": [],
+                "new-email": [],
+                "new-message": [
+                    "ui/new_message",
+                    "ui/new-message"
+                ],
+                "received-call": [],
+                "reply": [],
+                "reply-all": [],
+                "send": [],
+                "share-screen": [],
+                "sms": [],
+                "sms-active": [],
+                "sms-chat": [],
+                "swap": [],
+                "swap-horizontal": [],
+                "swap-vs": [],
+                "to-message": [],
+                "unsubscribe": [],
+                "voicemail": []
+            },
+            "connectivity": {
+                "airdrop": [
+                    "technology-n-data/airdrop"
+                ],
+                "airplay": [
+                    "technology-n-data/airplay"
+                ],
+                "at-sign": [
+                    "technology-n-data/at-sign",
+                    "technology-n-data/online"
+                ],
+                "barcode": [
+                    "technology-n-data/barcode"
+                ],
+                "bluetooth": [
+                    "technology-n-data/bluetooth"
+                ],
+                "bluetooth-connect": [
+                    "technology-n-data/bluetooth_connect",
+                    "technology-n-data/bluetooth-connect"
+                ],
+                "bluetooth-off": [
+                    "technology-n-data/bluetooth_off",
+                    "technology-n-data/bluetooth-off"
+                ],
+                "bluetooth-search": [
+                    "technology-n-data/bluetooth_search",
+                    "technology-n-data/bluetooth-search"
+                ],
+                "cloud": [
+                    "technology-n-data/cloud"
+                ],
+                "cloud-check": [
+                    "technology-n-data/cloud_on",
+                    "technology-n-data/cloud-check"
+                ],
+                "cloud-disabled": [
+                    "technology-n-data/cloud_disabled",
+                    "technology-n-data/cloud-disabled"
+                ],
+                "cloud-download": [
+                    "technology-n-data/cloud-download",
+                    "technology-n-data/download_from_cloud"
+                ],
+                "cloud-off": [
+                    "technology-n-data/cloud_off",
+                    "technology-n-data/cloud-off"
+                ],
+                "cloud-upload": [
+                    "technology-n-data/cloud-upload",
+                    "technology-n-data/upload_on_cloud"
+                ],
+                "link": [
+                    "technology-n-data/link"
+                ],
+                "link-off": [
+                    "technology-n-data/link_off",
+                    "technology-n-data/link-off"
+                ],
+                "mobile-data": [
+                    "technology-n-data/mobile_data",
+                    "technology-n-data/mobile-data"
+                ],
+                "mobile-data-low": [
+                    "technology-n-data/mobile_data_low",
+                    "technology-n-data/mobile-data-low"
+                ],
+                "qr-code": [
+                    "technology-n-data/qr_code",
+                    "technology-n-data/qr-code"
+                ],
+                "wifi": [
+                    "technology-n-data/wifi"
+                ],
+                "wifi-off": [
+                    "technology-n-data/wifi_off",
+                    "technology-n-data/wifi-off"
+                ]
+            },
+            "design": {
+                "adjust": [
+                    "media-n-editing/adjust"
+                ],
+                "align-to-bottom": [
+                    "media-n-editing/align_to_bottom",
+                    "media-n-editing/align-to-bottom"
+                ],
+                "align-to-bottom-single": [
+                    "media-n-editing/align_to_bottom_vs",
+                    "media-n-editing/align-to-bottom-single"
+                ],
+                "align-to-center": [
+                    "media-n-editing/align_to_center",
+                    "media-n-editing/align-to-center"
+                ],
+                "align-to-center-single": [
+                    "media-n-editing/align_to_center_vs",
+                    "media-n-editing/align-to-center-single"
+                ],
+                "align-to-left": [
+                    "media-n-editing/align_to_left",
+                    "media-n-editing/align-to-left"
+                ],
+                "align-to-left-single": [
+                    "media-n-editing/align_to_left_vs",
+                    "media-n-editing/align-to-left-single"
+                ],
+                "align-to-middle": [
+                    "media-n-editing/align_to_middle",
+                    "media-n-editing/align-to-middle"
+                ],
+                "align-to-middle-single": [
+                    "media-n-editing/align_to_middle_vs",
+                    "media-n-editing/align-to-middle-single"
+                ],
+                "align-to-right": [
+                    "media-n-editing/align_to_right",
+                    "media-n-editing/align-to-right"
+                ],
+                "align-to-right-single": [
+                    "media-n-editing/align_to_right_vs",
+                    "media-n-editing/align-to-right-single"
+                ],
+                "align-to-top": [
+                    "media-n-editing/align_to_top",
+                    "media-n-editing/align-to-top"
+                ],
+                "align-to-top-single": [
+                    "media-n-editing/align_to_top_vs",
+                    "media-n-editing/align-to-top-single"
+                ],
+                "artboard": [
+                    "media-n-editing/artboard"
+                ],
+                "aspect-ratio-1-1": [
+                    "media-n-editing/aspect-ratio-1-1",
+                    "media-n-editing/format_1_1"
+                ],
+                "aspect-ratio-16-9": [
+                    "media-n-editing/aspect-ratio-16-9",
+                    "media-n-editing/format_16_9"
+                ],
+                "aspect-ratio-4-3": [
+                    "media-n-editing/aspect-ratio-4-3",
+                    "media-n-editing/format_4_3"
+                ],
+                "assistant-collapsed": [
+                    "media-n-editing/assistant-collapsed",
+                    "media-n-editing/collapsed_assistant"
+                ],
+                "assistant-expanded": [
+                    "media-n-editing/assistant-expanded",
+                    "media-n-editing/expanded_assistant"
+                ],
+                "blend-tool": [
+                    "media-n-editing/blend-tool",
+                    "media-n-editing/sand_backward_right"
+                ],
+                "bring-forward": [
+                    "media-n-editing/bring_forward",
+                    "media-n-editing/bring-forward"
+                ],
+                "bring-to-front": [
+                    "media-n-editing/bring_to_front",
+                    "media-n-editing/bring-to-front"
+                ],
+                "brush": [
+                    "media-n-editing/brush"
+                ],
+                "canvas": [
+                    "media-n-editing/canvas"
+                ],
+                "canvas-graphics": [
+                    "media-n-editing/canvas_graphics",
+                    "media-n-editing/canvas-graphics"
+                ],
+                "canvas-text": [
+                    "media-n-editing/canvas_text",
+                    "media-n-editing/canvas-text"
+                ],
+                "color": [
+                    "media-n-editing/color"
+                ],
+                "color-off": [
+                    "media-n-editing/color_off",
+                    "media-n-editing/color-off"
+                ],
+                "color-picker": [
+                    "media-n-editing/color_picker",
+                    "media-n-editing/color-picker"
+                ],
+                "color-picker-point": [
+                    "media-n-editing/color_picker_point",
+                    "media-n-editing/color-picker-point"
+                ],
+                "crop": [
+                    "media-n-editing/crop"
+                ],
+                "cut-in-half": [
+                    "media-n-editing/cut_in_half",
+                    "media-n-editing/cut-in-half"
+                ],
+                "difference": [
+                    "media-n-editing/difference"
+                ],
+                "eraser": [
+                    "media-n-editing/eraser"
+                ],
+                "exclude": [
+                    "media-n-editing/exclude",
+                    "media-n-editing/or_statement"
+                ],
+                "free-transform": [
+                    "media-n-editing/free_transform",
+                    "media-n-editing/free-transform"
+                ],
+                "fullscreen-1-1": [
+                    "media-n-editing/fullscreen_1_1",
+                    "media-n-editing/fullscreen-1-1"
+                ],
+                "fullscreen-16-9": [
+                    "media-n-editing/fullscreen_16_9",
+                    "media-n-editing/fullscreen-16-9"
+                ],
+                "fullscreen-4-3": [
+                    "media-n-editing/fullscreen_4_3",
+                    "media-n-editing/fullscreen-4-3"
+                ],
+                "gesture": [
+                    "media-n-editing/gesture"
+                ],
+                "gradient": [
+                    "media-n-editing/gradient"
+                ],
+                "grid": [
+                    "media-n-editing/grid"
+                ],
+                "intersect": [
+                    "media-n-editing/intersect"
+                ],
+                "keyframe-bezier-continuous": [
+                    "media-n-editing/keyframe_cont_bezier",
+                    "media-n-editing/keyframe-bezier-continuous"
+                ],
+                "keyframe-bezier-in": [
+                    "media-n-editing/keyframe_bezier_in",
+                    "media-n-editing/keyframe-bezier-in"
+                ],
+                "keyframe-bezier-out": [
+                    "media-n-editing/keyframe_bezier_out",
+                    "media-n-editing/keyframe-bezier-out"
+                ],
+                "keyframe-linear": [
+                    "media-n-editing/keyframe_linear",
+                    "media-n-editing/keyframe-linear"
+                ],
+                "keyframe-linear-in": [
+                    "media-n-editing/keyframe_linear_in",
+                    "media-n-editing/keyframe-linear-in"
+                ],
+                "keyframe-linear-out": [
+                    "media-n-editing/keyframe_linear_out",
+                    "media-n-editing/keyframe-linear-out"
+                ],
+                "lasso": [
+                    "media-n-editing/lasso"
+                ],
+                "layers": [
+                    "media-n-editing/layers"
+                ],
+                "layers-off": [
+                    "media-n-editing/layers_off",
+                    "media-n-editing/layers-off"
+                ],
+                "mask": [
+                    "media-n-editing/mask"
+                ],
+                "mask-negative": [
+                    "media-n-editing/mask_vs",
+                    "media-n-editing/mask-negative"
+                ],
+                "mesh-grid": [
+                    "media-n-editing/mesh_grid",
+                    "media-n-editing/mesh-grid"
+                ],
+                "mouse-cursor": [
+                    "media-n-editing/mouse_cursor",
+                    "media-n-editing/mouse-cursor"
+                ],
+                "opacity": [
+                    "media-n-editing/opacity"
+                ],
+                "paint": [
+                    "media-n-editing/paint"
+                ],
+                "paint-bucket": [
+                    "media-n-editing/paint_bucket",
+                    "media-n-editing/paint-bucket"
+                ],
+                "palette": [
+                    "media-n-editing/palette"
+                ],
+                "pan-tool": [
+                    "media-n-editing/pan_tool",
+                    "media-n-editing/pan-tool"
+                ],
+                "pattern": [
+                    "media-n-editing/pattern"
+                ],
+                "pen": [
+                    "media-n-editing/pen"
+                ],
+                "reflect-horizontal": [
+                    "media-n-editing/reflect_horizontal",
+                    "media-n-editing/reflect-horizontal"
+                ],
+                "reflect-vertical": [
+                    "media-n-editing/reflect_vertical",
+                    "media-n-editing/reflect-vertical"
+                ],
+                "rounded-corner": [
+                    "media-n-editing/rounded_corner",
+                    "media-n-editing/rounded-corner"
+                ],
+                "ruler": [
+                    "media-n-editing/ruler"
+                ],
+                "selection": [
+                    "media-n-editing/selection"
+                ],
+                "send-backward": [
+                    "media-n-editing/send_backward",
+                    "media-n-editing/send-backward"
+                ],
+                "send-to-back": [
+                    "media-n-editing/send_to_back",
+                    "media-n-editing/send-to-back"
+                ],
+                "shear": [
+                    "media-n-editing/shear"
+                ],
+                "snap-to": [
+                    "media-n-editing/snap_to",
+                    "media-n-editing/snap-to"
+                ],
+                "stroke-weight": [
+                    "media-n-editing/stroke_weight",
+                    "media-n-editing/stroke-weight"
+                ],
+                "subtract": [
+                    "media-n-editing/substract",
+                    "media-n-editing/subtract"
+                ],
+                "tools": [
+                    "media-n-editing/tools"
+                ],
+                "transform": [
+                    "media-n-editing/transform"
+                ],
+                "transform-artboard": [
+                    "media-n-editing/transform_artboard",
+                    "media-n-editing/transform-artboard"
+                ],
+                "union": [
+                    "media-n-editing/union"
+                ],
+                "vector": [
+                    "media-n-editing/vector"
+                ]
+            },
+            "development": {
+                "braces": [
+                    "technology-n-data/braces"
+                ],
+                "code": [
+                    "technology-n-data/code"
+                ],
+                "flow-branch": [
+                    "ui/flow-branch",
+                    "ui/segment-2"
+                ],
+                "flow-split": [
+                    "ui/flow-split",
+                    "ui/segment-1"
+                ],
+                "flowchart": [
+                    "other/flow",
+                    "other/flowchart"
+                ],
+                "integrations-add": [
+                    "ui/integrations_add",
+                    "ui/integrations-add"
+                ],
+                "node": [
+                    "other/node"
+                ],
+                "nodes": [
+                    "other/node_multiple",
+                    "other/nodes"
+                ],
+                "plugin": [
+                    "technology-n-data/plugin"
+                ],
+                "puzzle": [
+                    "other/puzzle"
+                ],
+                "visual-editor": [
+                    "technology-n-data/visual_editor",
+                    "technology-n-data/visual-editor"
+                ],
+                "visual-editor-sparkles": [
+                    "technology-n-data/visual_editor_new",
+                    "technology-n-data/visual-editor-sparkles"
+                ],
+                "website": [
+                    "technology-n-data/website"
+                ],
+                "wrench": [
+                    "other/wrench"
+                ]
+            },
+            "devices": {
+                "ab-testing": [],
+                "battery-charging": [
+                    "devices/charging"
+                ],
+                "battery-horizontal-empty": [
+                    "devices/battery_horizontal_outlined"
+                ],
+                "battery-horizontal-full": [
+                    "devices/battery_horizontal"
+                ],
+                "battery-horizontal-half": [
+                    "devices/battery_horizontal_half"
+                ],
+                "battery-horizontal-quarter": [
+                    "devices/battery_horizontal_quarter"
+                ],
+                "battery-horizontal-three-quarters": [
+                    "devices/battery_horizontal_3_quarters"
+                ],
+                "battery-vertical-empty": [
+                    "devices/battery_vertical_outlined"
+                ],
+                "battery-vertical-full": [
+                    "devices/battery_vertical"
+                ],
+                "battery-vertical-half": [
+                    "devices/battery_vertical_half"
+                ],
+                "battery-vertical-quarter": [
+                    "devices/battery_vertical_quarter"
+                ],
+                "battery-vertical-three-quarters": [
+                    "devices/batery_vertical_3_quarters"
+                ],
+                "calculator": [],
+                "camera": [
+                    "devices/photo_camera"
+                ],
+                "camera-video": [
+                    "devices/video_camera"
+                ],
+                "camera-video-off": [
+                    "devices/video_camera_off"
+                ],
+                "devices-apple": [
+                    "devices/devices_apple"
+                ],
+                "devices-laptop": [
+                    "devices/devices_1"
+                ],
+                "devices-monitor": [
+                    "devices/devices_2"
+                ],
+                "devices-user": [
+                    "devices/devices_user"
+                ],
+                "disc": [],
+                "flashlight": [
+                    "devices/light_battery"
+                ],
+                "hdmi": [],
+                "headphones": [],
+                "imac": [],
+                "joystick": [],
+                "keyboard": [],
+                "keyboard-music": [
+                    "devices/keyboard_vs"
+                ],
+                "laptop": [],
+                "memory-chip": [
+                    "technology-n-data/memory_chip",
+                    "technology-n-data/memory-chip"
+                ],
+                "monitor": [],
+                "monitor-ab-test": [
+                    "devices/ab-test"
+                ],
+                "monitor-mini": [],
+                "monitor-mini-clear": [],
+                "monitor-mini-done": [],
+                "mouse": [],
+                "mouse-pad": [
+                    "devices/mouse_pad"
+                ],
+                "phone-android": [
+                    "devices/android_phone"
+                ],
+                "phone-apple": [
+                    "devices/iphone"
+                ],
+                "phone-apple-filled": [
+                    "devices/iphone-fill"
+                ],
+                "phone-apple-image": [
+                    "devices/iphone-fill-image"
+                ],
+                "phone-notification": [
+                    "devices/phone-with-push-notifications"
+                ],
+                "phones-android": [
+                    "devices/android_phones"
+                ],
+                "phones-apple": [
+                    "devices/iphones"
+                ],
+                "plug": [],
+                "radio": [],
+                "remote-control": [
+                    "devices/remote_controller"
+                ],
+                "router": [],
+                "sim-card": [
+                    "devices/sim_card"
+                ],
+                "sim-card-off": [
+                    "devices/no_sim_card"
+                ],
+                "speaker": [],
+                "tablet": [],
+                "tablet-phone": [
+                    "devices/tablet_phone"
+                ],
+                "tv": [
+                    "devices/tv_new"
+                ],
+                "tv-retro": [
+                    "devices/tv_old"
+                ],
+                "usb": [
+                    "technology-n-data/usb"
+                ],
+                "usb-c": [
+                    "devices/usb_c"
+                ],
+                "usb-port": [
+                    "devices/usb_port"
+                ],
+                "vinyl": [],
+                "watch": [
+                    "devices/watches"
+                ],
+                "watch-apple": [
+                    "devices/apple_watch"
+                ]
+            },
+            "drinks": {
+                "beer-bottle": [
+                    "food-n-drinks/beer_bottle",
+                    "food-n-drinks/beer-bottle"
+                ],
+                "beer-bottle-labeled": [
+                    "food-n-drinks/beer_bottle_labeled",
+                    "food-n-drinks/beer-bottle-labeled"
+                ],
+                "drink": [
+                    "food-n-drinks/drink"
+                ],
+                "soda": [
+                    "food-n-drinks/soda"
+                ],
+                "water-bottle": [
+                    "food-n-drinks/water_bottle",
+                    "food-n-drinks/water-bottle"
+                ],
+                "water-bottle-labeled": [
+                    "food-n-drinks/water_bottle_labeled",
+                    "food-n-drinks/water-bottle-labeled"
+                ],
+                "wine-bottle": [
+                    "food-n-drinks/wine_bottle",
+                    "food-n-drinks/wine-bottle"
+                ],
+                "wine-bottle-labeled": [
+                    "food-n-drinks/wine_bottle_labeled",
+                    "food-n-drinks/wine-bottle-labeled"
+                ]
+            },
+            "emotions": {
+                "face-expressionless": [
+                    "gestures-n-emotions/expressionless",
+                    "gestures-n-emotions/face-expressionless"
+                ],
+                "face-female": [
+                    "gestures-n-emotions/face_female",
+                    "gestures-n-emotions/face-female"
+                ],
+                "face-frown": [
+                    "gestures-n-emotions/face-frown",
+                    "gestures-n-emotions/frowning"
+                ],
+                "face-male": [
+                    "gestures-n-emotions/face_male",
+                    "gestures-n-emotions/face-male"
+                ],
+                "face-neutral": [
+                    "gestures-n-emotions/face-neutral",
+                    "gestures-n-emotions/neutral_face"
+                ],
+                "face-sad": [
+                    "gestures-n-emotions/face-sad",
+                    "gestures-n-emotions/sad"
+                ],
+                "face-smile": [
+                    "gestures-n-emotions/face-smile",
+                    "gestures-n-emotions/smile"
+                ],
+                "face-smile-add": [
+                    "gestures-n-emotions/face-smile-add",
+                    "gestures-n-emotions/reaction"
+                ],
+                "face-smile-slight": [
+                    "gestures-n-emotions/face-smile-slight",
+                    "gestures-n-emotions/slightly_smiling"
+                ],
+                "face-wink": [
+                    "gestures-n-emotions/face-wink",
+                    "gestures-n-emotions/wink"
+                ]
+            },
+            "files": {
+                "book": [
+                    "other/book"
+                ],
+                "book-bookmark": [
+                    "other/book_bookmarked",
+                    "other/book-bookmark"
+                ],
+                "book-open": [
+                    "other/book_opened",
+                    "other/book-open"
+                ],
+                "document": [],
+                "document-table": [
+                    "files/document_table"
+                ],
+                "document-text": [
+                    "files/document_text"
+                ],
+                "documents": [],
+                "file": [],
+                "file-add": [
+                    "files/file_add"
+                ],
+                "file-remove": [
+                    "files/file_delete"
+                ],
+                "file-text": [
+                    "files/file_text"
+                ],
+                "files": [],
+                "files-text": [
+                    "files/files_labeled"
+                ],
+                "folder": [],
+                "folder-add": [
+                    "files/folder_add"
+                ],
+                "folder-bookmark": [
+                    "files/folder_bookmarked"
+                ],
+                "folder-image": [
+                    "files/folder_photo"
+                ],
+                "folder-move": [
+                    "files/folder_move"
+                ],
+                "folder-open": [
+                    "files/folder_opened"
+                ],
+                "folder-open-text": [
+                    "files/folder_opened_labeled"
+                ],
+                "folder-remove": [
+                    "files/folder_remove"
+                ],
+                "folder-star": [
+                    "files/folder_special"
+                ],
+                "folder-text": [
+                    "files/folder_labeled"
+                ],
+                "folder-user": [
+                    "files/folder_shared"
+                ],
+                "folders": []
+            },
+            "finance": {
+                "american-express": [
+                    "payment/american_express",
+                    "payment/american-express"
+                ],
+                "atm": [
+                    "payment/atm"
+                ],
+                "bitcoin-circle": [
+                    "payment/bitcoin",
+                    "payment/bitcoin-circle"
+                ],
+                "coin": [
+                    "payment/coin"
+                ],
+                "credit-card": [
+                    "payment/credit_card",
+                    "payment/credit-card"
+                ],
+                "credit-card-add": [
+                    "payment/credit_card_add",
+                    "payment/credit-card-add"
+                ],
+                "credit-card-done": [
+                    "payment/credit_card_done",
+                    "payment/credit-card-done"
+                ],
+                "credit-card-remove": [
+                    "payment/credit_card_remove",
+                    "payment/credit-card-remove"
+                ],
+                "credit-cards": [
+                    "payment/credit_cards",
+                    "payment/credit-cards"
+                ],
+                "discover": [
+                    "payment/discover"
+                ],
+                "dollar": [
+                    "payment/dollar"
+                ],
+                "dollar-circle": [
+                    "payment/dollar-circle"
+                ],
+                "ethereum-circle": [
+                    "payment/ethereum",
+                    "payment/ethereum-circle"
+                ],
+                "euro-circle": [
+                    "payment/euro",
+                    "payment/euro-circle"
+                ],
+                "insurance": [
+                    "payment/insurance"
+                ],
+                "litecoin-circle": [
+                    "payment/litecoin",
+                    "payment/litecoin-circle"
+                ],
+                "mastercard": [
+                    "payment/mastercard"
+                ],
+                "money": [
+                    "payment/money"
+                ],
+                "partially-paid": [
+                    "payment/partially_paid",
+                    "payment/partially-paid"
+                ],
+                "paypal": [
+                    "payment/paypal"
+                ],
+                "pending": [
+                    "payment/awaits",
+                    "payment/pending"
+                ],
+                "pound-circle": [
+                    "payment/pound",
+                    "payment/pound-circle"
+                ],
+                "receipt": [
+                    "payment/receipt"
+                ],
+                "receipts": [
+                    "other/MedianBill",
+                    "other/receipts"
+                ],
+                "saving": [
+                    "payment/saving"
+                ],
+                "savings": [
+                    "payment/savings"
+                ],
+                "scales": [
+                    "other/scales"
+                ],
+                "visa": [
+                    "payment/visa"
+                ],
+                "wallet": [
+                    "payment/wallet"
+                ]
+            },
+            "food": {
+                "chicken": [
+                    "food-n-drinks/chicken"
+                ],
+                "meal": [
+                    "food-n-drinks/meal"
+                ],
+                "pizza": [
+                    "food-n-drinks/pizza"
+                ]
+            },
+            "forms": {
+                "category": [
+                    "ui/category"
+                ],
+                "expand-text-area": [
+                    "ui/expand text aREA",
+                    "ui/expand-text-area"
+                ],
+                "field-change": [
+                    "other/field_change",
+                    "other/field-change"
+                ],
+                "field-value": [
+                    "other/field_value",
+                    "other/field-value"
+                ],
+                "figma-properties": [
+                    "ui/figma-properties"
+                ],
+                "filter": [
+                    "ui/filter"
+                ],
+                "filter-list": [
+                    "ui/filter_list",
+                    "ui/filter-list"
+                ],
+                "select-all": [
+                    "ui/select_all",
+                    "ui/select-all"
+                ],
+                "text-field": [
+                    "ui/text-field",
+                    "ui/user_fields"
+                ],
+                "toggle-off": [
+                    "ui/toggle_off",
+                    "ui/toggle-off"
+                ],
+                "toggle-on": [
+                    "ui/toggle_on",
+                    "ui/toggle-on"
+                ]
+            },
+            "gestures": {
+                "clap": [
+                    "gestures-n-emotions/clap"
+                ],
+                "gesture-hand-one-finger": [
+                    "gestures-n-emotions/gesture_hand_1f",
+                    "gestures-n-emotions/gesture-hand-one-finger"
+                ],
+                "gesture-hand-two-finger": [
+                    "gestures-n-emotions/gesture_hand_2f",
+                    "gestures-n-emotions/gesture-hand-two-finger"
+                ],
+                "gesture-hover-one-finger": [
+                    "gestures-n-emotions/gesture_hover_1f",
+                    "gestures-n-emotions/gesture-hover-one-finger"
+                ],
+                "gesture-scroll-down-one-finger": [
+                    "gestures-n-emotions/gesture_scroll_down",
+                    "gestures-n-emotions/gesture-scroll-down-one-finger"
+                ],
+                "gesture-scroll-down-two-finger": [
+                    "gestures-n-emotions/gesture_scroll_down_2f",
+                    "gestures-n-emotions/gesture-scroll-down-two-finger"
+                ],
+                "gesture-scroll-up-one-finger": [
+                    "gestures-n-emotions/gesture_scroll_up",
+                    "gestures-n-emotions/gesture-scroll-up-one-finger"
+                ],
+                "gesture-scroll-up-two-finger": [
+                    "gestures-n-emotions/gesture_scroll_up_2f",
+                    "gestures-n-emotions/gesture-scroll-up-two-finger"
+                ],
+                "gesture-scroll-vertical-one-finger": [
+                    "gestures-n-emotions/gesture_scroll_up_down",
+                    "gestures-n-emotions/gesture-scroll-vertical-one-finger"
+                ],
+                "gesture-scroll-vertical-two-finger": [
+                    "gestures-n-emotions/gesture_scroll_up_down_2f",
+                    "gestures-n-emotions/gesture-scroll-vertical-two-finger"
+                ],
+                "gesture-swipe-horizontal-one-finger": [
+                    "gestures-n-emotions/gesture_swipe_left_right",
+                    "gestures-n-emotions/gesture-swipe-horizontal-one-finger"
+                ],
+                "gesture-swipe-horizontal-two-finger": [
+                    "gestures-n-emotions/gesture_swipe_left_right_2f",
+                    "gestures-n-emotions/gesture-swipe-horizontal-two-finger"
+                ],
+                "gesture-swipe-left-one-finger": [
+                    "gestures-n-emotions/gesture_swipe_left",
+                    "gestures-n-emotions/gesture-swipe-left-one-finger"
+                ],
+                "gesture-swipe-left-two-finger": [
+                    "gestures-n-emotions/gesture_swipe_left_2f",
+                    "gestures-n-emotions/gesture-swipe-left-two-finger"
+                ],
+                "gesture-swipe-right-one-finger": [
+                    "gestures-n-emotions/gesture_swipe_right",
+                    "gestures-n-emotions/gesture-swipe-right-one-finger"
+                ],
+                "gesture-swipe-right-two-finger": [
+                    "gestures-n-emotions/gesture_swipe_right_2f",
+                    "gestures-n-emotions/gesture-swipe-right-two-finger"
+                ],
+                "hand": [
+                    "gestures-n-emotions/hand",
+                    "gestures-n-emotions/hand_basic"
+                ],
+                "hand-horns": [
+                    "gestures-n-emotions/hand_metal_horns",
+                    "gestures-n-emotions/hand-horns"
+                ],
+                "hand-middle-finger": [
+                    "gestures-n-emotions/hand_middle_finger",
+                    "gestures-n-emotions/hand-middle-finger"
+                ],
+                "hand-ok": [
+                    "gestures-n-emotions/hand_ok",
+                    "gestures-n-emotions/hand-ok"
+                ],
+                "hand-peace": [
+                    "gestures-n-emotions/hand_piece",
+                    "gestures-n-emotions/hand-peace"
+                ],
+                "slap": [
+                    "gestures-n-emotions/slap"
+                ],
+                "thumbs-down": [
+                    "gestures-n-emotions/thumbs_down",
+                    "gestures-n-emotions/thumbs-down"
+                ],
+                "thumbs-up": [
+                    "gestures-n-emotions/thumbs_up",
+                    "gestures-n-emotions/thumbs-up"
+                ],
+                "thumbs-up-down": [
+                    "gestures-n-emotions/thumbs_up_down",
+                    "gestures-n-emotions/thumbs-up-down"
+                ]
+            },
+            "images": {
+                "black-and-white": [
+                    "media-n-editing/black_white",
+                    "media-n-editing/black-and-white"
+                ],
+                "brightness-half": [
+                    "media-n-editing/brightness_3",
+                    "media-n-editing/brightness-half"
+                ],
+                "brightness-high": [
+                    "media-n-editing/brightness_1",
+                    "media-n-editing/brightness-high"
+                ],
+                "brightness-low": [
+                    "media-n-editing/brightness_2",
+                    "media-n-editing/brightness-low"
+                ],
+                "camera-enhance": [
+                    "media-n-editing/camera_enhance",
+                    "media-n-editing/camera-enhance"
+                ],
+                "camera-roll": [
+                    "media-n-editing/camera_roll",
+                    "media-n-editing/camera-roll"
+                ],
+                "exposure": [
+                    "media-n-editing/exposure"
+                ],
+                "flare": [
+                    "media-n-editing/flare"
+                ],
+                "flash": [
+                    "media-n-editing/flash"
+                ],
+                "flash-off": [
+                    "media-n-editing/flash_off",
+                    "media-n-editing/flash-off"
+                ],
+                "focus": [
+                    "media-n-editing/focus"
+                ],
+                "image": [
+                    "media-n-editing/image"
+                ],
+                "invert": [
+                    "media-n-editing/invert"
+                ],
+                "invert-colors": [
+                    "media-n-editing/invert_colors",
+                    "media-n-editing/invert-colors"
+                ],
+                "invert-colors-off": [
+                    "media-n-editing/invert_colors_off",
+                    "media-n-editing/invert-colors-off"
+                ],
+                "macro": [
+                    "media-n-editing/macro"
+                ],
+                "media-photo": [
+                    "media-n-editing/media_photo",
+                    "media-n-editing/media-photo"
+                ],
+                "panorama": [
+                    "media-n-editing/panorama"
+                ],
+                "panorama-image": [
+                    "media-n-editing/panorama_image",
+                    "media-n-editing/panorama-image"
+                ],
+                "panorama-segmented": [
+                    "media-n-editing/panorama_vs",
+                    "media-n-editing/panorama-segmented"
+                ],
+                "photo-add": [
+                    "media-n-editing/add_photo",
+                    "media-n-editing/photo-add"
+                ],
+                "photo-album": [
+                    "media-n-editing/photo_album",
+                    "media-n-editing/photo-album"
+                ],
+                "photo-filter": [
+                    "media-n-editing/photo_filter",
+                    "media-n-editing/photo-filter"
+                ],
+                "photo-gallery": [
+                    "media-n-editing/photo_gallery",
+                    "media-n-editing/photo-gallery"
+                ],
+                "photo-landscape": [
+                    "media-n-editing/photo_landscape",
+                    "media-n-editing/photo-landscape"
+                ],
+                "photo-square": [
+                    "media-n-editing/photo_square",
+                    "media-n-editing/photo-square"
+                ],
+                "sharpness": [
+                    "media-n-editing/sharpness"
+                ],
+                "shutter": [
+                    "media-n-editing/shutter"
+                ],
+                "switch-camera": [
+                    "media-n-editing/switch_camera",
+                    "media-n-editing/switch-camera"
+                ]
+            },
+            "keyboard": {
+                "backlight-bars": [
+                    "keyboard/keyboard_brightness_1"
+                ],
+                "backlight-dots": [
+                    "keyboard/keyboard_brightness_2"
+                ],
+                "backspace": [],
+                "caps-lock": [
+                    "keyboard/caps_lock"
+                ],
+                "command": [
+                    "keyboard/command_key"
+                ],
+                "enter": [],
+                "option": [
+                    "keyboard/alt"
+                ],
+                "spacebar": [
+                    "keyboard/space_bar"
+                ],
+                "tab": [
+                    "keyboard/tab_key"
+                ]
+            },
+            "layout": {
+                "agenda-view": [
+                    "ui/agenda_view",
+                    "ui/agenda-view"
+                ],
+                "album": [
+                    "ui/album"
+                ],
+                "albums": [
+                    "ui/albums"
+                ],
+                "apps": [
+                    "ui/apps"
+                ],
+                "browser-window": [
+                    "actions/browser-window"
+                ],
+                "browser-windows": [
+                    "actions/browser-windows"
+                ],
+                "carousel-horizontal": [
+                    "actions/carousel-horizontal"
+                ],
+                "carousel-vertical": [
+                    "actions/carousel-vertical"
+                ],
+                "collapse-all": [
+                    "actions/collapse-all",
+                    "arrows/collapse-all"
+                ],
+                "collapse-all-diagonal": [
+                    "actions/collapse-all-diagonal",
+                    "arrows/collapse-all-diagonal"
+                ],
+                "column-view": [
+                    "actions/column-view"
+                ],
+                "dashboard": [
+                    "ui/dashboard"
+                ],
+                "dashboard-split": [
+                    "ui/dashboard_vs",
+                    "ui/dashboard-split"
+                ],
+                "exit-fullscreen-1-1": [
+                    "actions/exit-fullscreen-1-1"
+                ],
+                "exit-fullscreen-16-9": [
+                    "actions/exit-fullscreen-16-9"
+                ],
+                "exit-fullscreen-4-3": [
+                    "actions/exit-fullscreen-4-3"
+                ],
+                "expand-all": [
+                    "actions/expand-all",
+                    "arrows/expand-all"
+                ],
+                "expand-all-diagonal": [
+                    "actions/expand-all-diagonal",
+                    "arrows/expand-all-diaglonal",
+                    "arrows/expand-all-diagonal"
+                ],
+                "feed": [
+                    "ui/feed"
+                ],
+                "grid": [
+                    "ui/grid"
+                ],
+                "layout": [
+                    "actions/layout"
+                ],
+                "list": [
+                    "ui/list"
+                ],
+                "minimize": [
+                    "actions/minimize",
+                    "arrows/minimize"
+                ],
+                "pages": [
+                    "actions/pages"
+                ],
+                "rounded-corners": [
+                    "actions/rounded-corners"
+                ],
+                "straight-corners": [
+                    "actions/straight-corners"
+                ],
+                "tab": [
+                    "actions/tab"
+                ],
+                "table-medium": [
+                    "ui/table_medium",
+                    "ui/table-medium"
+                ],
+                "table-responsive": [
+                    "ui/table_responsive",
+                    "ui/table-responsive"
+                ],
+                "table-short": [
+                    "ui/table_short",
+                    "ui/table-short"
+                ],
+                "table-tall": [
+                    "ui/table_tall",
+                    "ui/table-tall"
+                ],
+                "tabs": [
+                    "actions/tabs"
+                ],
+                "widget": [
+                    "ui/widget"
+                ]
+            },
+            "lifestyle": {
+                "glasses": [
+                    "other/glasses"
+                ],
+                "shoe-print": [
+                    "other/shoe_print",
+                    "other/shoe-print"
+                ],
+                "smoking": [
+                    "other/smoking"
+                ],
+                "smoking-off": [
+                    "other/smoke_free",
+                    "other/smoking-off"
+                ],
+                "t-shirt": [
+                    "other/t_shirt",
+                    "other/t-shirt"
+                ]
+            },
+            "maps": {
+                "direction-right": [
+                    "map-n-places/direction",
+                    "map-n-places/direction-right"
+                ],
+                "earth-east": [
+                    "map-n-places/earth_east",
+                    "map-n-places/earth-east"
+                ],
+                "earth-west": [
+                    "map-n-places/earth_west",
+                    "map-n-places/earth-west"
+                ],
+                "globe": [
+                    "map-n-places/globe"
+                ],
+                "location-current": [
+                    "map-n-places/location-current",
+                    "map-n-places/my_location"
+                ],
+                "location-marker": [
+                    "map-n-places/location-marker",
+                    "map-n-places/poi"
+                ],
+                "location-marker-add": [
+                    "map-n-places/location-marker-add",
+                    "map-n-places/poi_add"
+                ],
+                "location-marker-blocked": [
+                    "map-n-places/location-marker-blocked",
+                    "map-n-places/poi_block"
+                ],
+                "location-marker-clear": [
+                    "map-n-places/location-marker-clear",
+                    "map-n-places/poi_delete"
+                ],
+                "location-marker-remove": [
+                    "map-n-places/location-marker-remove",
+                    "map-n-places/poi_remove"
+                ],
+                "location-marker-user": [
+                    "map-n-places/location-marker-user",
+                    "map-n-places/poi_user"
+                ],
+                "location-off": [
+                    "map-n-places/location_off",
+                    "map-n-places/location-off"
+                ],
+                "location-search": [
+                    "map-n-places/location_search",
+                    "map-n-places/location-search"
+                ],
+                "map": [
+                    "map-n-places/map"
+                ],
+                "map-collapse": [
+                    "map-n-places/map_zoom_in",
+                    "map-n-places/map-collapse"
+                ],
+                "map-expand": [
+                    "map-n-places/map_zoom_out",
+                    "map-n-places/map-expand"
+                ],
+                "navigation": [
+                    "map-n-places/navigate",
+                    "map-n-places/navigation"
+                ],
+                "pushpin": [
+                    "map-n-places/pin",
+                    "map-n-places/pushpin"
+                ],
+                "pushpin-off": [
+                    "map-n-places/pushpin-off",
+                    "map-n-places/unpin"
+                ],
+                "pushpin-vertical": [
+                    "map-n-places/pinned",
+                    "map-n-places/pushpin-vertical"
+                ],
+                "pushpin-vertical-off": [
+                    "map-n-places/pushpin-vertical-off",
+                    "map-n-places/unpinned"
+                ],
+                "rotate-360": [
+                    "map-n-places/360_rotate",
+                    "map-n-places/rotate-360"
+                ],
+                "route": [
+                    "map-n-places/route"
+                ],
+                "route-dashed": [
+                    "map-n-places/route_dashed",
+                    "map-n-places/route-dashed"
+                ],
+                "zoom-context": [
+                    "map-n-places/zoom_context",
+                    "map-n-places/zoom-context"
+                ],
+                "zoom-in": [
+                    "map-n-places/zoom_in",
+                    "map-n-places/zoom-in"
+                ],
+                "zoom-out": [
+                    "map-n-places/zoom_out",
+                    "map-n-places/zoom-out"
+                ]
+            },
+            "math": {
+                "equal": [],
+                "formula": [
+                    "other/formula"
+                ],
+                "greater-than": [
+                    "math/greater"
+                ],
+                "greater-than-or-equal": [
+                    "math/greater-or-equal"
+                ],
+                "infinity": [
+                    "other/infinity"
+                ],
+                "join-inner": [],
+                "join-outer": [],
+                "less-than": [
+                    "math/less"
+                ],
+                "less-than-or-equal": [
+                    "math/less-or-equal"
+                ],
+                "not-equal": [],
+                "percent": []
+            },
+            "media": {
+                "augmented-reality": [
+                    "technology-n-data/augmented_reality",
+                    "technology-n-data/augmented-reality"
+                ],
+                "eject": [
+                    "actions/eject",
+                    "audiovisual/eject"
+                ],
+                "eject-circle": [
+                    "actions/eject-circle",
+                    "audiovisual/eject-circle"
+                ],
+                "equalizer": [
+                    "audiovisual/equalizer",
+                    "audiovisual/tune"
+                ],
+                "fast-forward": [
+                    "audiovisual/fast-forward"
+                ],
+                "fast-rewind": [
+                    "audiovisual/fast-rewind"
+                ],
+                "film": [
+                    "other/film",
+                    "other/movie"
+                ],
+                "forward": [
+                    "audiovisual/forward"
+                ],
+                "microphone": [
+                    "audiovisual/microphone"
+                ],
+                "microphone-off": [
+                    "audiovisual/microphone-off"
+                ],
+                "music": [
+                    "audiovisual/music"
+                ],
+                "music-off": [
+                    "audiovisual/music-off"
+                ],
+                "pause": [
+                    "audiovisual/pause"
+                ],
+                "pause-circle": [
+                    "audiovisual/pause-circle"
+                ],
+                "play": [
+                    "audiovisual/play"
+                ],
+                "play-circle": [
+                    "audiovisual/play-circle"
+                ],
+                "record": [
+                    "audiovisual/record"
+                ],
+                "record-screen": [
+                    "actions/record-screen",
+                    "audiovisual/record-screen"
+                ],
+                "repeat": [
+                    "audiovisual/repeat"
+                ],
+                "replay": [
+                    "audiovisual/replay"
+                ],
+                "seek-backward-15": [
+                    "audiovisual/rewind-minus-15s",
+                    "audiovisual/seek-backward-15"
+                ],
+                "seek-forward-15": [
+                    "audiovisual/rewind-plus-15s",
+                    "audiovisual/seek-forward-15"
+                ],
+                "shuffle": [
+                    "audiovisual/shuffle"
+                ],
+                "skip": [
+                    "audiovisual/skip"
+                ],
+                "skip-next": [
+                    "audiovisual/skip-next"
+                ],
+                "skip-previous": [
+                    "audiovisual/skip-previous"
+                ],
+                "slideshow": [
+                    "media-n-editing/slideshow"
+                ],
+                "stop": [
+                    "audiovisual/stop"
+                ],
+                "stop-circle": [
+                    "audiovisual/stop-circle"
+                ],
+                "switch-video": [
+                    "media-n-editing/switch_video",
+                    "media-n-editing/switch-video"
+                ],
+                "transcription": [
+                    "actions/transcription",
+                    "audiovisual/transcription"
+                ],
+                "video-add": [
+                    "media-n-editing/video_add",
+                    "media-n-editing/video-add"
+                ],
+                "video-gallery": [
+                    "media-n-editing/video_gallery",
+                    "media-n-editing/video-gallery"
+                ],
+                "video-horizontal": [
+                    "media-n-editing/video_horizontal",
+                    "media-n-editing/video-horizontal"
+                ],
+                "video-vertical": [
+                    "media-n-editing/video_vertical",
+                    "media-n-editing/video-vertical"
+                ],
+                "virtual-reality": [
+                    "technology-n-data/virtual_reality",
+                    "technology-n-data/virtual-reality"
+                ],
+                "voice-input": [
+                    "audiovisual/record-voice",
+                    "audiovisual/voice-input"
+                ],
+                "volume-down": [
+                    "audiovisual/volume-down"
+                ],
+                "volume-low": [
+                    "audiovisual/volume-low"
+                ],
+                "volume-minus": [
+                    "audiovisual/volume-minus"
+                ],
+                "volume-mute": [
+                    "audiovisual/volume-mute"
+                ],
+                "volume-off": [
+                    "audiovisual/volume-off"
+                ],
+                "volume-plus": [
+                    "audiovisual/volume-plus"
+                ],
+                "volume-up": [
+                    "audiovisual/volume-up"
+                ],
+                "waveform-bars": [
+                    "audiovisual/voice",
+                    "audiovisual/waveform-bars"
+                ],
+                "waveform-line": [
+                    "audiovisual/voice-line",
+                    "audiovisual/waveform-line"
+                ]
+            },
+            "nature": {
+                "flower": [
+                    "other/flower"
+                ],
+                "leaf": [
+                    "other/leaf"
+                ],
+                "leaf-diagonal": [
+                    "other/leaf_diagonal",
+                    "other/leaf-diagonal"
+                ],
+                "moon": [
+                    "other/moon"
+                ],
+                "moon-diagonal": [
+                    "other/moon_vs",
+                    "other/moon-diagonal"
+                ],
+                "paw": [
+                    "other/paw",
+                    "other/pet"
+                ],
+                "snowflake": [
+                    "other/snowflake"
+                ],
+                "tree-broadleaf": [
+                    "map-n-places/broadleaf_tree",
+                    "map-n-places/tree-broadleaf"
+                ],
+                "tree-conifer": [
+                    "map-n-places/conifer",
+                    "map-n-places/tree-conifer"
+                ]
+            },
+            "navigation": {
+                "enter": [
+                    "other/enter"
+                ],
+                "explore": [
+                    "ui/explore"
+                ],
+                "explore-off": [
+                    "ui/explore_off",
+                    "ui/explore-off"
+                ],
+                "home": [
+                    "ui/home"
+                ],
+                "home-wide": [
+                    "ui/home_vs",
+                    "ui/home-wide"
+                ],
+                "launch": [
+                    "ui/launch"
+                ],
+                "lifebuoy": [
+                    "ui/lifebuoy",
+                    "ui/support_vs"
+                ],
+                "menu": [
+                    "ui/menu",
+                    "ui/menu_hamburger"
+                ],
+                "menu-grid": [
+                    "ui/menu_vs",
+                    "ui/menu-grid"
+                ],
+                "menu-left": [
+                    "ui/menu_left",
+                    "ui/menu-left"
+                ],
+                "menu-right": [
+                    "ui/menu_left_right",
+                    "ui/menu-right"
+                ],
+                "menu-vertical": [
+                    "ui/menu_vertical",
+                    "ui/menu-vertical"
+                ],
+                "more-horizontal": [
+                    "ui/more_horizontal",
+                    "ui/more-horizontal"
+                ],
+                "more-vertical": [
+                    "ui/more_vertical",
+                    "ui/more-vertical"
+                ],
+                "move-page": [
+                    "actions/move-page"
+                ],
+                "open-in-new": [
+                    "actions/open-in-new"
+                ],
+                "open-in-new-square": [
+                    "actions/open-in-new-square"
+                ],
+                "page-first": [
+                    "actions/first-page",
+                    "actions/page-first",
+                    "arrows/page-first"
+                ],
+                "page-last": [
+                    "actions/last-page",
+                    "actions/page-last",
+                    "arrows/page-last"
+                ]
+            },
+            "people": {
+                "accessibility": [
+                    "people-n-activity/accessibility"
+                ],
+                "accessibility-raised-arms": [
+                    "people-n-activity/accessibility_vs",
+                    "people-n-activity/accessibility-raised-arms"
+                ],
+                "gender-female": [
+                    "other/gender-female",
+                    "other/sign_woman"
+                ],
+                "gender-male": [
+                    "other/gender-male",
+                    "other/sign_man"
+                ],
+                "gender-male-female": [
+                    "other/gender-male-female",
+                    "other/sign_man_and_woman"
+                ],
+                "man": [
+                    "people-n-activity/man"
+                ],
+                "pregnancy": [
+                    "people-n-activity/pregnancy"
+                ],
+                "standing": [
+                    "people-n-activity/standing"
+                ],
+                "user": [
+                    "user/user"
+                ],
+                "user-add": [
+                    "user/user_add",
+                    "user/user-add"
+                ],
+                "user-circle": [
+                    "user/account_circle",
+                    "user/user-circle"
+                ],
+                "user-large": [
+                    "user/user_big",
+                    "user/user-large"
+                ],
+                "user-remove": [
+                    "user/user_delete",
+                    "user/user-remove"
+                ],
+                "user-square": [
+                    "user/account_square",
+                    "user/user-square"
+                ],
+                "user-switch": [
+                    "user/user_switch",
+                    "user/user-switch"
+                ],
+                "users": [
+                    "user/group_equal",
+                    "user/users"
+                ],
+                "users-add": [
+                    "user/group_add",
+                    "user/users-add"
+                ],
+                "users-junior": [
+                    "user/group_junior",
+                    "user/users-junior"
+                ],
+                "users-senior": [
+                    "user/group_senior",
+                    "user/users-senior"
+                ],
+                "users-switch": [
+                    "user/users_switch",
+                    "user/users-switch"
+                ],
+                "wheelchair": [
+                    "people-n-activity/accessible",
+                    "people-n-activity/wheelchair"
+                ],
+                "wheelchair-moving": [
+                    "people-n-activity/accessible_forward",
+                    "people-n-activity/wheelchair-moving"
+                ],
+                "woman": [
+                    "people-n-activity/woman"
+                ]
+            },
+            "places": {
+                "bratislava": [
+                    "map-n-places/bratislava"
+                ],
+                "brick-wall": [
+                    "other/brick_wall",
+                    "other/brick-wall"
+                ],
+                "cafe": [
+                    "map-n-places/cafe"
+                ],
+                "cairo": [
+                    "map-n-places/cairo"
+                ],
+                "castle": [
+                    "map-n-places/castle"
+                ],
+                "city": [
+                    "map-n-places/city"
+                ],
+                "clinic": [
+                    "map-n-places/clinic"
+                ],
+                "door": [
+                    "other/door"
+                ],
+                "education": [
+                    "map-n-places/education"
+                ],
+                "factory": [
+                    "map-n-places/factory"
+                ],
+                "gas-station": [
+                    "map-n-places/gas_station",
+                    "map-n-places/gas-station"
+                ],
+                "gym": [
+                    "map-n-places/gym"
+                ],
+                "hospital": [
+                    "map-n-places/hospital"
+                ],
+                "hotel": [
+                    "map-n-places/hotel"
+                ],
+                "machu-picchu": [
+                    "map-n-places/machu picchu",
+                    "map-n-places/machu-picchu"
+                ],
+                "museum": [
+                    "map-n-places/museum"
+                ],
+                "neighborhood": [
+                    "map-n-places/neighborhood"
+                ],
+                "new-york": [
+                    "map-n-places/new_york",
+                    "map-n-places/new-york"
+                ],
+                "office": [
+                    "map-n-places/company",
+                    "map-n-places/office"
+                ],
+                "paris": [
+                    "map-n-places/paris"
+                ],
+                "parking": [
+                    "map-n-places/parking"
+                ],
+                "pharmacy": [
+                    "map-n-places/pharmacy"
+                ],
+                "pyramid": [
+                    "map-n-places/pyramid"
+                ],
+                "restaurant": [
+                    "map-n-places/restaurant"
+                ],
+                "restrooms": [
+                    "map-n-places/restrooms",
+                    "map-n-places/toilets"
+                ],
+                "san-francisco": [
+                    "map-n-places/san_francisco",
+                    "map-n-places/san-francisco"
+                ],
+                "seat": [
+                    "other/seat"
+                ],
+                "spa": [
+                    "map-n-places/spa"
+                ],
+                "stairs-down": [
+                    "other/stairs_down",
+                    "other/stairs-down"
+                ],
+                "stairs-up": [
+                    "other/stairs_up",
+                    "other/stairs-up"
+                ],
+                "sydney": [
+                    "map-n-places/sydney"
+                ],
+                "theatre": [
+                    "map-n-places/theatre"
+                ],
+                "trencin": [
+                    "map-n-places/trencin"
+                ],
+                "warehouse": [
+                    "map-n-places/warehouse"
+                ]
+            },
+            "rewards": {
+                "badge-check": [
+                    "premium/badge-check",
+                    "premium/verified"
+                ],
+                "birthday": [
+                    "other/birthday"
+                ],
+                "boost": [
+                    "premium/boost"
+                ],
+                "crown": [
+                    "premium/crown"
+                ],
+                "diamond": [
+                    "premium/diamond",
+                    "premium/premium"
+                ],
+                "diamond-add": [
+                    "premium/diamond-add",
+                    "premium/premium_add"
+                ],
+                "diamond-edit": [
+                    "premium/diamond-edit",
+                    "premium/premium_edit"
+                ],
+                "diamond-faceted": [
+                    "premium/diamond",
+                    "premium/diamond-faceted"
+                ],
+                "diamond-faceted-add": [
+                    "premium/diamond_add",
+                    "premium/diamond-faceted-add"
+                ],
+                "diamond-faceted-off": [
+                    "premium/diamond_off",
+                    "premium/diamond-faceted-off"
+                ],
+                "diamond-faceted-remove": [
+                    "premium/diamond_remove",
+                    "premium/diamond-faceted-remove"
+                ],
+                "gift": [
+                    "other/gift"
+                ],
+                "podium": [
+                    "premium/podium"
+                ],
+                "shield-star": [
+                    "premium/shield-star",
+                    "premium/top_security"
+                ],
+                "sticker": [
+                    "premium/sticker"
+                ],
+                "trophy": [
+                    "premium/award",
+                    "premium/trophy"
+                ]
+            },
+            "science": {
+                "dna-helix": [
+                    "premium/dna_spiral",
+                    "premium/dna-helix"
+                ],
+                "flask": [
+                    "other/flask"
+                ],
+                "flask-conical": [
+                    "other/flask-conical",
+                    "other/lab"
+                ],
+                "planet": [
+                    "premium/planet"
+                ],
+                "test-tube": [
+                    "other/test-tube"
+                ]
+            },
+            "security": {
+                "blocked": [
+                    "ui/blocked"
+                ],
+                "eye": [
+                    "ui/eye",
+                    "ui/visible"
+                ],
+                "eye-off": [
+                    "ui/eye-off",
+                    "ui/hidden"
+                ],
+                "face-id": [
+                    "technology-n-data/face_id",
+                    "technology-n-data/face-id"
+                ],
+                "fingerprint": [
+                    "technology-n-data/fingerprint"
+                ],
+                "lock": [
+                    "ui/lock"
+                ],
+                "lock-unlocked": [
+                    "ui/lock_opened",
+                    "ui/lock-unlocked"
+                ],
+                "password": [
+                    "ui/password"
+                ],
+                "password-unlocked": [
+                    "ui/password_open",
+                    "ui/password-unlocked"
+                ],
+                "scan": [
+                    "technology-n-data/scan"
+                ],
+                "shield": [
+                    "technology-n-data/security",
+                    "technology-n-data/shield"
+                ],
+                "shield-check": [
+                    "technology-n-data/security_on",
+                    "technology-n-data/shield-check"
+                ],
+                "shield-disabled": [
+                    "technology-n-data/security_off",
+                    "technology-n-data/shield-disabled"
+                ],
+                "touch-id": [
+                    "technology-n-data/touch_id",
+                    "technology-n-data/touch-id"
+                ]
+            },
+            "shapes": {
+                "block": [
+                    "other/block"
+                ],
+                "circle": [
+                    "other/circle"
+                ],
+                "cube": [
+                    "other/cube"
+                ],
+                "rectangle": [
+                    "other/rectangle"
+                ],
+                "rhombus": [
+                    "other/rhombus"
+                ],
+                "square": [
+                    "other/square"
+                ],
+                "triangle": [
+                    "other/triangle"
+                ]
+            },
+            "symbols": {
+                "flag": [
+                    "other/flag"
+                ],
+                "flag-grid": [
+                    "other/flag_cross_2",
+                    "other/flag-grid"
+                ],
+                "flag-half-left": [
+                    "other/flag_half_1",
+                    "other/flag-half-left"
+                ],
+                "flag-half-right": [
+                    "other/flag_half_2",
+                    "other/flag-half-right"
+                ],
+                "flag-quarter-1": [
+                    "other/flag_quarter_1",
+                    "other/flag-quarter-1"
+                ],
+                "flag-quarter-2": [
+                    "other/flag_quarter_2",
+                    "other/flag-quarter-2"
+                ]
+            },
+            "text": {
+                "bold": [
+                    "media-n-editing/bold"
+                ],
+                "format-clear": [
+                    "media-n-editing/clear_format",
+                    "media-n-editing/format-clear"
+                ],
+                "hash": [
+                    "media-n-editing/hash"
+                ],
+                "italic": [
+                    "media-n-editing/italic"
+                ],
+                "justified": [
+                    "ui/justified"
+                ],
+                "list-bulleted": [
+                    "ui/format_bullets",
+                    "ui/list-bulleted"
+                ],
+                "list-numbered": [
+                    "ui/format_numbers",
+                    "ui/list-numbered"
+                ],
+                "list-points": [
+                    "ui/format_points",
+                    "ui/list-points"
+                ],
+                "number": [
+                    "media-n-editing/number"
+                ],
+                "number-fraction": [
+                    "media-n-editing/number_fraction",
+                    "media-n-editing/number-fraction"
+                ],
+                "number-range": [
+                    "media-n-editing/number_range",
+                    "media-n-editing/number-range"
+                ],
+                "quote": [
+                    "other/quote",
+                    "other/quotes"
+                ],
+                "strikethrough": [
+                    "media-n-editing/strikethrough"
+                ],
+                "subscript": [
+                    "ui/subscript"
+                ],
+                "superscript": [
+                    "ui/superscript"
+                ],
+                "text-alphanumeric": [
+                    "media-n-editing/format_letter2",
+                    "media-n-editing/text-alphanumeric"
+                ],
+                "text-center": [
+                    "media-n-editing/text_center",
+                    "media-n-editing/text-center"
+                ],
+                "text-cursor": [
+                    "media-n-editing/text_cursor",
+                    "media-n-editing/text-cursor"
+                ],
+                "text-justify": [
+                    "media-n-editing/Justify",
+                    "media-n-editing/text-justify"
+                ],
+                "text-left": [
+                    "media-n-editing/text_left",
+                    "media-n-editing/text-left"
+                ],
+                "text-monospace": [
+                    "media-n-editing/monofont",
+                    "media-n-editing/text-monospace"
+                ],
+                "text-right": [
+                    "media-n-editing/text_right",
+                    "media-n-editing/text-right"
+                ],
+                "text-small-caps": [
+                    "media-n-editing/format_letter",
+                    "media-n-editing/text-small-caps"
+                ],
+                "text-title": [
+                    "media-n-editing/text-title",
+                    "media-n-editing/title"
+                ],
+                "underline": [
+                    "media-n-editing/underline"
+                ],
+                "vertical-align-bottom": [
+                    "media-n-editing/vertical_align_bottom",
+                    "media-n-editing/vertical-align-bottom"
+                ],
+                "vertical-align-middle": [
+                    "media-n-editing/vertical_align_middle",
+                    "media-n-editing/vertical-align-middle"
+                ],
+                "vertical-align-top": [
+                    "media-n-editing/vertical_align_top",
+                    "media-n-editing/vertical-align-top"
+                ]
+            },
+            "time": {
+                "alarm": [
+                    "ui/alarm"
+                ],
+                "alarm-add": [
+                    "ui/alarm_add",
+                    "ui/alarm-add"
+                ],
+                "alarm-alert": [
+                    "ui/alarm_alert",
+                    "ui/alarm-alert"
+                ],
+                "alarm-check": [
+                    "ui/alarm_on",
+                    "ui/alarm-check"
+                ],
+                "alarm-off": [
+                    "ui/alarm_off",
+                    "ui/alarm-off"
+                ],
+                "history": [
+                    "actions/history"
+                ],
+                "hourglass": [
+                    "other/hourglass"
+                ],
+                "hourglass-half": [
+                    "other/hourglass_half",
+                    "other/hourglass-half"
+                ],
+                "hourglass-quarter": [
+                    "other/hourglass_quarter",
+                    "other/hourglass-quarter"
+                ],
+                "remaining-time": [
+                    "actions/remaining-time"
+                ],
+                "snooze": [
+                    "actions/snooze"
+                ],
+                "time": [
+                    "actions/time"
+                ],
+                "time-20s": [
+                    "actions/time-20s"
+                ],
+                "time-30s": [
+                    "actions/time-30s"
+                ],
+                "time-40s": [
+                    "actions/time-40s"
+                ],
+                "timer": [
+                    "actions/timer"
+                ],
+                "timer-20s": [
+                    "actions/timer-20s"
+                ],
+                "timer-30s": [
+                    "actions/timer-30s"
+                ],
+                "timer-40s": [
+                    "actions/timer-40s"
+                ],
+                "timer-45s": [
+                    "actions/timer-45s"
+                ],
+                "timer-55s": [
+                    "actions/timer-55s"
+                ],
+                "timer-close": [
+                    "actions/timer-close"
+                ],
+                "timer-now": [
+                    "actions/timer-now"
+                ],
+                "timer-off": [
+                    "actions/timer-off"
+                ],
+                "watch-later": [
+                    "actions/watch-later"
+                ]
+            },
+            "transport": {
+                "airplane": [
+                    "transport/flight"
+                ],
+                "airplane-off": [
+                    "transport/flight_cancelled"
+                ],
+                "bicycle": [
+                    "transport/bike"
+                ],
+                "boat": [],
+                "bus": [],
+                "car": [],
+                "delivery-truck": [
+                    "transport/delivery_car"
+                ],
+                "hand-truck": [
+                    "transport/delivery"
+                ],
+                "metro": [],
+                "motorcycle": [
+                    "transport/motocycle"
+                ],
+                "police-car": [
+                    "transport/car_police"
+                ],
+                "taxi": [],
+                "traffic-light": [
+                    "transport/traffic_light"
+                ],
+                "train": [],
+                "tram": [],
+                "truck": []
+            }
+        },
+        "outlined": {
+            "actions": {
+                "add-circle": [
+                    "actions/add-circle-outlined"
+                ],
+                "add-square": [
+                    "actions/add-square-outlined"
+                ],
+                "bookmark": [
+                    "actions/bookmark-outlined"
+                ],
+                "bookmarks": [
+                    "actions/bookmarks-outlined"
+                ],
+                "chain-vertical": [
+                    "ui/chain_vertical_outline",
+                    "ui/chain-vertical-outlined"
+                ],
+                "checkmark-circle": [
+                    "actions/checkmark-circle-outlined"
+                ],
+                "checkmark-square": [
+                    "actions/checkmark-square-outlined"
+                ],
+                "clear-circle": [
+                    "actions/clear-circle-outlined"
+                ],
+                "clear-square": [
+                    "actions/clear-square-outlined"
+                ],
+                "command": [
+                    "actions/command-outlined"
+                ],
+                "download-circle": [
+                    "ui/download_outlined",
+                    "ui/download-circle-outlined"
+                ],
+                "heart": [
+                    "actions/heart-outlined"
+                ],
+                "help": [
+                    "actions/help-outlined"
+                ],
+                "minus-circle": [
+                    "actions/minus-circle-outlined"
+                ],
+                "notebook-bookmarked": [
+                    "actions/notebook-bookmarked-outlined"
+                ],
+                "remove-circle": [
+                    "actions/remove-circle-outlined"
+                ],
+                "remove-square": [
+                    "actions/remove-square-outlined"
+                ],
+                "save": [
+                    "media-n-editing/save_outlined",
+                    "media-n-editing/save-outlined"
+                ],
+                "scan-document": [
+                    "media-n-editing/scan_document_icon",
+                    "media-n-editing/scan-document-outlined"
+                ],
+                "settings": [
+                    "ui/settings_outlined",
+                    "ui/settings-outlined"
+                ],
+                "settings-hexagon": [
+                    "ui/settings_vs_outlined",
+                    "ui/settings-hexagon-outlined"
+                ],
+                "star": [
+                    "actions/star-outlined"
+                ],
+                "trash": [
+                    "ui/delete_outlined",
+                    "ui/trash-outlined"
+                ],
+                "upload-circle": [
+                    "ui/upload_outlined",
+                    "ui/upload-circle-outlined"
+                ]
+            },
+            "activity": {
+                "weight": [
+                    "other/weight_outlined",
+                    "other/weight-outlined"
+                ],
+                "weight-rounded": [
+                    "other/weight_2_outlined",
+                    "other/weight-rounded-outlined"
+                ]
+            },
+            "ai": {
+                "robot-action": [
+                    "ai/robot-action-outlined",
+                    "ai/robot-do-outlined"
+                ],
+                "robot-upper": [
+                    "premium/robot_upper_outlined",
+                    "premium/robot-upper-outlined"
+                ]
+            },
+            "alerts": {
+                "error-circle": [
+                    "alerts/error-circle-outlined"
+                ],
+                "info": [
+                    "actions/info-outlined",
+                    "alerts/info-outlined"
+                ],
+                "message-failed": [
+                    "alerts/message-failed-outlined"
+                ],
+                "new-release": [
+                    "alerts/new-release-outlined"
+                ],
+                "notice": [
+                    "actions/notice-outlined",
+                    "alerts/notice-outlined"
+                ],
+                "notifications": [
+                    "alerts/notifications-outlined"
+                ],
+                "notifications-on": [
+                    "alerts/notifications-on-outlined"
+                ],
+                "report": [
+                    "alerts/report-outlined"
+                ],
+                "security-warning": [
+                    "alerts/security-warning-outlined"
+                ],
+                "warning": [
+                    "alerts/warning-outlined"
+                ]
+            },
+            "analytics": {
+                "chart-donut": [
+                    "technology-n-data/chart_donut_1",
+                    "technology-n-data/chart-donut-outlined"
+                ],
+                "chart-pie-exploded": [
+                    "technology-n-data/chart_pie_2-1",
+                    "technology-n-data/chart-pie-exploded-outlined"
+                ]
+            },
+            "arrows": {
+                "arrow-large-down": [
+                    "arrows/arrow-large-dawnward-outlined",
+                    "arrows/arrow-large-down-outlined"
+                ],
+                "arrow-large-left": [
+                    "arrows/arrow-large-backward-outlined",
+                    "arrows/arrow-large-left-outlined"
+                ],
+                "arrow-large-right": [
+                    "arrows/arrow-large-forward-outlined",
+                    "arrows/arrow-large-right-outlined"
+                ],
+                "arrow-large-up": [
+                    "arrows/arrow-large-up-outlined",
+                    "arrows/arrow-large-upward-outlined"
+                ],
+                "caret-circle-down": [
+                    "arrows/caret-circle-down-outlined",
+                    "arrows/caret-down-circle-outlined"
+                ],
+                "caret-circle-left": [
+                    "arrows/caret-circle-left-outlined",
+                    "arrows/caret-left-circle-outlined"
+                ],
+                "caret-circle-right": [
+                    "arrows/caret-circle-right-outlined",
+                    "arrows/caret-right-circle-outlined"
+                ],
+                "caret-circle-up": [
+                    "arrows/caret-circle-up-outlined",
+                    "arrows/caret-up-circle-outlined"
+                ]
+            },
+            "brands": {
+                "apple": [
+                    "technology-n-data/apple_outlined",
+                    "technology-n-data/apple-outlined"
+                ],
+                "gmail": [
+                    "social-media-n-tools/gmail_outlined",
+                    "social-media-n-tools/gmail-outlined"
+                ],
+                "hangouts": [
+                    "social-media-n-tools/hangouts_outlined",
+                    "social-media-n-tools/hangouts-outlined"
+                ],
+                "messenger": [
+                    "social-media-n-tools/messenger_outlined",
+                    "social-media-n-tools/messenger-outlined"
+                ],
+                "snapchat": [
+                    "social-media-n-tools/snapchat_outlined",
+                    "social-media-n-tools/snapchat-outlined"
+                ],
+                "viber": [
+                    "social-media-n-tools/viber_outlined",
+                    "social-media-n-tools/viber-outlined"
+                ],
+                "whatsapp": [
+                    "social-media-n-tools/whatsapp_outlined",
+                    "social-media-n-tools/whatsapp-outlined"
+                ],
+                "youtube": [
+                    "social-media-n-tools/youtube_outlined",
+                    "social-media-n-tools/youtube-outlined"
+                ]
+            },
+            "commerce": {
+                "briefcase": [
+                    "other/briefcase_outlined",
+                    "other/briefcase-outlined"
+                ],
+                "discount": [
+                    "actions/discount-outlined"
+                ],
+                "label": [
+                    "actions/label-outlined"
+                ],
+                "label-add": [
+                    "actions/label-add-outlined"
+                ],
+                "label-delete": [
+                    "actions/label-delete-outlined"
+                ],
+                "labels": [
+                    "actions/labels-outlined"
+                ],
+                "shop": [
+                    "map-n-places/shop_outlined",
+                    "map-n-places/shop-outlined"
+                ],
+                "shopping-bag": [
+                    "map-n-places/shopping_icon",
+                    "map-n-places/shopping-bag-outlined"
+                ],
+                "shopping-basket": [
+                    "actions/shopping-basket-outlined"
+                ],
+                "shopping-basket-add": [
+                    "actions/shopping-basket-add-outlined"
+                ],
+                "shopping-basket-clear": [
+                    "actions/shopping-basket-clear-outlined"
+                ],
+                "shopping-cart": [
+                    "actions/shopping-cart-outlined"
+                ],
+                "wishlist": [
+                    "other/wishlist_outlined",
+                    "other/wishlist-outlined"
+                ]
+            },
+            "communication": {
+                "chat": [
+                    "communication/chat-outlined"
+                ],
+                "comment": [
+                    "communication/comment-outlined"
+                ],
+                "comment-image": [
+                    "communication/comment-image-outlined"
+                ],
+                "comment-play": [
+                    "communication/comment-play-outlined"
+                ],
+                "comment-text": [
+                    "communication/comment-text-outlined"
+                ],
+                "comment-vs": [
+                    "communication/comment-vs-outlined"
+                ],
+                "email": [
+                    "communication/email-outlined"
+                ],
+                "message": [
+                    "communication/message-outlined"
+                ],
+                "message-add": [
+                    "communication/message-add-outlined"
+                ],
+                "message-play": [
+                    "communication/message-play-outlined"
+                ],
+                "message-read": [
+                    "communication/message-read-outlined"
+                ],
+                "message-unread": [
+                    "communication/message-unread-outlined"
+                ],
+                "messages": [
+                    "communication/messages-outlined"
+                ],
+                "mms": [
+                    "communication/mms-outlined"
+                ],
+                "send": [
+                    "communication/send-outlined"
+                ],
+                "sms": [
+                    "communication/sms-outlined"
+                ],
+                "sms-active": [
+                    "communication/sms-active-outlined"
+                ],
+                "sms-chat": [
+                    "communication/sms-chat-outlined"
+                ]
+            },
+            "connectivity": {
+                "cloud": [
+                    "technology-n-data/cloud_outlined",
+                    "technology-n-data/cloud-outlined"
+                ],
+                "cloud-off": [
+                    "technology-n-data/cloud_off_outlined",
+                    "technology-n-data/cloud-off-outlined"
+                ]
+            },
+            "design": {
+                "align-to-bottom": [
+                    "media-n-editing/align_to_bottom_outlined",
+                    "media-n-editing/align-to-bottom-outlined"
+                ],
+                "align-to-center": [
+                    "media-n-editing/align_to_center_outlined",
+                    "media-n-editing/align-to-center-outlined"
+                ],
+                "align-to-left": [
+                    "media-n-editing/align_to_left_outlined",
+                    "media-n-editing/align-to-left-outlined"
+                ],
+                "align-to-middle": [
+                    "media-n-editing/align_to_middle_outlined",
+                    "media-n-editing/align-to-middle-outlined"
+                ],
+                "align-to-right": [
+                    "media-n-editing/align_to_right_outlined",
+                    "media-n-editing/align-to-right-outlined"
+                ],
+                "align-to-top": [
+                    "media-n-editing/align_to_top_outlined",
+                    "media-n-editing/align-to-top-outlined"
+                ],
+                "artboard": [
+                    "media-n-editing/artboard_outlined",
+                    "media-n-editing/artboard-outlined"
+                ],
+                "color": [
+                    "media-n-editing/color_outlined",
+                    "media-n-editing/color-outlined"
+                ],
+                "color-off": [
+                    "media-n-editing/color_off_outlined",
+                    "media-n-editing/color-off-outlined"
+                ],
+                "color-picker": [
+                    "media-n-editing/color_picker_empty",
+                    "media-n-editing/color-picker-outlined"
+                ],
+                "layers": [
+                    "media-n-editing/layers_outlined",
+                    "media-n-editing/layers-outlined"
+                ],
+                "mouse-cursor": [
+                    "media-n-editing/mouse_cursor_outlined",
+                    "media-n-editing/mouse-cursor-outlined"
+                ],
+                "paint": [
+                    "media-n-editing/paint_outlined",
+                    "media-n-editing/paint-outlined"
+                ],
+                "palette": [
+                    "media-n-editing/palette_outlined",
+                    "media-n-editing/palette-outlined"
+                ]
+            },
+            "development": {
+                "node": [
+                    "other/node_outlined",
+                    "other/node-outlined"
+                ],
+                "nodes": [
+                    "other/node_multiple_outlined",
+                    "other/nodes-outlined"
+                ],
+                "plugin": [
+                    "technology-n-data/plugin_outlined",
+                    "technology-n-data/plugin-outlined"
+                ]
+            },
+            "devices": {
+                "camera-video": [
+                    "devices/camera-video-outlined",
+                    "devices/video_camera_outlined"
+                ],
+                "hdmi": [
+                    "devices/hdmi_outlined",
+                    "devices/hdmi-outlined"
+                ],
+                "mouse": [
+                    "devices/mouse_outlined",
+                    "devices/mouse-outlined"
+                ],
+                "mouse-pad": [
+                    "devices/mouse_pad_outlined",
+                    "devices/mouse-pad-outlined"
+                ],
+                "plug": [
+                    "devices/plug_outlined",
+                    "devices/plug-outlined"
+                ],
+                "usb-c": [
+                    "devices/usb_c_outlined",
+                    "devices/usb-c-outlined"
+                ],
+                "usb-port": [
+                    "devices/usb_port_outlined",
+                    "devices/usb-port-outlined"
+                ]
+            },
+            "drinks": {
+                "drink": [
+                    "food-n-drinks/drink_outlined",
+                    "food-n-drinks/drink-outlined"
+                ]
+            },
+            "files": {
+                "book": [
+                    "other/book_outlined",
+                    "other/book-outlined"
+                ],
+                "document": [
+                    "files/document_outlined",
+                    "files/document-outlined"
+                ],
+                "document-check": [
+                    "files/document-check-outlined",
+                    "files/file_check_outlined"
+                ],
+                "document-text": [
+                    "files/document_text_outlined",
+                    "files/document-text-outlined"
+                ],
+                "documents": [
+                    "files/documents_outlined",
+                    "files/documents-outlined"
+                ],
+                "file": [
+                    "files/file_outlined",
+                    "files/file-outlined"
+                ],
+                "file-add": [
+                    "files/file_add_outlined",
+                    "files/file-add-outlined"
+                ],
+                "file-remove": [
+                    "files/file_delete_outlined",
+                    "files/file-remove-outlined"
+                ],
+                "file-text": [
+                    "files/file_text_outlined",
+                    "files/file-text-outlined"
+                ],
+                "files": [
+                    "files/files_outlined",
+                    "files/files-outlined"
+                ],
+                "files-text": [
+                    "files/files_labelled_outlined",
+                    "files/files-text-outlined"
+                ],
+                "folder": [
+                    "files/folder_outlined",
+                    "files/folder-outlined"
+                ],
+                "folder-text": [
+                    "files/folder_labeled_outlined",
+                    "files/folder-text-outlined"
+                ],
+                "folders": [
+                    "files/folders_outlined",
+                    "files/folders-outlined"
+                ]
+            },
+            "finance": {
+                "atm": [
+                    "payment/atm_outlined",
+                    "payment/atm-outlined"
+                ],
+                "bitcoin-circle": [
+                    "payment/bitcoin_outlined",
+                    "payment/bitcoin-circle-outlined"
+                ],
+                "credit-card": [
+                    "payment/credit_card_outlined",
+                    "payment/credit-card-outlined"
+                ],
+                "dollar-circle": [
+                    "payment/dollar_outlined",
+                    "payment/dollar-circle-outlined"
+                ],
+                "ethereum-circle": [
+                    "payment/ethereum_outlined",
+                    "payment/ethereum-circle-outlined"
+                ],
+                "euro-circle": [
+                    "payment/euro_outlined",
+                    "payment/euro-circle-outlined"
+                ],
+                "franc-circle": [
+                    "payment/franc_outlined",
+                    "payment/franc-circle-outlined"
+                ],
+                "hryvnia-circle": [
+                    "payment/hryvnia_outlined",
+                    "payment/hryvnia-circle-outlined"
+                ],
+                "lira-circle": [
+                    "payment/lira_outlined",
+                    "payment/lira-circle-outlined"
+                ],
+                "litecoin-circle": [
+                    "payment/litecoin_outlined",
+                    "payment/litecoin-circle-outlined"
+                ],
+                "pound-circle": [
+                    "payment/pound_outlined",
+                    "payment/pound-circle-outlined"
+                ],
+                "receipt": [
+                    "payment/receipt_outlined",
+                    "payment/receipt-outlined"
+                ],
+                "ruble-circle": [
+                    "payment/ruble_outlined",
+                    "payment/ruble-circle-outlined"
+                ],
+                "rupee-circle": [
+                    "payment/rupee_outlined",
+                    "payment/rupee-circle-outlined"
+                ],
+                "saving": [
+                    "payment/saving_outlined",
+                    "payment/saving-outlined"
+                ],
+                "scales": [
+                    "other/scales_outlined",
+                    "other/scales-outlined"
+                ],
+                "shekel-circle": [
+                    "payment/shekel-circle-outlined",
+                    "payment/shequel_outlined"
+                ],
+                "tenge-circle": [
+                    "payment/tenge_outlined",
+                    "payment/tenge-circle-outlined"
+                ],
+                "tugrik-circle": [
+                    "payment/tugrik_outlined",
+                    "payment/tugrik-circle-outlined"
+                ],
+                "wallet": [
+                    "payment/wallet_outlined",
+                    "payment/wallet-outlined"
+                ],
+                "yen-circle": [
+                    "payment/yen_outlined",
+                    "payment/yen-circle-outlined"
+                ]
+            },
+            "food": {
+                "chicken": [
+                    "food-n-drinks/chicken_outlined",
+                    "food-n-drinks/chicken-outlined"
+                ],
+                "meal": [
+                    "food-n-drinks/meal_outlined",
+                    "food-n-drinks/meal-outlined"
+                ],
+                "pizza": [
+                    "food-n-drinks/pizza_outlined",
+                    "food-n-drinks/pizza-outlined"
+                ]
+            },
+            "forms": {
+                "category": [
+                    "ui/category_outlined",
+                    "ui/category-outlined"
+                ],
+                "filter": [
+                    "ui/filter_outlined",
+                    "ui/filter-outlined"
+                ]
+            },
+            "images": {
+                "brightness-high": [
+                    "media-n-editing/brightness_1_outlined",
+                    "media-n-editing/brightness-high-outlined"
+                ],
+                "brightness-low": [
+                    "media-n-editing/brightness_2_outlined",
+                    "media-n-editing/brightness-low-outlined"
+                ],
+                "macro": [
+                    "media-n-editing/macro_outlined",
+                    "media-n-editing/macro-outlined"
+                ],
+                "panorama": [
+                    "media-n-editing/panorama_outlined",
+                    "media-n-editing/panorama-outlined"
+                ],
+                "panorama-segmented": [
+                    "media-n-editing/panorama_vs_outlined",
+                    "media-n-editing/panorama-segmented-outlined"
+                ],
+                "photo-gallery": [
+                    "media-n-editing/photo_gallery_outlined",
+                    "media-n-editing/photo-gallery-outlined"
+                ],
+                "photo-landscape": [
+                    "media-n-editing/photo_landscape_outlined",
+                    "media-n-editing/photo-landscape-outlined"
+                ],
+                "photo-square": [
+                    "media-n-editing/photo_square_outlined",
+                    "media-n-editing/photo-square-outlined"
+                ],
+                "shutter": [
+                    "media-n-editing/shutter_outlined",
+                    "media-n-editing/shutter-outlined"
+                ]
+            },
+            "keyboard": {
+                "backspace": [
+                    "keyboard/backspace_outlined",
+                    "keyboard/backspace-outlined"
+                ]
+            },
+            "layout": {
+                "agenda-view": [
+                    "ui/agenda_view_outlined",
+                    "ui/agenda-view-outlined"
+                ],
+                "carousel-horizontal": [
+                    "actions/carousel-horizontal-outlined"
+                ],
+                "carousel-vertical": [
+                    "actions/carousel-vertical-outlined"
+                ],
+                "column-view": [
+                    "actions/column-view-outlined"
+                ],
+                "dashboard": [
+                    "ui/dashboard_outlined",
+                    "ui/dashboard-outlined"
+                ],
+                "dashboard-split": [
+                    "ui/dashboard_vs_outlined",
+                    "ui/dashboard-split-outlined"
+                ],
+                "feed": [
+                    "ui/feed_outlined",
+                    "ui/feed-outlined"
+                ],
+                "grid": [
+                    "ui/grid_outlined",
+                    "ui/grid-outlined"
+                ],
+                "list": [
+                    "ui/list-1",
+                    "ui/list-outlined"
+                ],
+                "pages": [
+                    "actions/pages-outlined"
+                ],
+                "widget": [
+                    "ui/widget_outlined",
+                    "ui/widget-outlined"
+                ]
+            },
+            "lifestyle": {
+                "glasses": [
+                    "other/glasses_outlined",
+                    "other/glasses-outlined"
+                ],
+                "shoe-print": [
+                    "other/shoe_print_outlined",
+                    "other/shoe-print-outlined"
+                ]
+            },
+            "maps": {
+                "location-marker": [
+                    "map-n-places/location-marker-outlined",
+                    "map-n-places/poi_outlined"
+                ],
+                "location-marker-add": [
+                    "map-n-places/location-marker-add-outlined",
+                    "map-n-places/poi_add_outlined"
+                ],
+                "location-marker-clear": [
+                    "map-n-places/location-marker-clear-outlined",
+                    "map-n-places/poi_delete_outlined"
+                ],
+                "location-marker-remove": [
+                    "map-n-places/location-marker-remove-outlined",
+                    "map-n-places/poi_remove_outlined"
+                ],
+                "map": [
+                    "map-n-places/map_outlined",
+                    "map-n-places/map-outlined"
+                ],
+                "navigation": [
+                    "map-n-places/navigate_outlined",
+                    "map-n-places/navigation-outlined"
+                ],
+                "pushpin": [
+                    "map-n-places/pin_outlined",
+                    "map-n-places/pushpin-outlined"
+                ]
+            },
+            "media": {
+                "eject-circle": [
+                    "actions/eject-circle-outlined",
+                    "audiovisual/eject-circle-outlined"
+                ],
+                "microphone": [
+                    "audiovisual/microphone-outlined"
+                ],
+                "microphone-off": [
+                    "audiovisual/microphone-off-outlined"
+                ],
+                "pause-circle": [
+                    "audiovisual/pause-circle-outlined"
+                ],
+                "play": [
+                    "audiovisual/play-outlined"
+                ],
+                "play-circle": [
+                    "audiovisual/play-circle-outlined"
+                ],
+                "record": [
+                    "audiovisual/record-outlined"
+                ],
+                "slideshow": [
+                    "media-n-editing/slideshow_outlined",
+                    "media-n-editing/slideshow-outlined"
+                ],
+                "stop": [
+                    "audiovisual/stop-outlined"
+                ],
+                "stop-circle": [
+                    "audiovisual/stop-circle-outlined"
+                ],
+                "video-gallery": [
+                    "media-n-editing/video_gallery_outlined",
+                    "media-n-editing/video-gallery-outlined"
+                ],
+                "video-horizontal": [
+                    "media-n-editing/video_horizontal_outlined",
+                    "media-n-editing/video-horizontal-outlined"
+                ],
+                "video-vertical": [
+                    "media-n-editing/video_vertical_outlined",
+                    "media-n-editing/video-vertical-outlined"
+                ],
+                "virtual-reality": [
+                    "technology-n-data/virtual_reality_outlined",
+                    "technology-n-data/virtual-reality-outlined"
+                ],
+                "voice-input": [
+                    "audiovisual/record-voice-outlined",
+                    "audiovisual/voice-input-outlined"
+                ]
+            },
+            "nature": {
+                "moon": [
+                    "other/moon_outlined",
+                    "other/moon-outlined"
+                ],
+                "moon-diagonal": [
+                    "other/moon_vs_outlined",
+                    "other/moon-diagonal-outlined"
+                ],
+                "tree-broadleaf": [
+                    "map-n-places/broadleaf_tree_outlined",
+                    "map-n-places/tree-broadleaf-outlined"
+                ],
+                "tree-conifer": [
+                    "map-n-places/conifer_outlined",
+                    "map-n-places/tree-conifer-outlined"
+                ]
+            },
+            "navigation": {
+                "explore": [
+                    "ui/explore_outlined",
+                    "ui/explore-outlined"
+                ],
+                "explore-off": [
+                    "ui/explore_off_outlined",
+                    "ui/explore-off-outlined"
+                ],
+                "home": [
+                    "ui/home_outlined",
+                    "ui/home-outlined"
+                ],
+                "home-narrow": [
+                    "ui/home_vs_2_outlined",
+                    "ui/home-narrow-outlined"
+                ],
+                "home-wide": [
+                    "ui/home_vs_1_outlined",
+                    "ui/home-wide-outlined"
+                ],
+                "launch": [
+                    "ui/launch_outlined",
+                    "ui/launch-outlined"
+                ],
+                "menu-grid": [
+                    "ui/menu_vs_outlined",
+                    "ui/menu-grid-outlined"
+                ]
+            },
+            "people": {
+                "user": [
+                    "user/user_outlined",
+                    "user/user-outlined"
+                ],
+                "user-add": [
+                    "user/user_outlined-1",
+                    "user/user-add-outlined"
+                ],
+                "user-square": [
+                    "user/account_square_outlined",
+                    "user/user-square-outlined"
+                ],
+                "users": [
+                    "user/group_equal_outlined",
+                    "user/users-outlined"
+                ]
+            },
+            "places": {
+                "cafe": [
+                    "map-n-places/cafe_outlined",
+                    "map-n-places/cafe-outlined"
+                ],
+                "education": [
+                    "map-n-places/education_outlined",
+                    "map-n-places/education-outlined"
+                ],
+                "office": [
+                    "map-n-places/company_outline",
+                    "map-n-places/office-outlined"
+                ],
+                "parking": [
+                    "map-n-places/parking_outlined",
+                    "map-n-places/parking-outlined"
+                ],
+                "pharmacy": [
+                    "map-n-places/pharmacy_outlined",
+                    "map-n-places/pharmacy-outlined"
+                ],
+                "seat": [
+                    "other/seat_outlined",
+                    "other/seat-outlined"
+                ],
+                "spa": [
+                    "map-n-places/spa_outlined",
+                    "map-n-places/spa-outlined"
+                ]
+            },
+            "rewards": {
+                "badge-check": [
+                    "premium/badge-check-outlined",
+                    "premium/verified_outlined"
+                ],
+                "birthday": [
+                    "other/birthday_outlined",
+                    "other/birthday-outlined"
+                ],
+                "crown": [
+                    "premium/crown_outlined",
+                    "premium/crown-outlined"
+                ],
+                "diamond": [
+                    "premium/diamond-outlined",
+                    "premium/premium_outlined"
+                ],
+                "diamond-faceted": [
+                    "premium/diamond_faceted_outlined",
+                    "premium/diamond-faceted-outlined"
+                ],
+                "shield-star": [
+                    "premium/shield-star-outlined",
+                    "premium/top_security_outlined"
+                ],
+                "sticker": [
+                    "premium/sticker_outlined",
+                    "premium/sticker-outlined"
+                ],
+                "trophy": [
+                    "premium/award_outlined",
+                    "premium/trophy-outlined"
+                ]
+            },
+            "security": {
+                "eye": [
+                    "ui/eye-outlined",
+                    "ui/visible_outlined"
+                ],
+                "eye-iris": [
+                    "ui/eye-iris-outlined",
+                    "ui/invisible"
+                ],
+                "eye-off": [
+                    "ui/eye-off-outlined",
+                    "ui/hidden_outlined"
+                ],
+                "lock": [
+                    "ui/lock_outlined",
+                    "ui/lock-outlined"
+                ],
+                "lock-unlocked": [
+                    "ui/lock_open_outlined",
+                    "ui/lock-unlocked-outlined"
+                ],
+                "shield-check": [
+                    "technology-n-data/security_on_outlined",
+                    "technology-n-data/shield-check-outlined"
+                ],
+                "shield-disabled": [
+                    "technology-n-data/security_off_outlined",
+                    "technology-n-data/shield-disabled-outlined"
+                ]
+            },
+            "shapes": {
+                "circle": [
+                    "other/circle_outlined",
+                    "other/circle-outlined"
+                ],
+                "cube": [
+                    "other/cube_outlined",
+                    "other/cube-outlined"
+                ],
+                "rhombus": [
+                    "other/rhombus_outlined",
+                    "other/rhombus-outlined"
+                ],
+                "square": [
+                    "other/square_outlined",
+                    "other/square-outlined"
+                ],
+                "triangle": [
+                    "other/triangle_outlined",
+                    "other/triangle-outlined"
+                ]
+            },
+            "symbols": {
+                "flag": [
+                    "other/flag_outlined",
+                    "other/flag-outlined"
+                ],
+                "flag-grid": [
+                    "other/flag_cross_1",
+                    "other/flag-grid-outlined"
+                ]
+            },
+            "time": {
+                "hourglass": [
+                    "other/hourglass_outlined",
+                    "other/hourglass-outlined"
+                ],
+                "watch-later": [
+                    "actions/watch-later-outlined"
+                ]
+            }
+        }
+    },
+    "collections": {
+        "flags": {
+            "abkhazia": [],
+            "afghanistan": [],
+            "aland-islands": [],
+            "albania": [],
+            "algeria": [],
+            "american-samoa": [],
+            "andorra": [],
+            "angola": [],
+            "anguilla": [],
+            "antigua-and-barbuda": [],
+            "argentina": [],
+            "armenia": [],
+            "aruba": [],
+            "australia": [],
+            "austria": [],
+            "azerbaijan": [],
+            "azores-islands": [],
+            "bahamas": [],
+            "bahrain": [],
+            "balearic-islands": [],
+            "bangladesh": [],
+            "barbados": [],
+            "basque-country": [],
+            "belarus": [],
+            "belgium": [],
+            "belize": [],
+            "benin": [],
+            "bermuda": [],
+            "bhutan": [
+                "flags/Property 1=bhutan 1"
+            ],
+            "bolivia": [],
+            "bonaire": [],
+            "bosnia-and-herzegovina": [],
+            "botswana": [],
+            "brazil": [],
+            "british-columbia": [],
+            "british-indian-ocean-territory": [],
+            "british-virgin-islands": [],
+            "brunei": [],
+            "bulgaria": [],
+            "burkina-faso": [],
+            "burundi": [],
+            "cabo-verde": [
+                "flags/Property 1=cape verde"
+            ],
+            "cambodia": [],
+            "cameroon": [],
+            "canada": [],
+            "canary-islands": [],
+            "cayman-islands": [],
+            "central-african-republic": [],
+            "ceuta": [],
+            "chad": [],
+            "chile": [],
+            "china": [],
+            "christmas-island": [],
+            "cocos-islands": [
+                "flags/Property 1=cocos island"
+            ],
+            "colombia": [],
+            "comoros": [],
+            "cook-islands": [],
+            "corsica": [],
+            "costa-rica": [
+                "flags/Property 1=costa кica"
+            ],
+            "cote-d-ivoire": [
+                "flags/Property 1=ivory coast"
+            ],
+            "croatia": [],
+            "cuba": [],
+            "curacao": [],
+            "cyprus": [],
+            "czech-republic": [
+                "flags/Property 1=czech кepublic"
+            ],
+            "democratic-republic-of-the-congo": [
+                "flags/Property 1=democratic republic of congo"
+            ],
+            "denmark": [],
+            "djibouti": [],
+            "dominica": [],
+            "dominican-republic": [],
+            "ecuador": [],
+            "egypt": [],
+            "el-salvador": [
+                "flags/Property 1=salvador"
+            ],
+            "england": [],
+            "equatorial-guinea": [],
+            "eritrea": [],
+            "estonia": [],
+            "eswatini": [
+                "flags/Property 1=swaziland"
+            ],
+            "ethiopia": [],
+            "european-union": [],
+            "falkland-islands": [],
+            "faroe-islands": [],
+            "fiji": [],
+            "finland": [],
+            "france": [],
+            "french-polynesia": [],
+            "gabon": [],
+            "galapagos-islands": [
+                "flags/Property 1=galapagos i slands"
+            ],
+            "gambia": [],
+            "georgia": [],
+            "germany": [],
+            "ghana": [],
+            "gibraltar": [],
+            "greece": [],
+            "greenland": [],
+            "grenada": [],
+            "guam": [],
+            "guatemala": [
+                "flags/Property 1=g uatemala"
+            ],
+            "guernsey": [],
+            "guinea": [],
+            "guinea-bissau": [],
+            "guyana": [],
+            "haiti": [],
+            "hawaii": [],
+            "honduras": [],
+            "hong-kong": [],
+            "hungary": [],
+            "iceland": [],
+            "india": [],
+            "indonesia": [],
+            "iran": [],
+            "iraq": [],
+            "ireland": [],
+            "isle-of-man": [],
+            "israel": [],
+            "italy": [],
+            "jamaica": [],
+            "japan": [],
+            "jersey": [],
+            "jordan": [],
+            "kazakhstan": [],
+            "kenya": [],
+            "kiribati": [],
+            "kosovo": [],
+            "kuwait": [],
+            "kyrgyzstan": [],
+            "laos": [],
+            "latvia": [],
+            "lebanon": [],
+            "lesotho": [],
+            "liberia": [],
+            "libya": [],
+            "liechtenstein": [],
+            "lithuania": [],
+            "luxembourg": [],
+            "macao": [],
+            "madagascar": [],
+            "madeira": [],
+            "malawi": [],
+            "malaysia": [],
+            "maldives": [],
+            "mali": [],
+            "malta": [],
+            "marshall-islands": [
+                "flags/Property 1=marshall island"
+            ],
+            "martinique": [],
+            "mauritania": [],
+            "mauritius": [],
+            "melilla": [],
+            "mexico": [],
+            "micronesia": [],
+            "moldova": [],
+            "monaco": [],
+            "mongolia": [],
+            "montenegro": [],
+            "montserrat": [],
+            "morocco": [],
+            "mozambique": [],
+            "myanmar": [],
+            "namibia": [],
+            "nato": [],
+            "nauru": [],
+            "nepal": [],
+            "netherlands": [],
+            "new-zealand": [],
+            "nicaragua": [],
+            "niger": [],
+            "nigeria": [],
+            "niue": [],
+            "norfolk-island": [],
+            "north-korea": [],
+            "north-macedonia": [
+                "flags/Property 1=republic of macedonia"
+            ],
+            "northern-cyprus": [
+                "flags/Property 1=northen сyprus"
+            ],
+            "northern-mariana-islands": [
+                "flags/Property 1=northern marianas islands"
+            ],
+            "norway": [],
+            "oman": [],
+            "orkney-islands": [],
+            "pakistan": [],
+            "palau": [],
+            "palestine": [],
+            "panama": [],
+            "papua-new-guinea": [],
+            "paraguay": [],
+            "peru": [],
+            "philippines": [],
+            "pitcairn-islands": [],
+            "poland": [
+                "flags/Property 1=republic of poland"
+            ],
+            "portugal": [],
+            "puerto-rico": [],
+            "qatar": [],
+            "rapa-nui": [],
+            "republic-of-the-congo": [],
+            "romania": [],
+            "russia": [],
+            "rwanda": [],
+            "saba": [
+                "flags/Property 1=saba island"
+            ],
+            "saint-barthelemy": [
+                "flags/Property 1=st barts"
+            ],
+            "saint-kitts-and-nevis": [],
+            "saint-lucia": [
+                "flags/Property 1=st lucia"
+            ],
+            "saint-vincent-and-the-grenadines": [
+                "flags/Property 1=st vincent and the grenadines"
+            ],
+            "samoa": [],
+            "san-marino": [],
+            "sao-tome-and-principe": [],
+            "sardinia": [],
+            "saudi-arabia": [],
+            "scotland": [],
+            "senegal": [],
+            "serbia": [],
+            "seychelles": [],
+            "sicily": [
+                "flags/Property 1=bhutan"
+            ],
+            "sierra-leone": [],
+            "singapore": [],
+            "sint-eustatius": [],
+            "sint-maarten": [],
+            "slovakia": [],
+            "slovenia": [],
+            "solomon-islands": [],
+            "somalia": [],
+            "somaliland": [],
+            "south-africa": [],
+            "south-korea": [],
+            "south-ossetia": [
+                "flags/Property 1=ossetia"
+            ],
+            "south-sudan": [],
+            "spain": [],
+            "sri-lanka": [],
+            "sudan": [],
+            "suriname": [],
+            "sweden": [],
+            "switzerland": [],
+            "syria": [],
+            "taiwan": [],
+            "tajikistan": [],
+            "tanzania": [],
+            "thailand": [],
+            "tibet": [],
+            "timor-leste": [
+                "flags/Property 1=east timor"
+            ],
+            "togo": [],
+            "tokelau": [],
+            "tonga": [],
+            "transnistria": [],
+            "trinidad-and-tobago": [],
+            "tunisia": [],
+            "turkey": [],
+            "turkmenistan": [],
+            "turks-and-caicos-islands": [
+                "flags/Property 1=turks and caicos"
+            ],
+            "tuvalu": [],
+            "uganda": [],
+            "ukraine": [],
+            "united-arab-emirates": [],
+            "united-kingdom": [],
+            "united-nations": [],
+            "united-states": [
+                "flags/Property 1=united states of america"
+            ],
+            "uruguay": [],
+            "us-virgin-islands": [
+                "flags/Property 1=virgin islands"
+            ],
+            "uzbekistan": [
+                "flags/Property 1=uzbekistn"
+            ],
+            "vanuatu": [],
+            "vatican-city": [],
+            "venezuela": [],
+            "vietnam": [],
+            "wales": [],
+            "western-sahara": [],
+            "yemen": [],
+            "zambia": [],
+            "zimbabwe": []
+        },
+        "logos": {
+            "avito": [
+                "logos/Property 1=Avito new"
+            ],
+            "custom-channel": [
+                "logos/Property 1=Custom channel"
+            ],
+            "drom": [
+                "logos/Property 1=Drom"
+            ],
+            "dzen": [
+                "logos/Property 1=Yandex_dzen"
+            ],
+            "email-circle": [
+                "logos/Property 1=mail"
+            ],
+            "facebook": [
+                "logos/Property 1=Facebook"
+            ],
+            "facebook-instagram": [
+                "logos/Property 1=Fb+Insta"
+            ],
+            "facebook-messenger": [
+                "logos/Property 1=Messenger"
+            ],
+            "gmail": [
+                "logos/Property 1=Gmail"
+            ],
+            "google": [
+                "logos/Property 1=Google"
+            ],
+            "instagram": [
+                "logos/Property 1=Instagram"
+            ],
+            "linkedin": [
+                "logos/Property 1=LinkedIn"
+            ],
+            "mail-ru": [
+                "logos/Property 1=Mail_ru"
+            ],
+            "max": [
+                "logos/Property 1=Max"
+            ],
+            "megamarket": [
+                "logos/Property 1=Megamarket"
+            ],
+            "odnoklassniki": [
+                "logos/Property 1=OK"
+            ],
+            "online-consultant": [
+                "logos/Property 1=OnineConsultant"
+            ],
+            "outlook": [
+                "logos/Property 1=Outlook"
+            ],
+            "ozon": [
+                "logos/Property 1=OZOn"
+            ],
+            "skype": [
+                "logos/Property 1=Skype"
+            ],
+            "slack": [
+                "logos/Property 1=Slack"
+            ],
+            "sms": [
+                "logos/Property 1=SMS"
+            ],
+            "telegram": [
+                "logos/Property 1=Telegram"
+            ],
+            "twitter": [
+                "logos/Property 1=Twitter"
+            ],
+            "viber": [
+                "logos/Property 1=Viber"
+            ],
+            "vimeo": [
+                "logos/Property 1=Vimeo"
+            ],
+            "vk": [
+                "logos/Property 1=VK"
+            ],
+            "wechat": [
+                "logos/Property 1=Wechat"
+            ],
+            "whatsapp": [
+                "logos/Property 1=WhatsApp"
+            ],
+            "whatsapp-business": [
+                "logos/Property 1=WhatsApp_Business"
+            ],
+            "whatsapp-business-high-touch": [
+                "logos/Property 1=WhatsApp_Business_HighTouch"
+            ],
+            "wildberries": [
+                "logos/Property 1=Wildberiies (WB)"
+            ],
+            "yandex": [
+                "logos/Property 1=yandex-logo"
+            ],
+            "yandex-chat": [
+                "logos/Property 1=Yandex chat"
+            ],
+            "yandex-cube": [
+                "logos/Property 1=Yandex"
+            ],
+            "yandex-market": [
+                "logos/Property 1=Yandex Market"
+            ],
+            "youtube": [
+                "logos/Property 1=Youtube"
+            ],
+            "yula": [
+                "logos/Property 1=Yula"
+            ]
+        }
+    }
+}

@@ -9,14 +9,77 @@
   },
   "homepage": "https://omnicajs.github.io/icons/",
   "type": "module",
+  "sideEffects": false,
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "omnica-icons": "dist/cli.js"
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./all": {
+      "types": "./dist/all.d.ts",
+      "import": "./dist/all.js",
+      "require": "./dist/all.cjs"
+    },
+    "./groups": {
+      "types": "./dist/groups.d.ts",
+      "import": "./dist/groups.js",
+      "require": "./dist/groups.cjs"
+    },
+    "./filled": {
+      "types": "./dist/filled/index.d.ts",
+      "import": "./dist/filled/index.js",
+      "require": "./dist/filled/index.cjs"
+    },
+    "./filled/*": {
+      "types": "./dist/filled/*.d.ts",
+      "import": "./dist/filled/*.js",
+      "require": "./dist/filled/*.cjs"
+    },
+    "./outlined": {
+      "types": "./dist/outlined/index.d.ts",
+      "import": "./dist/outlined/index.js",
+      "require": "./dist/outlined/index.cjs"
+    },
+    "./outlined/*": {
+      "types": "./dist/outlined/*.d.ts",
+      "import": "./dist/outlined/*.js",
+      "require": "./dist/outlined/*.cjs"
+    },
+    "./flags": {
+      "types": "./dist/flags.d.ts",
+      "import": "./dist/flags.js",
+      "require": "./dist/flags.cjs"
+    },
+    "./logos": {
+      "types": "./dist/logos.d.ts",
+      "import": "./dist/logos.js",
+      "require": "./dist/logos.cjs"
+    },
+    "./manifest": {
+      "types": "./dist/manifest.d.ts",
+      "import": "./dist/manifest.js",
+      "require": "./dist/manifest.cjs"
+    },
+    "./manifest.json": "./dist/manifest.json",
+    "./migrations/groups-v1.json": "./metadata/migrations/groups-v1.json",
+    "./build": {
+      "types": "./dist/build.d.ts",
+      "import": "./dist/build.js"
+    },
+    "./vite": {
+      "types": "./dist/vite.d.ts",
+      "import": "./dist/vite.js"
+    },
+    "./webpack": {
+      "types": "./dist/webpack.d.ts",
+      "require": "./dist/webpack.cjs"
     },
     "./sprites/*": "./dist/sprites/*",
     "./assets/*": "./assets/*"
@@ -25,13 +88,18 @@
   "files": [
     "assets",
     "dist",
+    "metadata",
     "CHANGELOG.md",
     "README.md",
     "LICENSE"
   ],
   "scripts": {
-    "build": "node scripts/icons/build.mjs",
-    "check": "yarn build && yarn typecheck && yarn showcase:build",
+    "build": "yarn build:icons && yarn build:tooling",
+    "build:icons": "node scripts/icons/build.mjs",
+    "build:tooling": "vite build --config vite.config.tooling.ts --mode tooling-es && vite build --config vite.config.tooling.ts --mode tooling-cjs && tsc --project tsconfig.tooling.json",
+    "check": "yarn icons:keywords:check && yarn build && yarn typecheck && yarn test:unit && yarn test:fixtures && yarn showcase:build",
+    "icons:keywords": "node scripts/icons/generate-keywords.mjs",
+    "icons:keywords:check": "node scripts/icons/generate-keywords.mjs --check",
     "icons:normalize": "node scripts/icons/normalize.mjs",
     "prepack": "corepack yarn build",
     "release": "conventional-release --tags",
@@ -42,6 +110,10 @@
     "showcase": "yarn build && vitepress dev showcase --host 0.0.0.0",
     "showcase:build": "vitepress build showcase",
     "showcase:preview": "vitepress preview showcase --host 0.0.0.0",
+    "test": "yarn build && yarn test:unit && yarn test:fixtures",
+    "test:browser": "playwright test --config playwright.config.ts",
+    "test:fixtures": "node dist/cli.js build --config fixtures/cli/omnica-icons.config.mjs && tsc --noEmit -p fixtures/cli/tsconfig.json && vite build --config fixtures/vite/vite.config.ts && tsc --noEmit -p fixtures/vite/tsconfig.json && webpack --config fixtures/webpack/webpack.config.cjs && tsc --noEmit -p fixtures/webpack/tsconfig.json",
+    "test:unit": "node --test tests/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "release": {
@@ -50,12 +122,15 @@
   },
   "devDependencies": {
     "@modulify/conventional-release": "^0.1.3",
+    "@playwright/test": "^1.61.1",
     "@types/node": "^25.9.2",
     "less": "^4.6.7",
     "svgo": "^4.0.1",
     "typescript": "^6.0.3",
     "vite": "^8.0.16",
-    "vitepress": "^1.6.4"
+    "vitepress": "^1.6.4",
+    "webpack": "^5.108.4",
+    "webpack-cli": "^7.2.1"
   },
   "publishConfig": {
     "access": "public"

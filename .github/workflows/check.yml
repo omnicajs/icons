@@ -1,4 +1,4 @@
-name: Check
+name: Tests
 
 on:
   pull_request:
@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  check:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         run: make ci.install
 
-      - name: Run package checks
+      - name: Run package and browser tests
         run: make local check
 
       - name: Inspect package contents

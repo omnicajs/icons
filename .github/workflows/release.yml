@@ -60,7 +60,7 @@ jobs:
       - name: Install dependencies
         run: make ci.install
 
-      - name: Run package checks
+      - name: Run tests before creating release tag
         run: make local check
 
       - name: Configure Git
@@ -116,7 +116,7 @@ jobs:
       - name: Install dependencies
         run: make ci.install
 
-      - name: Run release checks
+      - name: Run tests before publishing
         run: make local check
 
       - name: Publish package

@@ -192,9 +192,9 @@ const copyIconName = async name => {
 }
 
 .catalog__group_active {
-    border-color: var(--vp-c-brand-1);
+    border-color: var(--vp-button-brand-bg);
     color: var(--vp-c-white);
-    background: var(--vp-c-brand-1);
+    background: var(--vp-button-brand-bg);
 }
 
 .catalog__group_active span {

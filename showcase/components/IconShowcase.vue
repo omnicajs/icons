@@ -6,6 +6,8 @@ const iconGroups = Object.keys(iconNames)
 const activeGroup = ref(iconGroups[0])
 const query = ref('')
 const copiedIcon = ref('')
+// Browsers may keep external SVG documents used by <use> across dev rebuilds.
+const spriteCacheKey = import.meta.env.DEV ? Date.now().toString(36) : ''
 
 const iconCount = Object.values(iconNames).reduce((count, names) => count + names.length, 0)
 const activeIconNames = computed(() => {
@@ -13,6 +15,12 @@ const activeIconNames = computed(() => {
 
     return iconNames[activeGroup.value].filter(name => name.includes(normalizedQuery))
 })
+const showcaseSpriteUrl = group => spriteCacheKey
+    ? `${spriteUrl(group)}?v=${spriteCacheKey}`
+    : spriteUrl(group)
+const showcaseIconUrl = (group, name) => spriteCacheKey
+    ? iconUrl(group, name).replace('#', `?v=${spriteCacheKey}#`)
+    : iconUrl(group, name)
 
 const writeToClipboard = async value => {
     try {
@@ -53,7 +61,7 @@ const copyIconName = async name => {
                 </h2>
                 <p>
                     {{ iconGroups.length }} groups, {{ iconCount }} icons.
-                    Current sprite: <code>{{ spriteUrl(activeGroup) }}</code>
+                    Current sprite: <code>{{ showcaseSpriteUrl(activeGroup) }}</code>
                 </p>
             </div>
 
@@ -88,7 +96,7 @@ const copyIconName = async name => {
                 @click="copyIconName(name)"
             >
                 <svg class="catalog__glyph" aria-hidden="true">
-                    <use :href="iconUrl(activeGroup, name)" />
+                    <use :href="showcaseIconUrl(activeGroup, name)" />
                 </svg>
                 <span class="catalog__name">{{ name }}</span>
                 <span class="catalog__copy">

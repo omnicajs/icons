@@ -214,6 +214,20 @@ test.describe('showcase catalog', () => {
         await expect(page.getByRole('region', { name: 'actions' })).toHaveCount(0)
     })
 
+    test('applies the Omnica palette in light and dark themes', async ({ page }) => {
+        await page.emulateMedia({ colorScheme: 'light' })
+        await page.goto(url)
+
+        const primaryColor = () => page.locator('html').evaluate(element =>
+            getComputedStyle(element).getPropertyValue('--vp-c-indigo-1').trim())
+
+        await expect.poll(primaryColor).toBe('#005EEB')
+
+        await page.getByRole('switch', { name: 'Switch to dark theme' }).click()
+
+        await expect.poll(primaryColor).toBe('#6CADFF')
+    })
+
     test('detects exact and base browser locales and falls back to en-GB', async ({ browser }) => {
         const cases = [{
             browserLocale: 'es-ES',

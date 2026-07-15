@@ -116,7 +116,7 @@
     "test:browser": "playwright test --config playwright.config.ts",
     "test:fixtures": "node dist/cli.js build --config fixtures/cli/omnica-icons.config.mjs && tsc --noEmit -p fixtures/cli/tsconfig.json && vite build --config fixtures/vite/vite.config.ts && tsc --noEmit -p fixtures/vite/tsconfig.json && webpack --config fixtures/webpack/webpack.config.cjs && tsc --noEmit -p fixtures/webpack/tsconfig.json",
     "test:unit": "node --test tests/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc --noEmit --project showcase/tsconfig.json"
   },
   "release": {
     "mode": "sync",

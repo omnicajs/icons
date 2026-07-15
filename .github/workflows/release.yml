@@ -124,11 +124,24 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           RELEASE_TYPE: ${{ inputs.release_type }}
         run: |
-          if [ "$RELEASE_TYPE" = "stable" ]; then
-            npm publish --access public
-          else
-            npm publish --access public --tag "$RELEASE_TYPE"
+          PUBLISH_ARGS=(--access public)
+
+          if [ "$RELEASE_TYPE" != "stable" ]; then
+            PUBLISH_ARGS+=(--tag "$RELEASE_TYPE")
           fi
+
+          if [ -n "${NODE_AUTH_TOKEN:-}" ]; then
+            echo "Publishing with NPM_TOKEN"
+            # npm prefers OIDC when both authentication methods are available.
+            unset NPM_ID_TOKEN
+            unset ACTIONS_ID_TOKEN_REQUEST_URL
+            unset ACTIONS_ID_TOKEN_REQUEST_TOKEN
+          else
+            echo "Publishing with npm trusted publishing"
+            unset NODE_AUTH_TOKEN
+          fi
+
+          npm publish "${PUBLISH_ARGS[@]}"
 
   showcase:
     needs: release

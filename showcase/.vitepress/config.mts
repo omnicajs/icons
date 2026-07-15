@@ -1,47 +1,55 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
 
-import { localePath, showcaseLocales } from '../i18n/locales'
-import { shellMessages } from '../i18n/messages'
+import { createShowcaseI18n } from '../i18n'
+import { localePath, type ShowcaseLocale, showcaseLocales } from '../i18n/locales'
 
 const isPagesBuild = process.env.GITHUB_ACTIONS === 'true'
 const base = isPagesBuild ? '/icons/' : '/'
 const githubLink = 'https://github.com/omnicajs/icons'
 
-const localeTheme = (locale: keyof typeof shellMessages): DefaultTheme.Config => {
-    const messages = shellMessages[locale]
+const localeTheme = (locale: ShowcaseLocale): DefaultTheme.Config => {
+    const { t } = createShowcaseI18n(locale).global
 
     return {
         nav: [
-            { text: messages.nav.icons, link: localePath(locale) },
-            { text: messages.nav.usage, link: localePath(locale, '/usage') },
+            { text: t('shell.nav.icons'), link: localePath(locale) },
+            { text: t('shell.nav.usage'), link: localePath(locale, '/usage') },
         ],
         footer: {
-            message: messages.footer,
+            message: t('shell.footer'),
         },
         outline: {
-            label: messages.outline,
+            label: t('shell.outline'),
         },
         docFooter: {
-            prev: messages.previousPage,
-            next: messages.nextPage,
+            prev: t('shell.previousPage'),
+            next: t('shell.nextPage'),
         },
-        darkModeSwitchLabel: messages.appearance,
-        lightModeSwitchTitle: messages.lightTheme,
-        darkModeSwitchTitle: messages.darkTheme,
-        sidebarMenuLabel: messages.menu,
-        returnToTopLabel: messages.returnToTop,
-        langMenuLabel: messages.languageMenu,
-        skipToContentLabel: messages.skipToContent,
-        notFound: messages.notFound,
+        darkModeSwitchLabel: t('shell.appearance'),
+        lightModeSwitchTitle: t('shell.lightTheme'),
+        darkModeSwitchTitle: t('shell.darkTheme'),
+        sidebarMenuLabel: t('shell.menu'),
+        returnToTopLabel: t('shell.returnToTop'),
+        langMenuLabel: t('shell.languageMenu'),
+        skipToContentLabel: t('shell.skipToContent'),
+        notFound: {
+            title: t('shell.notFound.title'),
+            quote: t('shell.notFound.quote'),
+            linkLabel: t('shell.notFound.linkLabel'),
+            linkText: t('shell.notFound.linkText'),
+        },
     }
 }
+
+const localeDescription = (locale: ShowcaseLocale): string =>
+    createShowcaseI18n(locale).global.t('shell.description')
 
 const [english, spanish, russian] = showcaseLocales
 
 export default defineConfig({
     title: 'OmnicaJS Icons',
-    description: shellMessages['en-GB'].description,
+    description: localeDescription(english.code),
     base,
     cleanUrls: true,
     locales: {
@@ -49,21 +57,21 @@ export default defineConfig({
             label: english.label,
             lang: english.code,
             link: english.link,
-            description: shellMessages[english.code].description,
+            description: localeDescription(english.code),
             themeConfig: localeTheme(english.code),
         },
         [spanish.index]: {
             label: spanish.label,
             lang: spanish.code,
             link: spanish.link,
-            description: shellMessages[spanish.code].description,
+            description: localeDescription(spanish.code),
             themeConfig: localeTheme(spanish.code),
         },
         [russian.index]: {
             label: russian.label,
             lang: russian.code,
             link: russian.link,
-            description: shellMessages[russian.code].description,
+            description: localeDescription(russian.code),
             themeConfig: localeTheme(russian.code),
         },
     },
@@ -79,10 +87,22 @@ export default defineConfig({
         ],
     },
     vite: {
+        define: {
+            __INTLIFY_PROD_DEVTOOLS__: false,
+            __VUE_I18N_FULL_INSTALL__: false,
+            __VUE_I18N_LEGACY_API__: false,
+            __VUE_PROD_DEVTOOLS__: false,
+        },
         server: {
             allowedHosts: [
                 'icons.omnicajs.local',
                 'icons.omnicajs.test',
+            ],
+        },
+        ssr: {
+            noExternal: [
+                'vue-i18n',
+                /^@intlify\//,
             ],
         },
     },

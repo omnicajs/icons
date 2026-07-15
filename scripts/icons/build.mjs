@@ -1,7 +1,6 @@
 import fs from 'node:fs/promises'
+
 import { collectCatalog } from '../../build/catalog.mjs'
-import { generateManifest } from '../../build/manifest.mjs'
-import { generatePackageModules, generatePublicTypecheck } from '../../build/package-modules.mjs'
 import {
     distDirectory,
     distManifestFile,
@@ -9,12 +8,19 @@ import {
     flagsDirectory,
     generatedDirectory,
     generatedTypecheckFile,
+} from '../../build/paths.mjs'
+import { generateManifest } from '../../build/manifest.mjs'
+import {
+    generatePackageModules,
+    generatePublicTypecheck,
+} from '../../build/package-modules.mjs'
+import { generateSprites } from '../../build/sprites.mjs'
+import {
     iconKeywordsFile,
     iconsDirectory,
     logosDirectory,
     root,
 } from '../../build/paths.mjs'
-import { generateSprites } from '../../build/sprites.mjs'
 
 const writeManifestModules = async manifest => {
     const source = JSON.stringify(manifest)
@@ -22,7 +28,7 @@ const writeManifestModules = async manifest => {
     await Promise.all([
         fs.writeFile(new URL('../../dist/manifest.js', import.meta.url), `export default ${source}\n`),
         fs.writeFile(new URL('../../dist/manifest.cjs', import.meta.url), `module.exports = ${source}\n`),
-        fs.writeFile(new URL('../../dist/manifest.d.ts', import.meta.url), "declare const manifest: import('./build.js').IconManifest\nexport default manifest\n"),
+        fs.writeFile(new URL('../../dist/manifest.d.ts', import.meta.url), 'declare const manifest: import(\'./build.js\').IconManifest\nexport default manifest\n'),
     ])
 }
 

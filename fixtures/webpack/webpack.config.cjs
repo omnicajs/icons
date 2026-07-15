@@ -1,4 +1,5 @@
 const path = require('node:path')
+
 const { OmnicaIconsPlugin } = require('@omnicajs/icons/webpack')
 
 class FixtureHtmlPlugin {

@@ -1,7 +1,8 @@
-import fs from 'node:fs/promises'
-import path from 'node:path'
 import type { IconNameMap as FilledIconNameMap } from '@omnicajs/icons/filled'
 import type { IconNameMap as OutlinedIconNameMap } from '@omnicajs/icons/outlined'
+
+import fs from 'node:fs/promises'
+import path from 'node:path'
 
 export type GroupSelection<Names extends string> = '*' | readonly Names[]
 export type VariantSelection<Map> = {
@@ -233,7 +234,7 @@ const extractSymbol = (sprite: string, symbolId: string, filename: string): stri
     return match[0]
 }
 
-export const loadIconSymbols = async (
+export const loadIconSymbols = (
     resolvedVariants: readonly ResolvedVariant[]
 ): Promise<ResolvedVariant[]> => Promise.all(resolvedVariants.map(async variant => ({
     ...variant,

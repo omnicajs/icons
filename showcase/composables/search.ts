@@ -1,5 +1,6 @@
+import type { ComputedRef } from 'vue'
 import type { IconVariant } from '@omnicajs/icons'
-import type { ComputedRef, Ref } from 'vue'
+import type { Ref } from 'vue'
 
 import { computed, ref } from 'vue'
 

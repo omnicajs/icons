@@ -1,0 +1,61 @@
+{
+  "catalog": {
+    "title": "Catálogo de iconos",
+    "summary": "{groups}, {icons} en {variant}.",
+    "groupCount": "{count} grupo | {count} grupos",
+    "iconCount": "{count} icono | {count} iconos",
+    "spriteSize": "Tamaño del sprite: {raw} sin comprimir, {gzip} gzip.",
+    "currentDelivery": "Distribución actual: {delivery}",
+    "search": {
+      "label": "Buscar iconos",
+      "placeholder": "Nombre o palabra clave"
+    },
+    "variant": {
+      "label": "Estilo",
+      "filled": "Relleno",
+      "outlined": "Contorno"
+    },
+    "delivery": {
+      "label": "Distribución del sprite",
+      "full": "Sprite completo",
+      "grouped": "Sprites por grupo",
+      "fullSummary": "Sprite completo.",
+      "groupedSummary": "{count} sprite por grupo. | {count} sprites por grupo."
+    },
+    "groups": {
+      "label": "Grupos de iconos",
+      "showAll": "Mostrar todos los grupos",
+      "showOnly": "Mostrar solo {group}"
+    },
+    "copy": {
+      "title": "Copiar {path}",
+      "action": "Copiar",
+      "done": "Copiado"
+    },
+    "noMatches": "Ningún icono coincide con «{query}»."
+  },
+  "shell": {
+    "description": "Sprites SVG tipados para proyectos de OmnicaJS.",
+    "nav": {
+      "icons": "Iconos",
+      "usage": "Uso"
+    },
+    "footer": "Publicado bajo la licencia MIT.",
+    "outline": "En esta página",
+    "previousPage": "Página anterior",
+    "nextPage": "Página siguiente",
+    "appearance": "Apariencia",
+    "lightTheme": "Cambiar al tema claro",
+    "darkTheme": "Cambiar al tema oscuro",
+    "menu": "Menú",
+    "returnToTop": "Volver arriba",
+    "languageMenu": "Cambiar idioma",
+    "skipToContent": "Ir al contenido",
+    "notFound": {
+      "title": "PÁGINA NO ENCONTRADA",
+      "quote": "La página solicitada no existe.",
+      "linkLabel": "ir al inicio",
+      "linkText": "Volver al inicio"
+    }
+  }
+}

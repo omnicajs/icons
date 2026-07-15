@@ -1,5 +1,6 @@
 import fs from 'node:fs/promises'
 import path from 'node:path'
+
 import { optimize } from 'svgo'
 
 const attributePattern = /([\w:-]+)\s*=\s*"([^"]*)"/g

@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
+import type { IconBuildConfig } from './build.js'
+
 import fs from 'node:fs'
 import path from 'node:path'
-import process from 'node:process'
 import { pathToFileURL } from 'node:url'
+import process from 'node:process'
+
 import { buildIconSet, writeGeneratedFiles } from './build.js'
-import type { IconBuildConfig } from './build.js'
 
 type CliCommand = 'build' | 'watch'
 
@@ -101,6 +103,7 @@ const run = async (): Promise<void> => {
         const rebuild = async (): Promise<void> => {
             if (running) {
                 queued = true
+
                 return
             }
 

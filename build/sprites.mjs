@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
-import path from 'node:path'
 import { gzipSync } from 'node:zlib'
+import path from 'node:path'
+
 import { optimize } from 'svgo'
 
 const escapeXml = value => value

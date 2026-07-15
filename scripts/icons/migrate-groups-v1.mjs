@@ -1,7 +1,7 @@
+import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import process from 'node:process'
-import { fileURLToPath } from 'node:url'
 
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const iconsDirectory = path.join(rootDirectory, 'assets/icons')

@@ -6,7 +6,7 @@ const stringifyList = values => values.map(quote).join(', ')
 const esmSpriteUrl = relativePath => `new URL(${quote(relativePath)}, import.meta.url).href`
 const cjsSpriteUrl = relativePath => `new URL(${quote(relativePath)}, pathToFileURL(__filename)).href`
 
-const runtimePrelude = `const hasOwn = (object, key) => Object.prototype.hasOwnProperty.call(object, key)\n`
+const runtimePrelude = 'const hasOwn = (object, key) => Object.prototype.hasOwnProperty.call(object, key)\n'
 const cjsPrelude = `const { pathToFileURL } = require('node:url')\n\n${runtimePrelude}`
 
 const groupRuntime = ({ format, groupName, iconNames, spritePath }) => {
@@ -157,8 +157,8 @@ const facadeRuntime = ({ format, variants, grouped }) => {
         : variants.map(variant => `    ${variant.name}: ${variant.name}.spriteUrl,`).join('\n')
     const spriteParameters = grouped ? 'variant, group' : 'variant'
     const spriteReturn = grouped
-        ? `const collection = getCollection(variant, group)\n\n    return collection.spriteUrl`
-        : `return getCollection(variant).spriteUrl`
+        ? 'const collection = getCollection(variant, group)\n\n    return collection.spriteUrl'
+        : 'return getCollection(variant).spriteUrl'
     const iconCollection = grouped
         ? 'getCollection(variant, group)'
         : 'getCollection(variant)'
@@ -217,7 +217,7 @@ const groupedFacadeDeclarations = variants => {
                 return `export declare function spriteUrl<Group extends ${typePrefix}IconGroup> (variant: ${quote(variant.name)}, group: Group): string`
             })
             .join('\n'))
-        .replace(/    readonly (filled|outlined): string/g, (match, variant) => `    readonly ${variant}: { readonly [Group in ${variant[0].toUpperCase()}${variant.slice(1)}IconGroup]: string }`)
+        .replace(/ {4}readonly (filled|outlined): string/g, (match, variant) => `    readonly ${variant}: { readonly [Group in ${variant[0].toUpperCase()}${variant.slice(1)}IconGroup]: string }`)
 
     return base
 }
@@ -294,9 +294,9 @@ export const generatePackageModules = async ({ sprites, distDirectory }) => {
         groupedFacadeDeclarations(sprites.variants)
     )
     await Promise.all([
-        fs.writeFile(path.join(distDirectory, 'index.js'), "export * from './all.js'\n"),
-        fs.writeFile(path.join(distDirectory, 'index.cjs'), "module.exports = require('./all.cjs')\n"),
-        fs.writeFile(path.join(distDirectory, 'index.d.ts'), "export * from './all.js'\n"),
+        fs.writeFile(path.join(distDirectory, 'index.js'), 'export * from \'./all.js\'\n'),
+        fs.writeFile(path.join(distDirectory, 'index.cjs'), 'module.exports = require(\'./all.cjs\')\n'),
+        fs.writeFile(path.join(distDirectory, 'index.d.ts'), 'export * from \'./all.js\'\n'),
     ])
 }
 
@@ -313,13 +313,13 @@ export const generatePublicTypecheck = variants => {
     const filledOnlyName = exampleGroup.iconNames.find(name => !outlinedGroups.get(exampleGroup.name).has(name))
 
     return `${[
-        "import { iconUrl, spriteUrl } from '../dist/all.js'",
-        "import { defineConfig } from '../dist/build.js'",
+        'import { iconUrl, spriteUrl } from \'../dist/all.js\'',
+        'import { defineConfig } from \'../dist/build.js\'',
         `import { iconUrl as filledGroupIconUrl } from '../dist/filled/${exampleGroup.name}.js'`,
         '',
         `iconUrl('filled', ${quote(exampleGroup.name)}, ${quote(filledOnlyName)})`,
         `iconUrl('outlined', ${quote(exampleGroup.name)}, ${quote(outlinedNames[0])})`,
-        `spriteUrl('filled')`,
+        'spriteUrl(\'filled\')',
         `filledGroupIconUrl(${quote(filledOnlyName)})`,
         `defineConfig({ include: { filled: { ${exampleGroup.name}: [${quote(filledOnlyName)}] }, outlined: { ${exampleGroup.name}: [${quote(outlinedNames[0])}] } } })`,
         '',
@@ -328,7 +328,7 @@ export const generatePublicTypecheck = variants => {
         '// @ts-expect-error Build config uses the exact outlined catalog too.',
         `defineConfig({ include: { outlined: { ${exampleGroup.name}: [${quote(filledOnlyName)}] } } })`,
         '// @ts-expect-error Group entrypoints only accept names from their own group.',
-        "filledGroupIconUrl('__missing__')",
+        'filledGroupIconUrl(\'__missing__\')',
         '',
     ].join('\n')}`
 }

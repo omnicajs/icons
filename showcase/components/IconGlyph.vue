@@ -9,8 +9,8 @@ import type { IconVariant } from '@omnicajs/icons'
 
 import { computed } from 'vue'
 
-import { iconUrl } from '@omnicajs/icons'
 import { iconUrl as groupIconUrl } from '@omnicajs/icons/groups'
+import { iconUrl } from '@omnicajs/icons'
 
 type DynamicIconUrl = (variant: IconVariant, group: string, name: string) => string
 

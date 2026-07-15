@@ -1,5 +1,5 @@
-import path from 'node:path'
 import { fileURLToPath } from 'node:url'
+import path from 'node:path'
 
 export const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 export const iconsDirectory = path.join(root, 'assets/icons')

@@ -1,5 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
+
 import { defineConfig } from 'vite'
+
 import { omnicaIcons } from '@omnicajs/icons/vite'
 
 export default defineConfig({

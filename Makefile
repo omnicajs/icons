@@ -53,6 +53,24 @@ else
 	$(DOCKER) yarn icons:keywords
 endif
 
+.PHONY: lint
+lint: ## Runs ESLint
+	$(TARGET_HEADER)
+ifdef LOCAL_MODE
+	corepack yarn lint
+else
+	$(DOCKER) yarn lint
+endif
+
+.PHONY: lint.fix
+lint.fix: ## Runs ESLint and applies safe fixes
+	$(TARGET_HEADER)
+ifdef LOCAL_MODE
+	corepack yarn lint:fix
+else
+	$(DOCKER) yarn lint:fix
+endif
+
 .PHONY: test
 test: ## Runs package and consumer-fixture tests
 	$(TARGET_HEADER)

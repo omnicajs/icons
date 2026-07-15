@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises'
 import http from 'node:http'
 import path from 'node:path'
+
 import { expect, test } from '@playwright/test'
 
 const fixtures = ['vite', 'webpack'] as const
@@ -29,6 +30,7 @@ const serve = async (directory: string): Promise<http.Server> => {
 
             if (filename !== root && !filename.startsWith(`${root}${path.sep}`)) {
                 response.writeHead(403).end()
+
                 return
             }
 
@@ -78,7 +80,7 @@ for (const fixture of fixtures) {
             url = `http://127.0.0.1:${address.port}/`
         })
 
-        test.afterAll(async () => new Promise<void>((resolve, reject) => {
+        test.afterAll(() => new Promise<void>((resolve, reject) => {
             server.close(error => error ? reject(error) : resolve())
         }))
 
@@ -128,7 +130,7 @@ test.describe('showcase catalog', () => {
         url = `http://127.0.0.1:${address.port}${base}`
     })
 
-    test.afterAll(async () => new Promise<void>((resolve, reject) => {
+    test.afterAll(() => new Promise<void>((resolve, reject) => {
         server.close(error => error ? reject(error) : resolve())
     }))
 
@@ -219,18 +221,24 @@ test.describe('showcase catalog', () => {
             path: 'es-ES/',
             heading: 'Iconos de OmnicaJS',
             usage: 'Uso',
+            catalog: 'Catálogo de iconos',
+            search: 'Buscar iconos',
         }, {
             browserLocale: 'ru',
             expectedLocale: 'ru-RU',
             path: 'ru-RU/',
             heading: 'Иконки OmnicaJS',
             usage: 'Использование',
+            catalog: 'Каталог иконок',
+            search: 'Поиск иконок',
         }, {
             browserLocale: 'fr-FR',
             expectedLocale: 'en-GB',
             path: '',
             heading: 'OmnicaJS Icons',
             usage: 'Usage',
+            catalog: 'Icon catalog',
+            search: 'Search icons',
         }] as const
 
         for (const localeCase of cases) {
@@ -242,6 +250,8 @@ test.describe('showcase catalog', () => {
             await expect(page).toHaveURL(new URL(localeCase.path, url).toString())
             await expect(page.locator('html')).toHaveAttribute('lang', localeCase.expectedLocale)
             await expect(page.getByRole('heading', { level: 1, name: localeCase.heading })).toBeVisible()
+            await expect(page.getByRole('heading', { level: 2, name: localeCase.catalog })).toBeVisible()
+            await expect(page.getByRole('searchbox', { name: localeCase.search })).toBeVisible()
             await expect(page.getByRole('link', { name: localeCase.usage, exact: true })).toBeVisible()
 
             if (localeCase.expectedLocale === 'es-ES') {

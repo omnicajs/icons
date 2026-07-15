@@ -1,9 +1,12 @@
-import { createHash } from 'node:crypto'
-import { mkdir, writeFile } from 'node:fs/promises'
-import { dirname, join, resolve } from 'node:path'
-import { pathToFileURL } from 'node:url'
-import type { LoaderDefinitionFunction } from 'webpack'
 import type { IconBuildConfig } from './build.js'
+import type { LoaderDefinitionFunction } from 'webpack'
+
+import { createHash } from 'node:crypto'
+import { dirname, join } from 'node:path'
+import { mkdir } from 'node:fs/promises'
+import { pathToFileURL } from 'node:url'
+import { resolve } from 'node:path'
+import { writeFile } from 'node:fs/promises'
 
 interface OmnicaIconsLoaderOptions {
     readonly config: IconBuildConfig

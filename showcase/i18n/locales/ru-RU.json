@@ -1,0 +1,61 @@
+{
+  "catalog": {
+    "title": "Каталог иконок",
+    "summary": "{groups}, {icons}; начертание — {variant}.",
+    "groupCount": "{count} группа | {count} группы | {count} групп",
+    "iconCount": "{count} иконка | {count} иконки | {count} иконок",
+    "spriteSize": "Размер спрайта: {raw} без сжатия, {gzip} gzip.",
+    "currentDelivery": "Текущий способ поставки: {delivery}",
+    "search": {
+      "label": "Поиск иконок",
+      "placeholder": "Название или ключевое слово"
+    },
+    "variant": {
+      "label": "Начертание",
+      "filled": "С заливкой",
+      "outlined": "Контурное"
+    },
+    "delivery": {
+      "label": "Способ поставки",
+      "full": "Общий спрайт",
+      "grouped": "Спрайты по группам",
+      "fullSummary": "Общий спрайт.",
+      "groupedSummary": "{count} спрайт по группе. | {count} спрайта по группам. | {count} спрайтов по группам."
+    },
+    "groups": {
+      "label": "Группы иконок",
+      "showAll": "Показать все группы",
+      "showOnly": "Показать только {group}"
+    },
+    "copy": {
+      "title": "Скопировать {path}",
+      "action": "Копировать",
+      "done": "Скопировано"
+    },
+    "noMatches": "По запросу «{query}» иконки не найдены."
+  },
+  "shell": {
+    "description": "Типизированные SVG-спрайты иконок для проектов OmnicaJS.",
+    "nav": {
+      "icons": "Иконки",
+      "usage": "Использование"
+    },
+    "footer": "Распространяется по лицензии MIT.",
+    "outline": "На этой странице",
+    "previousPage": "Предыдущая страница",
+    "nextPage": "Следующая страница",
+    "appearance": "Оформление",
+    "lightTheme": "Включить светлую тему",
+    "darkTheme": "Включить тёмную тему",
+    "menu": "Меню",
+    "returnToTop": "Вернуться наверх",
+    "languageMenu": "Сменить язык",
+    "skipToContent": "Перейти к содержимому",
+    "notFound": {
+      "title": "СТРАНИЦА НЕ НАЙДЕНА",
+      "quote": "Запрошенной страницы не существует.",
+      "linkLabel": "перейти на главную",
+      "linkText": "На главную"
+    }
+  }
+}

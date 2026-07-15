@@ -1,10 +1,12 @@
+import type { IconBuildArtifact, IconBuildConfig } from './build.js'
+import type { Plugin } from 'vite'
+
 import crypto from 'node:crypto'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import type { Plugin } from 'vite'
-import { createAdapterDeclarations, createAdapterRuntime } from './adapter-output.js'
+
 import { buildIconSet } from './build.js'
-import type { IconBuildArtifact, IconBuildConfig } from './build.js'
+import { createAdapterDeclarations, createAdapterRuntime } from './adapter-output.js'
 
 export interface OmnicaIconsOptions extends IconBuildConfig {
     /** Writes exact declarations for `virtual:omnicajs-icons`. The file must be included by consumer TypeScript. */
@@ -52,6 +54,7 @@ export const omnicaIcons = (options: OmnicaIconsOptions): Plugin => {
 
                 if (!artifact) {
                     next()
+
                     return
                 }
 

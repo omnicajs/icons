@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict'
+import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import test from 'node:test'
-import { fileURLToPath } from 'node:url'
-import { buildIconSet, loadManifest } from '../dist/build.js'
+
 import { iconUrl as allIconUrl } from '../dist/all.js'
+import { buildIconSet } from '../dist/build.js'
 import { iconUrl as groupIconUrl } from '../dist/filled/actions.js'
+import { loadManifest } from '../dist/build.js'
 
 interface MigrationEntry {
     readonly destination: string

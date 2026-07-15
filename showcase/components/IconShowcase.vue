@@ -3,53 +3,59 @@
         <header :class="$style['catalog__header']">
             <div>
                 <h2 id="catalog-title">
-                    {{ messages.title }}
+                    {{ t('catalog.title') }}
                 </h2>
                 <p>
-                    {{ messages.summary(iconGroups.length, iconCount, activeVariant) }}
-                    {{ messages.spriteSize(
-                        formatSize(activeSpriteSize.bytes),
-                        formatSize(activeSpriteSize.gzipBytes)
-                    ) }}
+                    {{ t('catalog.summary', {
+                        groups: t('catalog.groupCount', iconGroups.length),
+                        icons: t('catalog.iconCount', iconCount),
+                        variant: variantLabels[activeVariant],
+                    }) }}
+                    {{ t('catalog.spriteSize', {
+                        raw: formatSize(activeSpriteSize.bytes),
+                        gzip: formatSize(activeSpriteSize.gzipBytes)
+                    }) }}
                 </p>
                 <p>
-                    {{ messages.currentDelivery(deliverySummary) }}
+                    {{ t('catalog.currentDelivery', { delivery: delivery === 'full'
+                        ? t('catalog.delivery.fullSummary')
+                        : t('catalog.delivery.groupedSummary', activeGroup ? 1 : iconGroups.length),
+                    }) }}
                 </p>
             </div>
 
             <div :class="$style['catalog__toolbar']">
                 <div :class="$style['catalog__search']">
-                    <label :for="uid + '-term'">{{ messages.searchLabel }}</label>
+                    <label :for="uid + '-term'">{{ t('catalog.search.label') }}</label>
                     <input
                         :id="uid + '-term'"
                         v-model="query"
                         type="search"
                         autocomplete="off"
-                        :placeholder="messages.searchPlaceholder"
+                        :placeholder="t('catalog.search.placeholder')"
                     >
                 </div>
 
                 <div :class="$style['catalog__select']">
-                    <label :for="uid + '-style'">{{ messages.variantLabel }}</label>
+                    <label :for="uid + '-style'">{{ t('catalog.variant.label') }}</label>
                     <select
                         :id="uid + '-style'"
                         v-model="activeVariant"
                     >
                         <option v-for="variant in variants" :key="variant" :value="variant">
-                            {{ messages.variantOptions[variant] }}
+                            {{ variantLabels[variant] }}
                         </option>
                     </select>
                 </div>
 
                 <div :class="$style['catalog__select']">
-                    <label :for="uid + '-delivery'">{{ messages.deliveryLabel }}</label>
+                    <label :for="uid + '-delivery'">{{ t('catalog.delivery.label') }}</label>
                     <select
                         :id="uid + '-delivery'"
                         v-model="delivery"
                     >
-                        <option v-for="option in deliveryOptions" :key="option.value" :value="option.value">
-                            {{ option.label }}
-                        </option>
+                        <option value="full" v-text="t('catalog.delivery.full')" />
+                        <option value="grouped" v-text="t('catalog.delivery.grouped')" />
                     </select>
                 </div>
             </div>
@@ -57,7 +63,7 @@
 
         <nav
             :class="$style['catalog__groups']"
-            :aria-label="messages.groupsLabel"
+            :aria-label="t('catalog.groups.label')"
         >
             <button
                 v-for="group in iconGroups"
@@ -68,8 +74,10 @@
                     [$style['catalog__group']]: true,
                     [$style['catalog__group_active']]: group === activeGroup
                 }"
-                :title="group === activeGroup ? messages.showAllGroups : messages.showOnlyGroup(group)"
-                @click="toggleGroup(group)"
+                :title="group === activeGroup
+                    ? t('catalog.groups.showAll')
+                    : t('catalog.groups.showOnly', { group })"
+                @click="activeGroup = activeGroup === group ? null : group"
             >
                 {{ group }} <span>{{ catalog[activeVariant][group].length }}</span>
             </button>
@@ -95,7 +103,9 @@
                         :key="name"
                         type="button"
                         :class="$style['catalog__icon']"
-                        :title="messages.copyTitle(`${activeVariant}/${group.name}/${name}`)"
+                        :title="t('catalog.copy.title', {
+                            path: `${activeVariant}/${group.name}/${name}`
+                        })"
                         @click="copyIconName(group.name, name)"
                     >
                         <IconGlyph
@@ -107,7 +117,9 @@
                         />
                         <span :class="$style['catalog__name']">{{ name }}</span>
                         <span :class="$style['catalog__copy']">
-                            {{ copiedIcon === `${activeVariant}/${group.name}/${name}` ? messages.copied : messages.copy }}
+                            {{ copiedIcon === `${activeVariant}/${group.name}/${name}`
+                                ? t('catalog.copy.done')
+                                : t('catalog.copy.action') }}
                         </span>
                     </button>
                 </div>
@@ -115,7 +127,7 @@
         </div>
 
         <p v-if="visibleIconCount === 0" :class="$style.catalog__empty">
-            {{ messages.noMatches(query) }}
+            {{ t('catalog.noMatches', { query }) }}
         </p>
     </section>
 </template>
@@ -124,7 +136,12 @@
 import type { IconCatalog } from '../composables/search'
 import type { IconVariant } from '@omnicajs/icons'
 
-import { computed, ref, useId, watch } from 'vue'
+import {
+    computed,
+    ref,
+    useId,
+    watch,
+} from 'vue'
 
 import { iconNames } from '@omnicajs/icons'
 
@@ -133,46 +150,43 @@ import manifest from '@omnicajs/icons/manifest'
 import IconGlyph from './IconGlyph.vue'
 
 import { useClipboard } from '../composables/clipboard'
+import { useI18n } from '../composables/i18n'
 import { useSearch } from '../composables/search'
-import { useShowcaseI18n } from '../i18n/useShowcaseI18n'
 
 type Delivery = 'full' | 'grouped'
 type SpriteSize = Readonly<{ bytes: number, gzipBytes: number }>
 
 const uid = useId()
-const { formatSize, messages } = useShowcaseI18n()
 
-// Catalog selection and filtering.
+const { t, formatSize } = useI18n()
+
 const catalog = iconNames as IconCatalog
+
 const variants = Object.keys(catalog) as IconVariant[]
 const activeVariant = ref<IconVariant>('filled')
+const variantLabels = computed<Record<IconVariant, string>>(() => ({
+    filled: t('catalog.variant.filled'),
+    outlined: t('catalog.variant.outlined'),
+}))
 const iconGroups = computed(() => Object.keys(catalog[activeVariant.value]))
-const activeGroup = ref<string | null>(iconGroups.value[0] ?? null)
 const iconCount = computed(() => Object.values(catalog[activeVariant.value])
     .reduce((count, names) => count + names.length, 0))
-const { query, visibleIconCount, visibleIconGroups } = useSearch({
+
+const activeGroup = ref<string | null>(iconGroups.value[0] ?? null)
+
+const {
+    query,
+    visibleIconCount,
+    visibleIconGroups,
+} = useSearch({
     activeGroup,
     catalog,
     groups: iconGroups,
     variant: activeVariant,
 })
-const toggleGroup = (group: string): void => {
-    activeGroup.value = activeGroup.value === group ? null : group
-}
 
-// Sprite delivery and cache-safe URLs.
-const deliveryOptions = computed(() => [{
-    label: messages.value.fullSprite,
-    value: 'full' as const,
-}, {
-    label: messages.value.groupedSprites,
-    value: 'grouped' as const,
-}])
 const delivery = ref<Delivery>('full')
-const groupedSpriteCount = computed(() => activeGroup.value ? 1 : iconGroups.value.length)
-const deliverySummary = computed(() => delivery.value === 'full'
-    ? messages.value.fullDeliverySummary
-    : messages.value.groupedDeliverySummary(groupedSpriteCount.value))
+
 const activeSpriteSize = computed<SpriteSize>(() => {
     if (delivery.value === 'full') {
         return manifest.variants[activeVariant.value].size
@@ -190,10 +204,8 @@ const activeSpriteSize = computed<SpriteSize>(() => {
     }, { bytes: 0, gzipBytes: 0 })
 })
 
-// Clipboard interaction and feedback.
 const { copiedIcon, copyIconName } = useClipboard(activeVariant)
 
-// Keep dependent UI state consistent when the catalog variant changes.
 watch(activeVariant, variant => {
     if (activeGroup.value && !Object.hasOwn(catalog[variant], activeGroup.value)) {
         activeGroup.value = Object.keys(catalog[variant])[0] ?? null

@@ -1,6 +1,8 @@
-import { join } from 'node:path'
-import type { Compiler, WebpackPluginInstance } from 'webpack'
+import type { Compiler } from 'webpack'
 import type { IconBuildConfig } from './build.js'
+import type { WebpackPluginInstance } from 'webpack'
+
+import { join } from 'node:path'
 
 export interface OmnicaIconsPluginOptions extends IconBuildConfig {
     /** Writes exact declarations for `virtual:omnicajs-icons`. The file must be included by consumer TypeScript. */

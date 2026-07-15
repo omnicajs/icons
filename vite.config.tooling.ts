@@ -1,8 +1,10 @@
+import type { LibraryFormats, Plugin, UserConfig } from 'vite'
+
+import { fileURLToPath } from 'node:url'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+
 import { defineConfig } from 'vite'
-import type { LibraryFormats, Plugin, UserConfig } from 'vite'
 
 const __root = path.dirname(fileURLToPath(import.meta.url))
 const __tooling = path.join(__root, 'tooling')

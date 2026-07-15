@@ -1,0 +1,61 @@
+{
+  "catalog": {
+    "title": "Icon catalog",
+    "summary": "{groups}, {icons} in {variant}.",
+    "groupCount": "{count} group | {count} groups",
+    "iconCount": "{count} icon | {count} icons",
+    "spriteSize": "Sprite size: {raw} raw, {gzip} gzip.",
+    "currentDelivery": "Current delivery: {delivery}",
+    "search": {
+      "label": "Search icons",
+      "placeholder": "Name or keyword"
+    },
+    "variant": {
+      "label": "Style",
+      "filled": "Filled",
+      "outlined": "Outlined"
+    },
+    "delivery": {
+      "label": "Sprite delivery",
+      "full": "Full sprite",
+      "grouped": "Grouped sprites",
+      "fullSummary": "Full sprite.",
+      "groupedSummary": "{count} grouped sprite. | {count} grouped sprites."
+    },
+    "groups": {
+      "label": "Icon groups",
+      "showAll": "Show all groups",
+      "showOnly": "Show only {group}"
+    },
+    "copy": {
+      "title": "Copy {path}",
+      "action": "Copy",
+      "done": "Copied"
+    },
+    "noMatches": "No icons match “{query}”."
+  },
+  "shell": {
+    "description": "Typed SVG icon sprites for OmnicaJS projects.",
+    "nav": {
+      "icons": "Icons",
+      "usage": "Usage"
+    },
+    "footer": "Released under the MIT License.",
+    "outline": "On this page",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
+    "appearance": "Appearance",
+    "lightTheme": "Switch to light theme",
+    "darkTheme": "Switch to dark theme",
+    "menu": "Menu",
+    "returnToTop": "Return to top",
+    "languageMenu": "Change language",
+    "skipToContent": "Skip to content",
+    "notFound": {
+      "title": "PAGE NOT FOUND",
+      "quote": "The requested page does not exist.",
+      "linkLabel": "go to home",
+      "linkText": "Take me home"
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { iconUrl as customIconUrl } from 'virtual:omnicajs-icons'
+
 import { iconUrl as fullIconUrl } from '@omnicajs/icons/filled'
 import { iconUrl as groupIconUrl } from '@omnicajs/icons/filled/actions'
 

@@ -121,6 +121,7 @@
 </template>
 
 <script lang="ts" setup>
+import type { IconCatalog } from '../composables/search'
 import type { IconVariant } from '@omnicajs/icons'
 
 import { computed, ref, useId, watch } from 'vue'
@@ -129,93 +130,32 @@ import { iconNames } from '@omnicajs/icons'
 
 import manifest from '@omnicajs/icons/manifest'
 
-import { useShowcaseI18n } from '../i18n/useShowcaseI18n'
 import IconGlyph from './IconGlyph.vue'
 
+import { useClipboard } from '../composables/clipboard'
+import { useSearch } from '../composables/search'
+import { useShowcaseI18n } from '../i18n/useShowcaseI18n'
+
 type Delivery = 'full' | 'grouped'
-type DynamicIconCatalog = Readonly<Record<IconVariant, Readonly<Record<string, readonly string[]>>>>
 type SpriteSize = Readonly<{ bytes: number, gzipBytes: number }>
-type VisibleIconGroup = Readonly<{ name: string, names: readonly string[] }>
-type RankedIcon = Readonly<{ name: string, order: number, score: number }>
-type RankedIconGroup = Readonly<VisibleIconGroup & { order: number, score: number }>
 
 const uid = useId()
 const { formatSize, messages } = useShowcaseI18n()
 
 // Catalog selection and filtering.
-const catalog = iconNames as DynamicIconCatalog
+const catalog = iconNames as IconCatalog
 const variants = Object.keys(catalog) as IconVariant[]
 const activeVariant = ref<IconVariant>('filled')
 const iconGroups = computed(() => Object.keys(catalog[activeVariant.value]))
 const activeGroup = ref<string | null>(iconGroups.value[0] ?? null)
-const query = ref('')
 const iconCount = computed(() => Object.values(catalog[activeVariant.value])
     .reduce((count, names) => count + names.length, 0))
-const normalizeSearchValue = (value: string): string => value
-    .normalize('NFKD')
-    .replace(/\p{M}/gu, '')
-    .toLocaleLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, ' ')
-    .trim()
-const includesSearchTerms = (value: string, terms: readonly string[]): boolean =>
-    terms.every(term => value.includes(term))
-const iconSearchScore = (group: string, name: string, normalizedQuery: string): number | null => {
-    if (!normalizedQuery) {
-        return 0
-    }
-
-    const canonicalValues = [
-        name,
-        `${group}/${name}`,
-        `${activeVariant.value}/${group}/${name}`,
-    ].map(normalizeSearchValue)
-
-    if (canonicalValues.includes(normalizedQuery)) {
-        return 0
-    }
-
-    const terms = normalizedQuery.split(' ')
-
-    if (includesSearchTerms(canonicalValues.join(' '), terms)) {
-        return 1
-    }
-
-    const keywordValues = manifest.variants[activeVariant.value].groups[group].icons[name].keywords
-        .map(normalizeSearchValue)
-
-    if (keywordValues.includes(normalizedQuery)) {
-        return 2
-    }
-
-    return includesSearchTerms(keywordValues.join(' '), terms) ? 3 : null
-}
-const visibleIconGroups = computed<VisibleIconGroup[]>(() => {
-    const normalizedQuery = normalizeSearchValue(query.value)
-    const groups = activeGroup.value ? [activeGroup.value] : iconGroups.value
-
-    return groups
-        .map<RankedIconGroup>((name, groupOrder) => {
-            const icons = catalog[activeVariant.value][name]
-                .map<RankedIcon>((iconName, iconOrder) => ({
-                    name: iconName,
-                    order: iconOrder,
-                    score: iconSearchScore(name, iconName, normalizedQuery) ?? Number.POSITIVE_INFINITY,
-                }))
-                .filter(icon => Number.isFinite(icon.score))
-                .sort((left, right) => left.score - right.score || left.order - right.order)
-
-            return {
-                name,
-                names: icons.map(icon => icon.name),
-                order: groupOrder,
-                score: icons[0]?.score ?? Number.POSITIVE_INFINITY,
-            }
-        })
-        .filter(group => group.names.length > 0)
-        .sort((left, right) => left.score - right.score || left.order - right.order)
+const { query, visibleIconCount, visibleIconGroups } = useSearch({
+    activeGroup,
+    catalog,
+    groups: iconGroups,
+    variant: activeVariant,
 })
-const visibleIconCount = computed(() => visibleIconGroups.value
-    .reduce((count, group) => count + group.names.length, 0))
 const toggleGroup = (group: string): void => {
     activeGroup.value = activeGroup.value === group ? null : group
 }
@@ -249,44 +189,15 @@ const activeSpriteSize = computed<SpriteSize>(() => {
         }
     }, { bytes: 0, gzipBytes: 0 })
 })
+
 // Clipboard interaction and feedback.
-const copiedIcon = ref('')
-const writeToClipboard = async (value: string): Promise<void> => {
-    try {
-        await navigator.clipboard.writeText(value)
-    } catch {
-        const textarea = document.createElement('textarea')
-
-        textarea.value = value
-        textarea.style.position = 'fixed'
-        textarea.style.opacity = '0'
-        document.body.append(textarea)
-        textarea.select()
-        document.execCommand('copy')
-        textarea.remove()
-    }
-}
-
-const copyIconName = async (group: string, name: string): Promise<void> => {
-    const value = `${activeVariant.value}/${group}/${name}`
-
-    await writeToClipboard(value)
-    copiedIcon.value = value
-
-    window.setTimeout(() => {
-        if (copiedIcon.value === value) {
-            copiedIcon.value = ''
-        }
-    }, 1500)
-}
+const { copiedIcon, copyIconName } = useClipboard(activeVariant)
 
 // Keep dependent UI state consistent when the catalog variant changes.
 watch(activeVariant, variant => {
     if (activeGroup.value && !Object.hasOwn(catalog[variant], activeGroup.value)) {
         activeGroup.value = Object.keys(catalog[variant])[0] ?? null
     }
-
-    copiedIcon.value = ''
 })
 </script>
 

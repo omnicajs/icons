@@ -162,6 +162,11 @@ test.describe('showcase catalog', () => {
         await expect(page.getByRole('region', { name: 'actions' })).toBeVisible()
         await expect(page.getByRole('region', { name: 'alerts' })).toHaveCount(0)
 
+        const firstIcon = page.getByRole('region', { name: 'actions' }).getByRole('button').first()
+
+        await firstIcon.click()
+        await expect(firstIcon).toContainText('Copied')
+
         await actions.click()
 
         await expect(actions).toHaveAttribute('aria-pressed', 'false')

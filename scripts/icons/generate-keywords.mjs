@@ -5,8 +5,8 @@ import path from 'node:path'
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const iconsDirectory = path.join(root, 'assets/icons')
 const keywordFile = path.join(root, 'metadata/icon-keywords.json')
-const migrationFile = path.join(root, 'metadata/migrations/groups-v1.json')
-const nameMigrationFile = path.join(root, 'drafts/icon-name-migrations.md')
+const keywordAliasFile = path.join(root, 'metadata/icon-keyword-aliases.json')
+const groupMigrationFile = path.join(root, 'metadata/migrations/groups-v1.json')
 const collectionDirectories = {
     flags: path.join(root, 'assets/flags'),
     logos: path.join(root, 'assets/logos'),
@@ -101,13 +101,20 @@ const addKeyword = (metadata, target, keyword) => {
     }
 }
 
-const parseNameMigrations = source => [...source.matchAll(/^\| `([^`]+)` \| `([^`]+)` \|$/gm)]
-    .map(([, legacyPath, canonicalPath]) => ({ legacyPath, canonicalPath }))
-
 const generateKeywords = async () => {
     const metadata = await collectEmptyKeywords()
-    const groupMigration = JSON.parse(await fs.readFile(migrationFile, 'utf8'))
+    const groupMigration = JSON.parse(await fs.readFile(groupMigrationFile, 'utf8'))
+    const keywordAliasMetadata = JSON.parse(await fs.readFile(keywordAliasFile, 'utf8'))
     const targetByLegacyPath = new Map()
+
+    if (
+        keywordAliasMetadata.schemaVersion !== 1
+        || !keywordAliasMetadata.aliases
+        || typeof keywordAliasMetadata.aliases !== 'object'
+        || Array.isArray(keywordAliasMetadata.aliases)
+    ) {
+        throw new Error('Invalid metadata/icon-keyword-aliases.json schema')
+    }
 
     for (const entry of groupMigration) {
         const legacyPath = entry.source
@@ -123,24 +130,18 @@ const generateKeywords = async () => {
         addKeyword(metadata, target, legacyPath)
     }
 
-    const nameMigrationSource = await fs.readFile(nameMigrationFile, 'utf8')
-    const nameMigrations = parseNameMigrations(nameMigrationSource)
-    const seenLegacyPaths = new Set()
-
-    for (const { legacyPath, canonicalPath } of nameMigrations) {
-        if (seenLegacyPaths.has(legacyPath)) {
-            throw new Error(`Duplicate name migration source: ${legacyPath}`)
+    for (const [keyword, icon] of Object.entries(keywordAliasMetadata.aliases)) {
+        if (typeof icon !== 'string') {
+            throw new Error(`Invalid icon keyword target: ${keyword}`)
         }
 
-        seenLegacyPaths.add(legacyPath)
-
-        const target = collectionTarget(canonicalPath) ?? targetByLegacyPath.get(canonicalPath)
+        const target = collectionTarget(icon) ?? targetByLegacyPath.get(icon)
 
         if (!target) {
-            throw new Error(`Name migration target is not canonical: ${canonicalPath}`)
+            throw new Error(`Icon keyword target is not canonical: ${icon}`)
         }
 
-        addKeyword(metadata, target, legacyPath)
+        addKeyword(metadata, target, keyword)
     }
 
     return `${JSON.stringify(metadata, null, 4)}\n`

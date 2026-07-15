@@ -11,12 +11,12 @@ This document describes the repository workflow for maintainers of `@omnicajs/ic
 - `build/` contains deterministic icon discovery, sprite, and declaration generators.
 - `tooling/` contains the typed build core and the CLI, Vite, and Webpack adapters.
 - `scripts/icons/build.mjs` generates deterministic icon assets and package modules.
+- `metadata/` contains tracked migration maps and icon search-keyword aliases.
 - `vite.config.tooling.ts` compiles tooling to its publishable ESM and CommonJS entrypoints.
 - `showcase/` contains the complete VitePress site published to GitHub Pages.
 - `docs/` contains internal development documentation that is not published to GitHub Pages.
 - `generated/` contains temporary build input and is ignored by Git.
 - `dist/` contains publishable package output and is ignored by Git.
-- `drafts/` contains local research notes and is excluded through `.git/info/exclude`.
 
 ## Environment
 

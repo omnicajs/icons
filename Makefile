@@ -1,9 +1,12 @@
 .DEFAULT_GOAL := help
 
+HOST_UID ?= $(shell id -u)
+HOST_GID ?= $(shell id -g)
+
 DOCKER=@docker compose run --rm node
-DOCKER_PLAYWRIGHT=@docker compose run --rm playwright
+DOCKER_PLAYWRIGHT=@HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose run --rm playwright
 DOCKER_CMD=docker compose run --rm node
-DOCKER_PLAYWRIGHT_CMD=docker compose run --rm playwright
+DOCKER_PLAYWRIGHT_CMD=HOST_UID=$(HOST_UID) HOST_GID=$(HOST_GID) docker compose run --rm playwright
 TARGET_HEADER=@printf '===== \033[34m%s\033[0m\n' $@
 LOCAL_MODE := $(filter local,$(MAKECMDGOALS))
 

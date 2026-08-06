@@ -289,6 +289,81 @@ test.describe('showcase catalog', () => {
         await expect(page.getByRole('button', { name: /^actions \d+$/ })).toBeVisible()
     })
 
+    test('renders newly imported icon shapes from the full sprite', async ({ page }) => {
+        const importedIcons: readonly {
+            group: string
+            name: string
+            expectedSize?: number
+        }[] = [{
+            group: 'actions',
+            name: 'badge-recommendation',
+        }, {
+            group: 'actions',
+            name: 'clear-circle',
+            expectedSize: 20,
+        }, {
+            group: 'actions',
+            name: 'clear-circle-small',
+            expectedSize: 16,
+        }, {
+            group: 'commerce',
+            name: 'shopping-cart-sale',
+        }, {
+            group: 'layout',
+            name: 'browser-window-close',
+        }, {
+            group: 'layout',
+            name: 'browser-window-in',
+        }, {
+            group: 'navigation',
+            name: 'exit',
+        }, {
+            group: 'navigation',
+            name: 'menu-squares',
+        }]
+
+        await page.goto(url)
+        await page.getByRole('button', { name: /^actions \d+$/ }).click()
+
+        const search = page.getByRole('searchbox', { name: 'Search icons' })
+
+        for (const icon of importedIcons) {
+            await search.fill(icon.name)
+
+            const iconButton = page
+                .getByRole('region', { name: icon.group })
+                .getByRole('button', { name: `${icon.name} Copy`, exact: true })
+            const glyph = iconButton.locator('use')
+
+            await expect(iconButton).toBeVisible()
+            await expect(glyph).toHaveAttribute('href', new RegExp(`#${icon.group}/${icon.name}$`))
+            const bounds = await glyph.evaluate(element => {
+                const svg = (element as SVGUseElement).ownerSVGElement
+
+                if (!svg) {
+                    return null
+                }
+
+                const bounds = svg.getBBox()
+
+                return {
+                    height: bounds.height,
+                    width: bounds.width,
+                }
+            })
+
+            expect(bounds?.width).toBeGreaterThan(0)
+            expect(bounds?.height).toBeGreaterThan(0)
+
+            if (icon.expectedSize) {
+                expect(bounds).toEqual({
+                    height: icon.expectedSize,
+                    width: icon.expectedSize,
+                })
+            }
+        }
+    })
+
     test('shows npm in the navigation and package installation on the usage page', async ({ page }) => {
         await page.goto(url)
 

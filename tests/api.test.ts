@@ -88,7 +88,15 @@ test('manifest exposes generated search keywords for every icon', async () => {
         assert.deepEqual(keywords, [...new Set(keywords)].sort((left, right) => left.localeCompare(right)))
     }
 
-    assert.equal(keywordSets.length, 1535)
+    assert.equal(keywordSets.length, 1542)
+    assert.ok(manifest.variants.filled.groups.actions.icons['badge-recommendation'])
+    assert.ok(manifest.variants.filled.groups.actions.icons['clear-circle'])
+    assert.ok(manifest.variants.filled.groups.actions.icons['clear-circle-small'])
+    assert.ok(manifest.variants.filled.groups.commerce.icons['shopping-cart-sale'])
+    assert.ok(manifest.variants.filled.groups.layout.icons['browser-window-close'])
+    assert.ok(manifest.variants.filled.groups.layout.icons['browser-window-in'])
+    assert.ok(manifest.variants.filled.groups.navigation.icons.exit)
+    assert.ok(manifest.variants.filled.groups.navigation.icons['menu-squares'])
     assert.ok(manifest.variants.filled.groups.ai.icons['brain-circuit'].keywords.includes('ai/brain-ai'))
     assert.ok(manifest.variants.filled.groups.files.icons['folder-text'].keywords.includes('files/folder_labeled'))
     assert.ok(manifest.variants.outlined.groups.files.icons['folder-text'].keywords.includes('files/folder_labeled_outlined'))

@@ -265,10 +265,10 @@
     },
     {
         "source": "assets/icons/actions/clear-circle.svg",
-        "destination": "assets/icons/filled/actions/clear-circle.svg",
+        "destination": "assets/icons/filled/actions/clear-circle-small.svg",
         "variant": "filled",
         "group": "actions",
-        "name": "clear-circle",
+        "name": "clear-circle-small",
         "canonical": true
     },
     {

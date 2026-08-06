@@ -20,6 +20,7 @@
                     "ui/auto-chain-forward"
                 ],
                 "autorenew": [],
+                "badge-recommendation": [],
                 "beta": [
                     "ui/beta",
                     "ui/beta_test"
@@ -42,6 +43,9 @@
                 "clear": [],
                 "clear-all": [],
                 "clear-circle": [],
+                "clear-circle-small": [
+                    "actions/clear-circle"
+                ],
                 "clear-square": [],
                 "command": [],
                 "copy": [
@@ -740,6 +744,7 @@
                 "shopping-cart-remove": [
                     "actions/shopping-cart-remove"
                 ],
+                "shopping-cart-sale": [],
                 "subscribe": [
                     "actions/subscribe"
                 ],
@@ -1938,6 +1943,8 @@
                 "browser-window": [
                     "actions/browser-window"
                 ],
+                "browser-window-close": [],
+                "browser-window-in": [],
                 "browser-windows": [
                     "actions/browser-windows"
                 ],
@@ -2382,6 +2389,7 @@
                 "enter": [
                     "other/enter"
                 ],
+                "exit": [],
                 "explore": [
                     "ui/explore"
                 ],
@@ -2419,6 +2427,7 @@
                     "ui/menu_left_right",
                     "ui/menu-right"
                 ],
+                "menu-squares": [],
                 "menu-vertical": [
                     "ui/menu_vertical",
                     "ui/menu-vertical"

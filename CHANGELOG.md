@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.3.0
+
+### ⚠ BREAKING CHANGE* **icons:** Added missing icons and standardized clear circle
+* **icons:** filled/actions/clear-circle now uses the standard 20x20 circle. The previous 16x16 glyph is available as filled/actions/clear-circle-small.
+
+
+### Features
+
+* **docs:** Expanded package showcase ([5e849a9](https://github.com/omnicajs/icons/commit/5e849a931ca2409e1dfd5d0662a29cd15477cbe0))
+* **icons:** Added missing icons and standardized clear circle ([c7ac32d](https://github.com/omnicajs/icons/commit/c7ac32d3bc26a40bf9f6d6c0b14f1d4a25def89e))
+
 ## 0.2.0
 
 ### ⚠ BREAKING CHANGE* **icons:** Reorganized icon delivery layers

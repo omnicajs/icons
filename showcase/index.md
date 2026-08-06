@@ -5,13 +5,13 @@ pageClass: icon-catalog-page
 ---
 
 <script setup>
-import IconShowcase from './components/IconShowcase.vue'
+import CatalogShowcase from './components/CatalogShowcase.vue'
 </script>
 
 # OmnicaJS Icons
 
-Typed filled and outlined SVG sprites generated from one `variant/group/name` catalog. Switch delivery to compare the full and group sprite URLs without changing symbol identity. Search also recognises designer-provided keywords.
+Explore the OmnicaJS graphics library: monochrome interface icons, full-colour logos, and country flags. Search by name or keyword, then select an item to copy its icon path.
 
 <ClientOnly>
-    <IconShowcase />
+    <CatalogShowcase />
 </ClientOnly>

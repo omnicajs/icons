@@ -2,6 +2,7 @@
   "catalog": {
     "title": "Catálogo de iconos",
     "summary": "{groups}, {icons} en {variant}.",
+    "collectionSummary": "{icons} en esta colección a todo color.",
     "groupCount": "{count} grupo | {count} grupos",
     "iconCount": "{count} icono | {count} iconos",
     "spriteSize": "Tamaño del sprite: {raw} sin comprimir, {gzip} gzip.",
@@ -9,6 +10,20 @@
     "search": {
       "label": "Buscar iconos",
       "placeholder": "Nombre o palabra clave"
+    },
+    "sections": {
+      "label": "Secciones del catálogo",
+      "icons": "Iconos",
+      "logos": "Logotipos",
+      "flags": "Banderas"
+    },
+    "collections": {
+      "logos": {
+        "title": "Catálogo de logotipos"
+      },
+      "flags": {
+        "title": "Catálogo de banderas"
+      }
     },
     "variant": {
       "label": "Estilo",
@@ -35,7 +50,7 @@
     "noMatches": "Ningún icono coincide con «{query}»."
   },
   "shell": {
-    "description": "Sprites SVG tipados para proyectos de OmnicaJS.",
+    "description": "Iconos SVG, logotipos y banderas para proyectos de OmnicaJS.",
     "nav": {
       "icons": "Iconos",
       "usage": "Uso"

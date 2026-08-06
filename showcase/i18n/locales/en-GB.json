@@ -2,6 +2,7 @@
   "catalog": {
     "title": "Icon catalog",
     "summary": "{groups}, {icons} in {variant}.",
+    "collectionSummary": "{icons} in this full-colour collection.",
     "groupCount": "{count} group | {count} groups",
     "iconCount": "{count} icon | {count} icons",
     "spriteSize": "Sprite size: {raw} raw, {gzip} gzip.",
@@ -9,6 +10,20 @@
     "search": {
       "label": "Search icons",
       "placeholder": "Name or keyword"
+    },
+    "sections": {
+      "label": "Catalog sections",
+      "icons": "Icons",
+      "logos": "Logos",
+      "flags": "Flags"
+    },
+    "collections": {
+      "logos": {
+        "title": "Logo catalog"
+      },
+      "flags": {
+        "title": "Flag catalog"
+      }
     },
     "variant": {
       "label": "Style",
@@ -35,7 +50,7 @@
     "noMatches": "No icons match “{query}”."
   },
   "shell": {
-    "description": "Typed SVG icon sprites for OmnicaJS projects.",
+    "description": "SVG icons, logos and flags for OmnicaJS projects.",
     "nav": {
       "icons": "Icons",
       "usage": "Usage"

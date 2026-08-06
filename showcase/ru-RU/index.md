@@ -5,13 +5,13 @@ pageClass: icon-catalog-page
 ---
 
 <script setup>
-import IconShowcase from '../components/IconShowcase.vue'
+import CatalogShowcase from '../components/CatalogShowcase.vue'
 </script>
 
 # Иконки OmnicaJS
 
-Типизированные SVG-спрайты с заливкой и контурным начертанием, собранные из единого каталога `variant/group/name`. Переключайте способ поставки, чтобы сравнить URL общего и групповых спрайтов без изменения идентификатора символа. Поиск также понимает ключевые слова, заданные дизайнерами.
+Каталог графики OmnicaJS включает монохромные интерфейсные иконки, полноцветные логотипы и флаги стран. Ищите по названию или ключевому слову и нажмите на карточку, чтобы скопировать путь к иконке.
 
 <ClientOnly>
-    <IconShowcase />
+    <CatalogShowcase />
 </ClientOnly>

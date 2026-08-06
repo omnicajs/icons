@@ -2,6 +2,7 @@
   "catalog": {
     "title": "Каталог иконок",
     "summary": "{groups}, {icons}; начертание — {variant}.",
+    "collectionSummary": "{icons} в этой полноцветной коллекции.",
     "groupCount": "{count} группа | {count} группы | {count} групп",
     "iconCount": "{count} иконка | {count} иконки | {count} иконок",
     "spriteSize": "Размер спрайта: {raw} без сжатия, {gzip} gzip.",
@@ -9,6 +10,20 @@
     "search": {
       "label": "Поиск иконок",
       "placeholder": "Название или ключевое слово"
+    },
+    "sections": {
+      "label": "Разделы каталога",
+      "icons": "Иконки",
+      "logos": "Логотипы",
+      "flags": "Флаги"
+    },
+    "collections": {
+      "logos": {
+        "title": "Каталог логотипов"
+      },
+      "flags": {
+        "title": "Каталог флагов"
+      }
     },
     "variant": {
       "label": "Начертание",
@@ -35,7 +50,7 @@
     "noMatches": "По запросу «{query}» иконки не найдены."
   },
   "shell": {
-    "description": "Типизированные SVG-спрайты иконок для проектов OmnicaJS.",
+    "description": "SVG-иконки, логотипы и флаги для проектов OmnicaJS.",
     "nav": {
       "icons": "Иконки",
       "usage": "Использование"

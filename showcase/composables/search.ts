@@ -2,13 +2,15 @@ import type { ComputedRef } from 'vue'
 import type { IconVariant } from '@omnicajs/icons'
 import type { Ref } from 'vue'
 
+import type { IconCollection } from '../collections'
+
 import { computed, ref } from 'vue'
 
 import manifest from '@omnicajs/icons/manifest'
 
 export type IconCatalog = Readonly<Record<IconVariant, Readonly<Record<string, readonly string[]>>>>
 
-type VisibleIconGroup = Readonly<{ name: string, names: readonly string[] }>
+export type VisibleIconGroup = Readonly<{ name: string, names: readonly string[] }>
 type RankedIcon = Readonly<{ name: string, order: number, score: number }>
 type RankedIconGroup = Readonly<VisibleIconGroup & { order: number, score: number }>
 type IconSearchOptions = Readonly<{
@@ -16,6 +18,10 @@ type IconSearchOptions = Readonly<{
     catalog: IconCatalog
     groups: ComputedRef<readonly string[]>
     variant: Ref<IconVariant>
+}>
+type CollectionSearchOptions = Readonly<{
+    collection: IconCollection
+    names: readonly string[]
 }>
 
 const normalizeSearchValue = (value: string): string => value
@@ -28,41 +34,46 @@ const normalizeSearchValue = (value: string): string => value
 const includesSearchTerms = (value: string, terms: readonly string[]): boolean =>
     terms.every(term => value.includes(term))
 
-const iconSearchScore = (
-    variant: IconVariant,
-    group: string,
-    name: string,
+const searchScore = (
+    canonicalValues: readonly string[],
+    keywordValues: readonly string[],
     normalizedQuery: string
 ): number | null => {
     if (!normalizedQuery) {
         return 0
     }
 
-    const canonicalValues = [
-        name,
-        `${group}/${name}`,
-        `${variant}/${group}/${name}`,
-    ].map(normalizeSearchValue)
+    const normalizedCanonicalValues = canonicalValues.map(normalizeSearchValue)
 
-    if (canonicalValues.includes(normalizedQuery)) {
+    if (normalizedCanonicalValues.includes(normalizedQuery)) {
         return 0
     }
 
     const terms = normalizedQuery.split(' ')
 
-    if (includesSearchTerms(canonicalValues.join(' '), terms)) {
+    if (includesSearchTerms(normalizedCanonicalValues.join(' '), terms)) {
         return 1
     }
 
-    const keywordValues = manifest.variants[variant].groups[group].icons[name].keywords
-        .map(normalizeSearchValue)
+    const normalizedKeywordValues = keywordValues.map(normalizeSearchValue)
 
-    if (keywordValues.includes(normalizedQuery)) {
+    if (normalizedKeywordValues.includes(normalizedQuery)) {
         return 2
     }
 
-    return includesSearchTerms(keywordValues.join(' '), terms) ? 3 : null
+    return includesSearchTerms(normalizedKeywordValues.join(' '), terms) ? 3 : null
 }
+
+const iconSearchScore = (
+    variant: IconVariant,
+    group: string,
+    name: string,
+    normalizedQuery: string
+): number | null => searchScore([
+    name,
+    `${group}/${name}`,
+    `${variant}/${group}/${name}`,
+], manifest.variants[variant].groups[group].icons[name].keywords, normalizedQuery)
 
 export const useSearch = ({
     activeGroup,
@@ -105,5 +116,31 @@ export const useSearch = ({
             group
         ) => count + group.names.length, 0)),
         visibleIconGroups,
+    }
+}
+
+export const useCollectionSearch = ({ collection, names }: CollectionSearchOptions) => {
+    const query = ref('')
+    const visibleIconNames = computed(() => {
+        const normalizedQuery = normalizeSearchValue(query.value)
+
+        return names
+            .map<RankedIcon>((name, order) => ({
+                name,
+                order,
+                score: searchScore([
+                    name,
+                    `${collection}/${name}`,
+                ], manifest.collections[collection].icons[name].keywords, normalizedQuery)
+                    ?? Number.POSITIVE_INFINITY,
+            }))
+            .filter(icon => Number.isFinite(icon.score))
+            .sort((left, right) => left.score - right.score || left.order - right.order)
+            .map(icon => icon.name)
+    })
+
+    return {
+        query,
+        visibleIconNames,
     }
 }

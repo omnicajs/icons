@@ -1,4 +1,3 @@
-import type { IconVariant } from '@omnicajs/icons'
 import type { Ref } from 'vue'
 
 import { onScopeDispose, ref, watch } from 'vue'
@@ -21,7 +20,7 @@ const writeToClipboard = async (value: string): Promise<void> => {
     }
 }
 
-export const useClipboard = (variant: Ref<IconVariant>) => {
+export const useClipboard = (prefix: Readonly<Ref<string>>) => {
     const copiedIcon = ref('')
     let feedbackTimeout: number | undefined
 
@@ -34,8 +33,8 @@ export const useClipboard = (variant: Ref<IconVariant>) => {
         copiedIcon.value = ''
     }
 
-    const copyIconName = async (group: string, name: string): Promise<void> => {
-        const value = `${variant.value}/${group}/${name}`
+    const copyIconName = async (...segments: readonly string[]): Promise<void> => {
+        const value = [prefix.value, ...segments].join('/')
 
         clearCopiedIcon()
         await writeToClipboard(value)
@@ -44,7 +43,7 @@ export const useClipboard = (variant: Ref<IconVariant>) => {
         feedbackTimeout = window.setTimeout(clearCopiedIcon, copiedFeedbackDuration)
     }
 
-    watch(variant, clearCopiedIcon)
+    watch(prefix, clearCopiedIcon)
     onScopeDispose(clearCopiedIcon)
 
     return {

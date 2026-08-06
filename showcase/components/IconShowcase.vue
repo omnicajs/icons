@@ -25,16 +25,7 @@
             </div>
 
             <div :class="$style['catalog__toolbar']">
-                <div :class="$style['catalog__search']">
-                    <label :for="uid + '-term'">{{ t('catalog.search.label') }}</label>
-                    <input
-                        :id="uid + '-term'"
-                        v-model="query"
-                        type="search"
-                        autocomplete="off"
-                        :placeholder="t('catalog.search.placeholder')"
-                    >
-                </div>
+                <CatalogSearch v-model="query" />
 
                 <div :class="$style['catalog__select']">
                     <label :for="uid + '-style'">{{ t('catalog.variant.label') }}</label>
@@ -83,48 +74,21 @@
             </button>
         </nav>
 
-        <div :class="$style['catalog__sets']" aria-live="polite">
-            <section
-                v-for="group in visibleIconGroups"
-                :key="group.name"
-                :class="$style['catalog__set']"
-                :aria-labelledby="`catalog-group-${group.name}`"
-            >
-                <header :class="$style['catalog__set-header']">
-                    <h3 :id="`catalog-group-${group.name}`">
-                        {{ group.name }}
-                    </h3>
-                    <span>{{ group.names.length }}</span>
-                </header>
-
-                <div :class="$style['catalog__icons']">
-                    <button
-                        v-for="name in group.names"
-                        :key="name"
-                        type="button"
-                        :class="$style['catalog__icon']"
-                        :title="t('catalog.copy.title', {
-                            path: `${activeVariant}/${group.name}/${name}`
-                        })"
-                        @click="copyIconName(group.name, name)"
-                    >
-                        <IconGlyph
-                            :class="$style['catalog__glyph']"
-                            :group="group.name"
-                            :grouped="delivery === 'grouped'"
-                            :name="name"
-                            :variant="activeVariant"
-                        />
-                        <span :class="$style['catalog__name']">{{ name }}</span>
-                        <span :class="$style['catalog__copy']">
-                            {{ copiedIcon === `${activeVariant}/${group.name}/${name}`
-                                ? t('catalog.copy.done')
-                                : t('catalog.copy.action') }}
-                        </span>
-                    </button>
-                </div>
-            </section>
-        </div>
+        <CatalogGrid
+            :copied-path="copiedIcon"
+            :groups="visibleIconGroups"
+            :path-for="iconPath"
+            @copy="copyIconName"
+        >
+            <template #glyph="{ group, iconName }">
+                <IconGlyph
+                    :group="group"
+                    :grouped="delivery === 'grouped'"
+                    :name="iconName"
+                    :variant="activeVariant"
+                />
+            </template>
+        </CatalogGrid>
 
         <p v-if="visibleIconCount === 0" :class="$style.catalog__empty">
             {{ t('catalog.noMatches', { query }) }}
@@ -147,6 +111,8 @@ import { iconNames } from '@omnicajs/icons'
 
 import manifest from '@omnicajs/icons/manifest'
 
+import CatalogGrid from './CatalogGrid.vue'
+import CatalogSearch from './CatalogSearch.vue'
 import IconGlyph from './IconGlyph.vue'
 
 import { useClipboard } from '../composables/clipboard'
@@ -186,6 +152,7 @@ const {
 })
 
 const delivery = ref<Delivery>('full')
+const iconPath = (group: string, name: string): string => `${activeVariant.value}/${group}/${name}`
 
 const activeSpriteSize = computed<SpriteSize>(() => {
     if (delivery.value === 'full') {
@@ -215,7 +182,7 @@ watch(activeVariant, variant => {
 
 <style module>
 .catalog {
-    margin-top: 32px;
+    margin-top: 24px;
 }
 
 .catalog__header {
@@ -242,7 +209,6 @@ watch(activeVariant, variant => {
     gap: 12px;
 }
 
-.catalog__search,
 .catalog__select {
     display: grid;
     gap: 6px;
@@ -251,7 +217,6 @@ watch(activeVariant, variant => {
     font-weight: 600;
 }
 
-.catalog__search input,
 .catalog__select select {
     width: 100%;
     height: 40px;
@@ -267,7 +232,6 @@ watch(activeVariant, variant => {
     cursor: pointer;
 }
 
-.catalog__search input:focus-visible,
 .catalog__select select:focus-visible {
     border-color: var(--vp-c-brand-1);
     outline: 2px solid var(--vp-c-brand-soft);
@@ -310,81 +274,6 @@ watch(activeVariant, variant => {
     color: inherit;
 }
 
-.catalog__sets {
-    display: grid;
-    gap: 24px;
-}
-
-.catalog__set {
-    display: grid;
-    gap: 10px;
-}
-
-.catalog__set-header {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-}
-
-.catalog__set-header h3 {
-    margin: 0;
-    border: 0;
-    padding: 0;
-    color: var(--vp-c-text-1);
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.catalog__set-header span {
-    color: var(--vp-c-text-3);
-    font-size: 12px;
-}
-
-.catalog__icons {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 8px;
-}
-
-.catalog__icon {
-    display: grid;
-    grid-template-columns: 32px minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 8px;
-    min-height: 52px;
-    border: 1px solid var(--vp-c-divider);
-    border-radius: 8px;
-    padding: 8px;
-    color: var(--vp-c-text-1);
-    background: var(--vp-c-bg-soft);
-    font: inherit;
-    text-align: left;
-    cursor: pointer;
-}
-
-.catalog__icon:hover,
-.catalog__icon:focus-visible {
-    border-color: var(--vp-c-brand-1);
-}
-
-.catalog__glyph {
-    width: 24px;
-    height: 24px;
-    color: currentColor;
-}
-
-.catalog__name {
-    overflow: hidden;
-    font-size: 13px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.catalog__copy {
-    color: var(--vp-c-text-3);
-    font-size: 11px;
-}
-
 .catalog__empty {
     border: 1px dashed var(--vp-c-divider);
     border-radius: 8px;
@@ -396,10 +285,6 @@ watch(activeVariant, variant => {
 @media (max-width: 720px) {
     .catalog__toolbar {
         grid-template-columns: 1fr;
-    }
-
-    .catalog__search {
-        width: 100%;
     }
 }
 </style>

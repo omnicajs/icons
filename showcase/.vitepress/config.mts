@@ -7,6 +7,8 @@ import { localePath, type ShowcaseLocale, showcaseLocales } from '../i18n/locale
 const isPagesBuild = process.env.GITHUB_ACTIONS === 'true'
 const base = isPagesBuild ? '/icons/' : '/'
 const githubLink = 'https://github.com/omnicajs/icons'
+const npmLink = 'https://www.npmjs.com/package/@omnicajs/icons'
+const npmIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M0 0v24h24V0H0zm19.2 19.2h-4.8V9.6H12v9.6H4.8V4.8h14.4v14.4z"/></svg>'
 
 const localeTheme = (locale: ShowcaseLocale): DefaultTheme.Config => {
     const { t } = createShowcaseI18n(locale).global
@@ -83,7 +85,8 @@ export default defineConfig({
         logo: '/omnica.svg',
         i18nRouting: true,
         socialLinks: [
-            { icon: 'github', link: githubLink },
+            { icon: 'github', link: githubLink, ariaLabel: 'GitHub' },
+            { icon: { svg: npmIcon }, link: npmLink, ariaLabel: 'npm' },
         ],
     },
     vite: {

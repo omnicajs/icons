@@ -1,4 +1,28 @@
+<script setup>
+import NpmVersionBadge from '../components/NpmVersionBadge.vue'
+</script>
+
 # Uso
+
+## Instalación
+
+<NpmVersionBadge />
+
+Instala el paquete con el gestor de paquetes de tu proyecto:
+
+::: code-group
+```bash [Yarn]
+yarn add @omnicajs/icons
+```
+
+```bash [npm]
+npm install @omnicajs/icons
+```
+
+```bash [pnpm]
+pnpm add @omnicajs/icons
+```
+:::
 
 ## Elige una capa de distribución
 

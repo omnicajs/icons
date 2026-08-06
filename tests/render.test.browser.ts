@@ -214,6 +214,128 @@ test.describe('showcase catalog', () => {
         await expect(page.getByRole('region', { name: 'actions' })).toHaveCount(0)
     })
 
+    test('shows logos and flags as separate full-color collections', async ({ page }) => {
+        await page.goto(url)
+
+        const iconsTab = page.getByRole('tab', { name: 'Icons' })
+        const logosTab = page.getByRole('tab', { name: 'Logos' })
+        const flagsTab = page.getByRole('tab', { name: 'Flags' })
+        const iconSearchBox = await page.getByRole('searchbox', { name: 'Search icons' }).boundingBox()
+
+        if (!iconSearchBox) {
+            throw new Error('Unable to resolve icon search layout')
+        }
+
+        await expect(iconsTab).toHaveAttribute('aria-selected', 'true')
+        await iconsTab.focus()
+        await page.keyboard.press('ArrowRight')
+
+        await expect(logosTab).toHaveAttribute('aria-selected', 'true')
+        await expect(logosTab).toBeFocused()
+        await expect(page.getByRole('heading', { level: 2, name: 'Logo catalog' })).toBeVisible()
+        await expect(page.getByRole('combobox', { name: 'Style' })).toHaveCount(0)
+        await expect(page.getByRole('combobox', { name: 'Sprite delivery' })).toHaveCount(0)
+
+        let search = page.getByRole('searchbox', { name: 'Search icons' })
+        const logoSearchBox = await search.boundingBox()
+
+        if (!logoSearchBox) {
+            throw new Error('Unable to resolve logo search layout')
+        }
+
+        expect(Math.abs(logoSearchBox.x - iconSearchBox.x)).toBeLessThan(1)
+        expect(Math.abs(logoSearchBox.width - iconSearchBox.width)).toBeLessThan(1)
+
+        await search.fill('Fb+Insta')
+
+        const facebookInstagram = page.getByRole('button', { name: /facebook-instagram/ })
+        const logoGlyph = facebookInstagram.locator('use')
+
+        await expect(facebookInstagram).toBeVisible()
+        await expect(logoGlyph).toHaveAttribute('href', /logos[^/]*\.svg#logos\/facebook-instagram$/)
+        expect(await logoGlyph.evaluate(element => {
+            const svg = (element as SVGUseElement).ownerSVGElement
+
+            if (!svg) {
+                return false
+            }
+
+            const bounds = svg.getBBox()
+
+            return bounds.width > 0 && bounds.height > 0
+        })).toBe(true)
+
+        await facebookInstagram.click()
+        await expect(facebookInstagram).toContainText('Copied')
+
+        await flagsTab.click()
+
+        await expect(flagsTab).toHaveAttribute('aria-selected', 'true')
+        await expect(page.getByRole('heading', { level: 2, name: 'Flag catalog' })).toBeVisible()
+
+        search = page.getByRole('searchbox', { name: 'Search icons' })
+        await expect(search).toHaveValue('')
+        await search.fill('United States of America')
+
+        const unitedStates = page.getByRole('button', { name: /united-states/ })
+
+        await expect(unitedStates).toBeVisible()
+        await expect(unitedStates.locator('use'))
+            .toHaveAttribute('href', /flags[^/]*\.svg#flags\/united-states$/)
+
+        await iconsTab.click()
+
+        await expect(iconsTab).toHaveAttribute('aria-selected', 'true')
+        await expect(page.getByRole('button', { name: /^actions \d+$/ })).toBeVisible()
+    })
+
+    test('shows npm in the navigation and package installation on the usage page', async ({ page }) => {
+        await page.goto(url)
+
+        const githubLink = page.getByRole('link', { name: 'GitHub', exact: true })
+        const npmLink = page.getByRole('link', { name: 'npm', exact: true })
+        const [githubBox, npmBox] = await Promise.all([
+            githubLink.boundingBox(),
+            npmLink.boundingBox(),
+        ])
+
+        if (!githubBox || !npmBox) {
+            throw new Error('Unable to resolve social link layout')
+        }
+
+        await expect(npmLink.locator('svg')).toBeVisible()
+        await expect(npmLink).toHaveAttribute('href', 'https://www.npmjs.com/package/@omnicajs/icons')
+        expect(npmBox.width).toBe(githubBox.width)
+        expect(npmBox.height).toBe(githubBox.height)
+
+        await page.goto(new URL('usage', url).toString())
+
+        const badge = page.getByRole('link', {
+            name: '@omnicajs/icons on npm',
+        })
+        const installationHeading = page.getByRole('heading', { level: 2, name: 'Installation' })
+        const [badgeBox, installationHeadingBox] = await Promise.all([
+            badge.boundingBox(),
+            installationHeading.boundingBox(),
+        ])
+
+        if (!badgeBox || !installationHeadingBox) {
+            throw new Error('Unable to resolve installation section layout')
+        }
+
+        await expect(badge).toBeVisible()
+        expect(badgeBox.y).toBeGreaterThan(installationHeadingBox.y)
+        await expect(badge).toHaveAttribute('href', 'https://www.npmjs.com/package/@omnicajs/icons')
+        await expect(badge.locator('img')).toHaveAttribute(
+            'src',
+            'https://img.shields.io/npm/v/%40omnicajs%2Ficons?logo=npm'
+        )
+        await expect(installationHeading).toBeVisible()
+        await expect(page.getByText('yarn add @omnicajs/icons', { exact: true })).toBeVisible()
+        await expect(page.getByText('npm install @omnicajs/icons', { exact: true })).toBeAttached()
+        await expect(page.getByText('pnpm add @omnicajs/icons', { exact: true })).toBeAttached()
+    })
+
     test('applies the Omnica palette in light and dark themes', async ({ page }) => {
         await page.emulateMedia({ colorScheme: 'light' })
         await page.goto(url)

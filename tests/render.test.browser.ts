@@ -328,39 +328,48 @@ test.describe('showcase catalog', () => {
         const search = page.getByRole('searchbox', { name: 'Search icons' })
 
         for (const icon of importedIcons) {
-            await search.fill(icon.name)
+            await test.step(`${icon.group}/${icon.name}`, async () => {
+                await search.fill(icon.name)
 
-            const iconButton = page
-                .getByRole('region', { name: icon.group })
-                .getByRole('button', { name: `${icon.name} Copy`, exact: true })
-            const glyph = iconButton.locator('use')
+                const iconButton = page
+                    .getByRole('region', { name: icon.group })
+                    .getByRole('button', { name: `${icon.name} Copy`, exact: true })
+                const glyph = iconButton.locator('use')
+                const readBounds = () => glyph.evaluate(element => {
+                    const svg = (element as SVGUseElement).ownerSVGElement
 
-            await expect(iconButton).toBeVisible()
-            await expect(glyph).toHaveAttribute('href', new RegExp(`#${icon.group}/${icon.name}$`))
-            const bounds = await glyph.evaluate(element => {
-                const svg = (element as SVGUseElement).ownerSVGElement
+                    if (!svg) {
+                        return null
+                    }
 
-                if (!svg) {
-                    return null
-                }
+                    const bounds = svg.getBBox()
 
-                const bounds = svg.getBBox()
+                    return {
+                        height: bounds.height,
+                        width: bounds.width,
+                    }
+                })
 
-                return {
-                    height: bounds.height,
-                    width: bounds.width,
+                await expect(iconButton).toBeVisible()
+                await expect(glyph).toHaveAttribute('href', new RegExp(`#${icon.group}/${icon.name}$`))
+
+                if (icon.expectedSize === undefined) {
+                    await expect.poll(async () => {
+                        const bounds = await readBounds()
+
+                        return bounds !== null && bounds.width > 0 && bounds.height > 0
+                    }, {
+                        message: `Expected ${icon.group}/${icon.name} to render non-empty bounds`,
+                    }).toBe(true)
+                } else {
+                    await expect.poll(readBounds, {
+                        message: `Expected ${icon.group}/${icon.name} to render ${icon.expectedSize}x${icon.expectedSize} bounds`,
+                    }).toEqual({
+                        height: icon.expectedSize,
+                        width: icon.expectedSize,
+                    })
                 }
             })
-
-            expect(bounds?.width).toBeGreaterThan(0)
-            expect(bounds?.height).toBeGreaterThan(0)
-
-            if (icon.expectedSize) {
-                expect(bounds).toEqual({
-                    height: icon.expectedSize,
-                    width: icon.expectedSize,
-                })
-            }
         }
     })
 

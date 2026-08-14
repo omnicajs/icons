@@ -1,10 +1,7 @@
-import type { Compiler } from 'webpack'
-import type { WebpackPluginInstance } from 'webpack'
+import type { Compiler, RspackPluginInstance } from '@rspack/core'
+import type { Compiler as WebpackCompiler } from 'webpack'
 
 import { BundlerIconComponentsPlugin } from './extracted/bundler/plugin.js'
-
-export type { OmnicaIconsPluginOptions } from './subset/webpack.js'
-export { OmnicaIconsPlugin } from './subset/webpack.js'
 
 export interface OmnicaIconComponentsPluginOptions {
     /** Supports `[contenthash]` and `[contenthash:N]`. */
@@ -17,7 +14,7 @@ export interface OmnicaIconComponentsPluginOptions {
     readonly ssr?: boolean
 }
 
-export class OmnicaIconComponentsPlugin implements WebpackPluginInstance {
+export class OmnicaIconComponentsPlugin implements RspackPluginInstance {
     readonly #plugin: BundlerIconComponentsPlugin
 
     public constructor (options: OmnicaIconComponentsPluginOptions = {}) {
@@ -25,6 +22,6 @@ export class OmnicaIconComponentsPlugin implements WebpackPluginInstance {
     }
 
     public apply (compiler: Compiler): void {
-        this.#plugin.apply(compiler)
+        this.#plugin.apply(compiler as unknown as WebpackCompiler)
     }
 }

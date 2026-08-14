@@ -2,7 +2,7 @@ const path = require('node:path')
 
 const { VueLoaderPlugin } = require('vue-loader')
 
-const { OmnicaIconComponentsPlugin, OmnicaIconsPlugin } = require('@omnicajs/icons/webpack')
+const { OmnicaIconComponentsPlugin } = require('@omnicajs/icons/rspack')
 
 class FixtureHtmlPlugin {
     apply (compiler) {
@@ -13,7 +13,7 @@ class FixtureHtmlPlugin {
             }, () => {
                 compilation.emitAsset('index.html', new compiler.webpack.sources.RawSource(`<!doctype html>
 <html lang="en">
-<head><meta charset="UTF-8"><title>Omnica icons Webpack fixture</title></head>
+<head><meta charset="UTF-8"><title>Omnica icons Rspack fixture</title></head>
 <body><div id="app"></div><script src="/icons/main.js"></script></body>
 </html>
 `))
@@ -49,18 +49,6 @@ module.exports = {
     plugins: [
         new OmnicaIconComponentsPlugin(),
         new VueLoaderPlugin(),
-        new OmnicaIconsPlugin({
-            declarationFile: path.join(__dirname, 'src/omnica-icons.d.ts'),
-            filename: 'assets/custom-[variant].[contenthash:8].svg',
-            include: {
-                filled: {
-                    actions: ['add', 'remove'],
-                },
-                outlined: {
-                    actions: ['add-circle'],
-                },
-            },
-        }),
         new FixtureHtmlPlugin(),
     ],
 }

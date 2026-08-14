@@ -1,7 +1,18 @@
+import { createApp } from 'vue'
 import { iconUrl as customIconUrl } from 'virtual:omnicajs-icons'
 
+import clearCircleUrl from '@omnicajs/icons/assets/icons/filled/actions/clear-circle.svg?url'
 import { iconUrl as fullIconUrl } from '@omnicajs/icons/filled'
 import { iconUrl as groupIconUrl } from '@omnicajs/icons/filled/actions'
+
+import App from './App.vue'
+
+createApp(App).mount('#app')
+document.body.dataset.rawIconUrl = clearCircleUrl
+document.body.dataset.newUrlIconUrl = new URL(
+    '@omnicajs/icons/assets/icons/filled/actions/clear-circle.svg',
+    import.meta.url
+).href
 
 const examples = [
     ['Custom subset', customIconUrl('filled', 'actions', 'add')],
@@ -20,7 +31,7 @@ for (const [label, href] of examples) {
     icon.style.color = 'rgb(0, 122, 204)'
     use.setAttribute('href', href)
     icon.append(use)
-    document.querySelector('#app')?.append(icon)
+    document.querySelector('#legacy-icons')?.append(icon)
 }
 
 setTimeout(() => {

@@ -1,5 +1,6 @@
 import type { DefaultTheme } from 'vitepress'
 import { defineConfig } from 'vitepress'
+import { omnicaIconComponents } from '@omnicajs/icons/vite'
 
 import { createShowcaseI18n } from '../i18n'
 import { localePath, type ShowcaseLocale, showcaseLocales } from '../i18n/locales'
@@ -90,6 +91,8 @@ export default defineConfig({
         ],
     },
     vite: {
+        // VitePress 1 bundles an older Vite type instance; the runtime plugin API is compatible.
+        plugins: [omnicaIconComponents() as never],
         define: {
             __INTLIFY_PROD_DEVTOOLS__: false,
             __VUE_I18N_FULL_INSTALL__: false,

@@ -119,6 +119,119 @@ const brainKeywords = manifest.variants.filled.groups.ai.icons['brain-circuit'].
 // ['ai/brain-ai']
 ```
 
+## Import-driven Vue icons
+
+The opt-in Vue adapter complements the existing full, group, and configured subset APIs. It supports Vue 3 and transforms only unqualified `filled` and `outlined` package assets.
+
+### Vite
+
+Add the adapter before the regular Vue plugin:
+
+```ts
+import vue from '@vitejs/plugin-vue'
+import { defineConfig } from 'vite'
+import { omnicaIconComponents } from '@omnicajs/icons/vite'
+
+export default defineConfig({
+    plugins: [
+        omnicaIconComponents(),
+        vue(),
+    ],
+})
+```
+
+### Webpack
+
+Add the icon plugin before `VueLoaderPlugin`. The adapter injects its package-scoped SVG rule and reuses the application's `vue-loader`:
+
+```js
+const { VueLoaderPlugin } = require('vue-loader')
+const { OmnicaIconComponentsPlugin } = require('@omnicajs/icons/webpack')
+
+module.exports = {
+    output: {
+        publicPath: '/',
+    },
+    module: {
+        rules: [
+            { test: /\.vue$/, loader: 'vue-loader' },
+            { test: /\.svg$/, type: 'asset/resource' },
+        ],
+    },
+    plugins: [
+        new OmnicaIconComponentsPlugin(),
+        new VueLoaderPlugin(),
+    ],
+}
+```
+
+### Rspack
+
+Rspack uses the same contract and its own typed entrypoint:
+
+```js
+const { VueLoaderPlugin } = require('vue-loader')
+const { OmnicaIconComponentsPlugin } = require('@omnicajs/icons/rspack')
+
+module.exports = {
+    output: {
+        publicPath: '/',
+    },
+    module: {
+        rules: [
+            { test: /\.vue$/, loader: 'vue-loader' },
+            { test: /\.svg$/, type: 'asset/resource' },
+        ],
+    },
+    plugins: [
+        new OmnicaIconComponentsPlugin(),
+        new VueLoaderPlugin(),
+    ],
+}
+```
+
+Both configurations require the normal Vue 3 SFC toolchain (`vue`, `vue-loader`, and `@vue/compiler-sfc`) in the application. The package does not declare a root Vue peer because the adapter is opt-in and the sprite/URL APIs remain compatible with non-Vue and Vue 2 consumers. If an application already has another SVG loader, constrain that rule with a query or exclude `@omnicajs/icons/assets/icons` so one unqualified import is not processed by two component loaders.
+
+An unqualified monochrome SVG import then resolves to a Vue component:
+
+```vue
+<script setup lang="ts">
+import IconClearCircle from '@omnicajs/icons/assets/icons/filled/actions/clear-circle.svg'
+</script>
+
+<template>
+    <IconClearCircle width="24" height="24" aria-hidden="true" />
+</template>
+```
+
+Load the opt-in declarations from a project declaration file included by the consumer `tsconfig`, for example `src/omnica-icons.d.ts`:
+
+```ts
+import '@omnicajs/icons/vue'
+```
+
+The `/vue` entrypoint exports `OmnicaIconProps` as Vue's `SVGAttributes` plus typed `data-*` attributes, and `OmnicaIconComponent` as `DefineComponent<OmnicaIconProps>`. Every transformed asset uses that component type, so TypeScript checks standard SVG presentation, sizing, accessibility, data, and event attributes instead of exposing an unqualified generic Vue component.
+
+Production builds emit one content-hashed sprite containing the imported `filled` and `outlined` symbols. Generated components preserve the source `viewBox`, forward attributes to their root `svg`, and inherit `currentColor`. The symbol fragment includes the variant, for example `#filled/actions/clear-circle`, so filled and outlined names cannot collide. Vite honours its configured root-relative `base`; Webpack and Rspack use their root-relative `output.publicPath`.
+
+For SSR, run the client build first. It emits `.omnica/omnica-icons-imported.json`; the Vite, Webpack, and Rspack SSR adapters read that manifest and reference the exact client sprite instead of hashing the server graph independently. Server-rendered icons must be a subset of the client graph, otherwise the SSR build fails with the missing symbol names instead of producing a URL that would return 404.
+
+The default client output is `<root>/dist` for Vite and `<context>/dist` for Webpack/Rspack. When the client uses another output directory, pass it to both configurations:
+
+```ts
+omnicaIconComponents({ clientOutputDirectory: 'dist/client' })
+```
+
+```js
+new OmnicaIconComponentsPlugin({ clientOutputDirectory: 'dist/client' })
+```
+
+All production builds require a root-relative public path such as `/app/`: configure it through Vite `base` or Webpack/Rspack `output.publicPath`. Absolute HTTP(S), protocol-relative, automatic, empty, and relative paths are rejected. The generated components use external SVG `<use>` references, which browsers restrict to the page origin, so CDN sprite URLs are not supported. SSR builds reuse the public sprite URL recorded by the client manifest even when the server bundler has another root-relative public path.
+
+Vite development serves content-addressed one-symbol sprites so HMR can add or remove imports without stale combined-sprite state. Vite watch builds and Webpack/Rspack watch compilations recalculate the production sprite from the current module graph.
+
+Imports with `?url` keep the bundler's standard string URL behavior. Static asset URLs in Vue templates, CSS `url()` references, and JavaScript `new URL(..., import.meta.url)` dependencies also remain in the normal asset pipeline; only module imports become components. Flags and logos are not transformed by this adapter and remain available through their existing URL and sprite APIs.
+
 ## Custom subsets with the CLI
 
 The package can generate one sprite per selected variant. Create `omnica-icons.config.mjs`:

@@ -1,4 +1,5 @@
 <script setup>
+import ImportDrivenIconExample from './components/ImportDrivenIconExample.vue'
 import NpmVersionBadge from './components/NpmVersionBadge.vue'
 </script>
 
@@ -75,6 +76,24 @@ Raw files remain available to consumer pipelines:
 ```ts
 import addUrl from '@omnicajs/icons/assets/icons/filled/actions/add.svg?url'
 ```
+
+## Import-driven Vue components
+
+With the opt-in Vite, Webpack, or Rspack plugin, an unqualified monochrome SVG import becomes a Vue component. The production build combines only the imported symbols into one content-hashed sprite; `?url` keeps the raw-asset behaviour.
+
+<ImportDrivenIconExample />
+
+```vue
+<script setup lang="ts">
+import IconClearCircle from '@omnicajs/icons/assets/icons/filled/actions/clear-circle.svg'
+</script>
+
+<template>
+    <IconClearCircle width="24" height="24" aria-hidden="true" />
+</template>
+```
+
+The complete bundler and TypeScript configurations are in the package README.
 
 ## Custom subset
 

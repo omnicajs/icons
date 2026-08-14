@@ -1,4 +1,5 @@
 <script setup>
+import ImportDrivenIconExample from '../components/ImportDrivenIconExample.vue'
 import NpmVersionBadge from '../components/NpmVersionBadge.vue'
 </script>
 
@@ -75,6 +76,24 @@ import { iconUrl as logoUrl } from '@omnicajs/icons/logos'
 ```ts
 import addUrl from '@omnicajs/icons/assets/icons/filled/actions/add.svg?url'
 ```
+
+## Vue-компоненты по импортам
+
+После подключения opt-in плагина для Vite, Webpack или Rspack импорт монохромного SVG без query возвращает Vue-компонент. Production-сборка объединяет только импортированные символы в один спрайт с хешем содержимого; `?url` сохраняет поведение исходного ресурса.
+
+<ImportDrivenIconExample />
+
+```vue
+<script setup lang="ts">
+import IconClearCircle from '@omnicajs/icons/assets/icons/filled/actions/clear-circle.svg'
+</script>
+
+<template>
+    <IconClearCircle width="24" height="24" aria-hidden="true" />
+</template>
+```
+
+Полные настройки сборщика и TypeScript приведены в README пакета.
 
 ## Собственный поднабор
 

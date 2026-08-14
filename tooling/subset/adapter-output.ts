@@ -1,4 +1,4 @@
-import type { IconBuildArtifact } from './build.js'
+import type { IconBuildArtifact } from '../build.js'
 
 type ModuleFormat = 'esm' | 'cjs'
 

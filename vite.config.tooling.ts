@@ -11,16 +11,20 @@ const __tooling = path.join(__root, 'tooling')
 const __dist = path.join(__root, 'dist')
 
 const esmEntries = {
-    'adapter-output': path.join(__tooling, 'adapter-output.ts'),
     build: path.join(__tooling, 'build.ts'),
     cli: path.join(__tooling, 'cli.ts'),
+    'extracted/core': path.join(__tooling, 'extracted/core.ts'),
     vite: path.join(__tooling, 'vite.ts'),
 }
 
 const cjsEntries = {
+    'extracted/bundler/component-loader': path.join(__tooling, 'extracted/bundler/component-loader.ts'),
+    'extracted/bundler/plugin': path.join(__tooling, 'extracted/bundler/plugin.ts'),
+    'extracted/bundler/template-assets-loader': path.join(__tooling, 'extracted/bundler/template-assets-loader.ts'),
+    rspack: path.join(__tooling, 'rspack.ts'),
+    'subset/webpack-loader': path.join(__tooling, 'subset/webpack-loader.ts'),
+    'subset/webpack-runtime': path.join(__tooling, 'subset/webpack-runtime.ts'),
     webpack: path.join(__tooling, 'webpack.ts'),
-    'webpack-loader': path.join(__tooling, 'webpack-loader.ts'),
-    'webpack-runtime': path.join(__tooling, 'webpack-runtime.ts'),
 }
 
 const executableCli = (): Plugin => ({

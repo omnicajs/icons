@@ -1,10 +1,16 @@
 import fs from 'node:fs/promises'
 import http from 'node:http'
+import os from 'node:os'
 import path from 'node:path'
 
+import { createServer } from 'vite'
 import { expect, test } from '@playwright/test'
+import vue from '@vitejs/plugin-vue'
 
-const fixtures = ['vite', 'webpack'] as const
+import { omnicaIconComponents } from '../dist/vite.js'
+
+const fixtures = ['vite', 'webpack', 'rspack'] as const
+const legacyFixtures = new Set<typeof fixtures[number]>(['vite', 'webpack'])
 const contentTypes: Record<string, string> = {
     '.css': 'text/css; charset=utf-8',
     '.html': 'text/html; charset=utf-8',
@@ -85,23 +91,26 @@ for (const fixture of fixtures) {
         }))
 
         test('renders custom, full, and group hashed sprites', async ({ page }) => {
+            test.skip(!legacyFixtures.has(fixture), 'Rspack fixture covers import-driven icons only.')
+
             await page.goto(url)
             await expect(page.locator('body')).toHaveAttribute('data-icons-rendered', 'true')
 
-            const uses = page.locator('use')
+            const legacyRoot = '#legacy-icons '
+            const uses = page.locator(`${legacyRoot}use`)
 
             await expect(uses).toHaveCount(3)
 
             for (const href of await uses.evaluateAll(elements => elements.map(element => element.getAttribute('href')))) {
                 expect(href).not.toBeNull()
 
-                const filename = path.basename(new URL(href as string).pathname)
+                const filename = path.basename(new URL(href as string, url).pathname)
 
                 expect(filename).toMatch(/[-.][A-Za-z0-9_-]{8}\.svg$/)
                 expect(href).toMatch(/#actions\/(add|remove)$/)
             }
 
-            const painted = await page.locator('svg').evaluateAll(elements => elements.every(element => {
+            const painted = await page.locator(`${legacyRoot}svg`).evaluateAll(elements => elements.every(element => {
                 const bounds = (element as SVGGraphicsElement).getBBox()
 
                 return bounds.width > 0 && bounds.height > 0
@@ -109,8 +118,186 @@ for (const fixture of fixtures) {
 
             expect(painted).toBe(true)
         })
+
+        test('renders imported Vue icons from one combined sprite', async ({ page }) => {
+            await page.goto(url)
+            await expect(page.locator('body')).toHaveAttribute('data-icons-rendered', 'true')
+
+            const icons = page.locator('[data-imported-icon]')
+            const uses = icons.locator('use')
+
+            await expect(icons).toHaveCount(2)
+            await expect(uses).toHaveCount(2)
+            await expect(icons.first()).toHaveAttribute('viewBox', '0 0 24 24')
+            await expect(icons.first()).toHaveAttribute('width', '48')
+            await expect(icons.first()).toHaveClass(/\bimported-icon--filled\b/)
+            await expect(icons.first()).toHaveAttribute('aria-hidden', 'true')
+            await expect(icons.last()).toHaveAttribute('aria-label', 'Outlined clear circle')
+            await expect(icons.last()).toHaveAttribute('role', 'img')
+
+            const hrefs = await uses.evaluateAll(elements => elements.map(element => element.getAttribute('href')))
+            const spriteUrls = hrefs.map(href => {
+                expect(href).not.toBeNull()
+
+                return new URL(href as string, url)
+            })
+
+            expect(spriteUrls.map(sprite => sprite.hash)).toEqual([
+                '#filled/actions/clear-circle',
+                '#outlined/actions/clear-circle',
+            ])
+            expect(new Set(spriteUrls.map(sprite => sprite.pathname)).size).toBe(1)
+            expect(path.basename(spriteUrls[0].pathname)).toMatch(/^omnica-icons-imported[-.][A-Za-z0-9_-]{8}\.svg$/)
+
+            const symbolIds = await page.evaluate(async spriteUrl => {
+                const source = await fetch(spriteUrl).then(response => response.text())
+
+                return [...source.matchAll(/<symbol\b[^>]*\bid="([^"]+)"/g)].map(match => match[1])
+            }, spriteUrls[0].href)
+
+            expect(symbolIds).toEqual([
+                'filled/actions/clear-circle',
+                'outlined/actions/clear-circle',
+            ])
+
+            const templateAsset = page.locator('[data-template-asset="clear-circle-small"]')
+
+            await expect(templateAsset).toHaveJSProperty('complete', true)
+            await expect.poll(() => templateAsset.evaluate(element => (
+                (element as HTMLImageElement).naturalWidth > 0
+            ))).toBe(true)
+            expect(await templateAsset.getAttribute('src')).not.toContain('#')
+
+            const rendered = await icons.evaluateAll(elements => elements.every(element => {
+                const bounds = (element as SVGGraphicsElement).getBBox()
+
+                return bounds.width > 0
+                    && bounds.height > 0
+                    && getComputedStyle(element).color === 'rgb(0, 122, 204)'
+            }))
+
+            expect(rendered).toBe(true)
+
+            const rawIconUrl = await page.locator('body').getAttribute('data-raw-icon-url')
+
+            if (!rawIconUrl) {
+                throw new Error(`${fixture} raw icon URL is missing`)
+            }
+
+            expect(new URL(rawIconUrl, url).pathname).not.toBe(spriteUrls[0].pathname)
+            await expect.poll(() => page.evaluate(rawUrl => (
+                fetch(rawUrl).then(response => response.text())
+            ), rawIconUrl)).toMatch(/^<svg\b/)
+
+            if (fixture !== 'vite') {
+                const newUrlIconUrl = await page.locator('body').getAttribute('data-new-url-icon-url')
+
+                if (!newUrlIconUrl) {
+                    throw new Error(`${fixture} new URL icon asset is missing`)
+                }
+
+                expect(new URL(newUrlIconUrl, url).pathname).not.toBe(spriteUrls[0].pathname)
+                await expect.poll(() => page.evaluate(assetUrl => (
+                    fetch(assetUrl).then(response => response.text())
+                ), newUrlIconUrl)).toMatch(/^<svg\b/)
+            }
+        })
     })
 }
+
+test.describe('vite development server', () => {
+    let appFilename: string
+    let directory: string
+    let server: Awaited<ReturnType<typeof createServer>>
+    let url: string
+
+    const appSource = (variant: 'filled' | 'outlined'): string => `<script setup>
+import Icon from '@omnicajs/icons/assets/icons/${variant}/actions/${variant === 'filled' ? 'clear-circle' : 'add-circle'}.svg'
+</script>
+
+<template>
+    <Icon data-imported-icon="${variant}" width="48" height="48" />
+</template>
+`
+
+    test.beforeAll(async () => {
+        directory = await fs.mkdtemp(path.join(os.tmpdir(), 'omnica-icons-vite-dev-'))
+        appFilename = path.join(directory, 'App.vue')
+
+        await Promise.all([
+            fs.writeFile(path.join(directory, 'index.html'), '<div id="app"></div><script type="module" src="/main.js"></script>'),
+            fs.writeFile(path.join(directory, 'main.js'), 'import { createApp } from \'vue\'; import App from \'./App.vue\'; createApp(App).mount(\'#app\')'),
+            fs.writeFile(appFilename, appSource('filled')),
+        ])
+
+        server = await createServer({
+            base: '/dev/',
+            configFile: false,
+            root: directory,
+            plugins: [omnicaIconComponents(), vue()],
+            resolve: {
+                alias: {
+                    vue: path.resolve('node_modules/vue/dist/vue.esm-bundler.js'),
+                },
+            },
+            server: {
+                host: '127.0.0.1',
+                port: 0,
+            },
+        })
+        await server.listen()
+
+        const address = server.httpServer?.address()
+
+        if (!address || typeof address === 'string') {
+            throw new Error('Unable to resolve Vite development server address')
+        }
+
+        url = `http://127.0.0.1:${address.port}/dev/`
+    })
+
+    test.afterAll(async () => {
+        await server.close()
+        await fs.rm(directory, { force: true, recursive: true })
+    })
+
+    test('updates an imported icon without retaining the removed symbol', async ({ browserName, page }) => {
+        test.skip(browserName !== 'chromium', 'One engine is sufficient for the Vite HMR contract.')
+
+        await page.goto(url)
+
+        const initialIcon = page.locator('[data-imported-icon="filled"]')
+
+        await expect(initialIcon).toBeVisible()
+
+        const initialHref = await initialIcon.locator('use').getAttribute('href')
+
+        expect(initialHref).toMatch(/^\/dev\/@omnicajs\/icons\/imported\/[a-f0-9]{16}\.svg#filled\/actions\/clear-circle$/)
+
+        await fs.writeFile(appFilename, appSource('outlined'))
+
+        const updatedIcon = page.locator('[data-imported-icon="outlined"]')
+
+        await expect(updatedIcon).toBeVisible()
+
+        const updatedHref = await updatedIcon.locator('use').getAttribute('href')
+
+        if (!updatedHref) {
+            throw new Error('Updated Vite icon href is missing')
+        }
+
+        expect(updatedHref).toMatch(/^\/dev\/@omnicajs\/icons\/imported\/[a-f0-9]{16}\.svg#outlined\/actions\/add-circle$/)
+        expect(updatedHref).not.toBe(initialHref)
+
+        const symbols = await page.evaluate(async href => {
+            const sprite = await fetch(href).then(response => response.text())
+
+            return [...sprite.matchAll(/<symbol\b[^>]*\bid="([^"]+)"/g)].map(match => match[1])
+        }, updatedHref)
+
+        expect(symbols).toEqual(['outlined/actions/add-circle'])
+    })
+})
 
 test.describe('showcase catalog', () => {
     let server: http.Server
@@ -418,6 +605,17 @@ test.describe('showcase catalog', () => {
         await expect(page.getByText('yarn add @omnicajs/icons', { exact: true })).toBeVisible()
         await expect(page.getByText('npm install @omnicajs/icons', { exact: true })).toBeAttached()
         await expect(page.getByText('pnpm add @omnicajs/icons', { exact: true })).toBeAttached()
+
+        const importedIcon = page.locator('[data-showcase-imported-icon="clear-circle"]')
+        const importedUse = importedIcon.locator('use')
+
+        await expect(importedIcon).toBeVisible()
+        await expect(importedUse).toHaveAttribute('href', /#filled\/actions\/clear-circle$/)
+        await expect.poll(() => importedIcon.evaluate(element => {
+            const bounds = (element as SVGGraphicsElement).getBBox()
+
+            return bounds.width > 0 && bounds.height > 0
+        })).toBe(true)
     })
 
     test('applies the Omnica palette in light and dark themes', async ({ page }) => {

@@ -14,6 +14,7 @@ export default [
             'artifacts/**/*',
             'dist/**/*',
             'fixtures/*/dist/**/*',
+            'fixtures/*/dist-*/**/*',
             'fixtures/*/src/omnica-icons.d.ts',
             'fixtures/cli/src/generated/**/*',
             'generated/**/*',

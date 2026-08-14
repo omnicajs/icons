@@ -4,6 +4,8 @@ import type { IconNameMap as OutlinedIconNameMap } from '@omnicajs/icons/outline
 import fs from 'node:fs/promises'
 import path from 'node:path'
 
+import { extractSymbol, serializeSprite } from './shared/sprite.js'
+
 export type GroupSelection<Names extends string> = '*' | readonly Names[]
 export type VariantSelection<Map> = {
     readonly [Group in keyof Map]?: GroupSelection<Extract<Map[Group], string>>
@@ -88,15 +90,6 @@ const assertObject: (
         throw new TypeError(`${label} must be an object`)
     }
 }
-
-const escapeRegExp = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-
-const serializeSprite = (symbols: readonly string[]): string => [
-    '<svg xmlns="http://www.w3.org/2000/svg">',
-    symbols.join('\n'),
-    '</svg>',
-    '',
-].join('\n')
 
 const selectionNames = (
     selection: '*' | readonly string[],
@@ -221,17 +214,6 @@ export const resolveSelection = (
                     }
                 }),
         }))
-}
-
-const extractSymbol = (sprite: string, symbolId: string, filename: string): string => {
-    const expression = new RegExp(`<symbol\\b[^>]*\\bid=(["'])${escapeRegExp(symbolId)}\\1[\\s\\S]*?<\\/symbol>`)
-    const match = sprite.match(expression)
-
-    if (!match) {
-        throw new Error(`Unable to find symbol ${symbolId} in ${filename}`)
-    }
-
-    return match[0]
 }
 
 export const loadIconSymbols = (

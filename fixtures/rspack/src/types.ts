@@ -1,15 +1,7 @@
 import type { OmnicaIconComponent, OmnicaIconProps } from '@omnicajs/icons/vue'
 
-import { iconUrl } from 'virtual:omnicajs-icons'
-
 import clearCircleUrl from '@omnicajs/icons/assets/icons/filled/actions/clear-circle.svg?url'
 import IconClearCircle from '@omnicajs/icons/assets/icons/filled/actions/clear-circle.svg'
-
-iconUrl('filled', 'actions', 'add')
-iconUrl('outlined', 'actions', 'add-circle')
-
-// @ts-expect-error The generated declaration contains the selected subset only.
-iconUrl('outlined', 'actions', 'add')
 
 const component: OmnicaIconComponent = IconClearCircle
 const props = {

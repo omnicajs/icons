@@ -77,6 +77,13 @@
       "types": "./dist/vite.d.ts",
       "import": "./dist/vite.js"
     },
+    "./vue": {
+      "types": "./vue.d.ts"
+    },
+    "./rspack": {
+      "types": "./dist/rspack.d.ts",
+      "require": "./dist/rspack.cjs"
+    },
     "./webpack": {
       "types": "./dist/webpack.d.ts",
       "require": "./dist/webpack.cjs"
@@ -89,6 +96,7 @@
     "assets",
     "dist",
     "metadata",
+    "/vue.d.ts",
     "CHANGELOG.md",
     "README.md",
     "LICENSE"
@@ -114,7 +122,7 @@
     "showcase:preview": "vitepress preview showcase --host 0.0.0.0",
     "test": "yarn build && yarn test:unit && yarn test:fixtures",
     "test:browser": "playwright test --config playwright.config.ts",
-    "test:fixtures": "node dist/cli.js build --config fixtures/cli/omnica-icons.config.mjs && tsc --noEmit -p fixtures/cli/tsconfig.json && vite build --config fixtures/vite/vite.config.ts && tsc --noEmit -p fixtures/vite/tsconfig.json && webpack --config fixtures/webpack/webpack.config.cjs && tsc --noEmit -p fixtures/webpack/tsconfig.json",
+    "test:fixtures": "node dist/cli.js build --config fixtures/cli/omnica-icons.config.mjs && tsc --noEmit -p fixtures/cli/tsconfig.json && vite build --config fixtures/vite/vite.config.ts && node fixtures/vite/assert-formats.mjs && vite build --config fixtures/vite/vite.config.ts --base / --ssr src/ssr.ts --outDir dist-ssr && node fixtures/vite/assert-ssr.mjs && tsc --noEmit -p fixtures/vite/tsconfig.json && webpack --config fixtures/webpack/webpack.config.cjs && webpack --config fixtures/webpack/webpack.ssr.config.cjs && tsc --noEmit -p fixtures/webpack/tsconfig.json && rspack build --config fixtures/rspack/rspack.config.cjs && rspack build --config fixtures/rspack/rspack.ssr.config.cjs && tsc --noEmit -p fixtures/rspack/tsconfig.json && node fixtures/assert-bundler-ssr.mjs && node fixtures/assert-bundler-ssr-public-path.mjs && node fixtures/assert-bundler-watch.mjs",
     "test:unit": "node --test tests/*.test.ts",
     "typecheck": "tsc --noEmit && tsc --noEmit --project showcase/tsconfig.json"
   },
@@ -128,8 +136,11 @@
     "@modulify/conventional-release": "^0.1.3",
     "@omnicajs/eslint-plugin-dependencies": "^0.0.3",
     "@playwright/test": "^1.61.1",
+    "@rspack/cli": "^2.1.8",
+    "@rspack/core": "^2.1.8",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/node": "^25.9.2",
+    "@vitejs/plugin-vue": "^6.0.8",
     "eslint": "^9.39.5",
     "eslint-plugin-vue": "^10.9.2",
     "globals": "^17.7.0",
@@ -143,6 +154,7 @@
     "vue": "^3.5.39",
     "vue-eslint-parser": "^10.4.1",
     "vue-i18n": "^11.4.6",
+    "vue-loader": "^17.4.2",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1",
     "yaml-eslint-parser": "^2.1.0"

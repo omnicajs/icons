@@ -5,9 +5,16 @@ import path from 'node:path'
 import test from 'node:test'
 
 import { iconUrl as allIconUrl } from '../dist/all.js'
+import { assertImportedSymbolsAvailable } from '../dist/extracted/manifest.js'
 import { buildIconSet } from '../dist/build.js'
+import { createImportedSprite } from '../dist/extracted/core.js'
+import { createImportedSpriteManifest } from '../dist/extracted/manifest.js'
+import { createVueIconSfc } from '../dist/extracted/core.js'
 import { iconUrl as groupIconUrl } from '../dist/filled/actions.js'
+import { loadImportedIcon } from '../dist/extracted/core.js'
 import { loadManifest } from '../dist/build.js'
+import { parseImportedSpriteManifest } from '../dist/extracted/manifest.js'
+import { resolveImportedIcon } from '../dist/extracted/core.js'
 
 interface MigrationEntry {
     readonly destination: string
@@ -144,4 +151,80 @@ test('custom build core emits exact independent variant subsets', async () => {
         () => buildIconSet(invalidConfig),
         /Unknown outlined actions icon add/
     )
+})
+
+test('import-driven core resolves Vue components and a deterministic combined sprite', async () => {
+    const manifest = await loadManifest()
+    const filledSource = '@omnicajs/icons/assets/icons/filled/actions/clear-circle.svg'
+    const outlinedSource = '@omnicajs/icons/assets/icons/outlined/actions/clear-circle.svg'
+    const filled = await loadImportedIcon(filledSource, manifest)
+    const outlined = await loadImportedIcon(outlinedSource, manifest)
+
+    assert.ok(filled)
+    assert.ok(outlined)
+    assert.equal(filled.importedSymbol, 'filled/actions/clear-circle')
+    assert.equal(outlined.importedSymbol, 'outlined/actions/clear-circle')
+    assert.equal(resolveImportedIcon(`${filledSource}?url`, manifest), null)
+    assert.equal(resolveImportedIcon('@omnicajs/icons/filled/actions', manifest), null)
+
+    const sprite = createImportedSprite([outlined, filled])
+
+    assert.equal(sprite, createImportedSprite([filled, outlined]))
+    assert.match(sprite, /id="filled\/actions\/clear-circle"/)
+    assert.match(sprite, /id="outlined\/actions\/clear-circle"/)
+    assert.ok(
+        sprite.indexOf('filled/actions/clear-circle') < sprite.indexOf('outlined/actions/clear-circle')
+    )
+    assert.doesNotMatch(sprite, /id="actions\/clear-circle"/)
+
+    const component = createVueIconSfc(filled, 'spriteUrl')
+
+    assert.match(component, /<svg viewBox="0 0 24 24">/)
+    assert.match(component, /<use :href="href" \/>/)
+    assert.match(component, /spriteUrl \+ "#filled\/actions\/clear-circle"/)
+    assert.match(component, /name: "OmnicaFilledActionsClearCircleIcon"/)
+})
+
+test('import-driven SSR validates its symbols against the client sprite manifest', () => {
+    const manifestSource = createImportedSpriteManifest('assets/imported.svg', '/icons/assets/imported.svg', [{
+        importedSymbol: 'filled/actions/clear-circle',
+        symbolSource: '<symbol />',
+    }])
+    const manifest = parseImportedSpriteManifest(manifestSource, 'client-manifest.json')
+
+    assert.deepEqual(manifest, {
+        schemaVersion: 1,
+        spriteFilename: 'assets/imported.svg',
+        spriteUrl: '/icons/assets/imported.svg',
+        symbols: ['filled/actions/clear-circle'],
+    })
+    assert.doesNotThrow(() => assertImportedSymbolsAvailable(manifest, [{
+        importedSymbol: 'filled/actions/clear-circle',
+        symbolSource: '<symbol />',
+    }]))
+    assert.throws(() => assertImportedSymbolsAvailable(manifest, [{
+        importedSymbol: 'outlined/actions/clear-circle',
+        symbolSource: '<symbol />',
+    }]), /SSR imports icons missing from the client sprite: outlined\/actions\/clear-circle/)
+})
+
+test('base package does not require the opt-in Vue adapter peer', async () => {
+    const packageMetadata = JSON.parse(await read('package.json')) as {
+        readonly peerDependencies?: Readonly<Record<string, string>>
+    }
+
+    assert.equal(packageMetadata.peerDependencies?.vue, undefined)
+})
+
+test('public build entry excludes import-driven adapter internals', async () => {
+    const buildApi = await import('@omnicajs/icons/build')
+
+    for (const name of [
+        'createImportedSprite',
+        'createVueIconSfc',
+        'loadImportedIcon',
+        'resolveImportedIcon',
+    ]) {
+        assert.equal(name in buildApi, false, `${name} leaked from @omnicajs/icons/build`)
+    }
 })

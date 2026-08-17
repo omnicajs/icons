@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+
+### Features
+
+* Added import-driven Vue icon components ([5fed0d0](https://github.com/omnicajs/icons/commit/5fed0d0724bafc5d60ba43ab4510c3f1856e944c))
+
 ## 0.3.0
 
 ### ⚠ BREAKING CHANGE* **icons:** Added missing icons and standardized clear circle

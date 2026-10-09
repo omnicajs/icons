@@ -39,8 +39,8 @@ test('migration maps every legacy path to an existing canonical asset', async ()
         .filter(entry => entry.canonical)
         .map(entry => entry.destination))
 
-    assert.equal(migration.length, 1235)
-    assert.equal(canonicalDestinations.size, 1234)
+    assert.equal(migration.length, 1237)
+    assert.equal(canonicalDestinations.size, 1236)
 
     await Promise.all([...canonicalDestinations].map(async destination => {
         const stats = await fs.stat(path.join(root, destination))
@@ -95,7 +95,7 @@ test('manifest exposes generated search keywords for every icon', async () => {
         assert.deepEqual(keywords, [...new Set(keywords)].sort((left, right) => left.localeCompare(right)))
     }
 
-    assert.equal(keywordSets.length, 1542)
+    assert.equal(keywordSets.length, 1544)
     assert.ok(manifest.variants.filled.groups.actions.icons['badge-recommendation'])
     assert.ok(manifest.variants.filled.groups.actions.icons['clear-circle'])
     assert.ok(manifest.variants.filled.groups.actions.icons['clear-circle-small'])

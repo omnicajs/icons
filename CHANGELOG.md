@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.2
+
+### Features
+
+* **icons:** Added layout icons ([efa219a](https://github.com/omnicajs/icons/commit/efa219ae22257364ecdc0cf0cf9a16ace769f05a))
+
+### Bug Fixes
+
+* **docker:** Fixed Playwright startup for host users ([6c1bc46](https://github.com/omnicajs/icons/commit/6c1bc46c9d69f4ba6f93e456a62eef7d495b0451))
+
 ## 0.3.1
 
 ### Features

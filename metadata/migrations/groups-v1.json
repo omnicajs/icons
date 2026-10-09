@@ -9878,5 +9878,21 @@
         "group": "people",
         "name": "users",
         "canonical": true
+    },
+    {
+        "source": "assets/icons/media-n-editing/format_1_2.svg",
+        "destination": "assets/icons/outlined/layout/sidebar-right.svg",
+        "variant": "outlined",
+        "group": "layout",
+        "name": "sidebar-right",
+        "canonical": true
+    },
+    {
+        "source": "assets/icons/media-n-editing/format_1_4.svg",
+        "destination": "assets/icons/outlined/layout/widget-bottom-right.svg",
+        "variant": "outlined",
+        "group": "layout",
+        "name": "widget-bottom-right",
+        "canonical": true
     }
 ]

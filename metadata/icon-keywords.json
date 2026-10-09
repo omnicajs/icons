@@ -3747,9 +3747,15 @@
                 "pages": [
                     "actions/pages-outlined"
                 ],
+                "sidebar-right": [
+                    "media-n-editing/format_1_2"
+                ],
                 "widget": [
                     "ui/widget_outlined",
                     "ui/widget-outlined"
+                ],
+                "widget-bottom-right": [
+                    "media-n-editing/format_1_4"
                 ]
             },
             "lifestyle": {
